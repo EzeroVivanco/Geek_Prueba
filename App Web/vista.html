@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html leng="es">
+<head>
+	<title>Vista 1</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="css/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<script src="js/foundation/foundation.js"></script>
+  	<script src="js/foundation/foundation.topbar.js"></script>
+ 	<script src="js/foundation/foundation.dropdown.js"></script>
+  	<!-- Other JS plugins can be included here -->
+  	<script type="text/javascript">
+		$(document).foundation();
+	</script>
+</head>
+<body>
+	<nav class="top-bar" data-topbar>
+		<ul class="title-area">
+			<li class="name">
+				 <h3><a href="">Geek Bucket</a></h3>
+			</li>
+			<!--el codidgo de abajo agrega un icono al menu cuando el espacio es pequeño-->
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		</ul>
+
+
+		<section class="top-bar-section">
+			<ul class="right">
+				<li class="active"><a href="">Usuario</a></li>
+				<li class="has-dropdown">
+					<a href="#">Options</a>
+					<ul class="dropdown">
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+	</nav>
+
+
+
+	<div class="row">
+		<div class="large-12 columns">
+
+				<div class="callout panel">
+					<label>Novio</label>
+					<br>
+					<input type="text" value="Juan" name="nombre_1" placeholder="Nombre de Él">
+					<br>
+					<label>Novia</label>
+					<br>
+					<input type="text" value="Maria" name="nombre_2" placeholder="Nombre de Ella">
+
+					
+					<a href="vista2.html" class="button [tiny small longer radius round]">Siguiente</a>
+				</div>
+		</div>
+	</div>
+	
+</body>
+</html>
