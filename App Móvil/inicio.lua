@@ -4,12 +4,17 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 local widget = require( "widget" )
 
-	local function handleButtonEvent( event )
+	local function botonRegistro:handleButtonEvent( event )
 		if (event.phase == "ended") then
 			composer.gotoScene( "formulario" , {effect = "flip", time = 1000} )
 		end
 	end
 
+	local function botonInicio:handleButtonEvent( event )
+		if (event.phase == "ended") then
+			composer.gotoScene( "login" , {effect = "flip", time = 1000} )
+		end
+	end
 
 function scene:create( event )
 	local sceneGroup = self.view
