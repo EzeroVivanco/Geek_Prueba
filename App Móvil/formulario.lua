@@ -9,16 +9,9 @@ local composer = require( "composer" )
 local widget = require( "widget")
 local scene = composer.newScene()
 
---sasasasasasaa
---wewewewewewew
-<<<<<<< HEAD
---asasasasassasaasa
-=======
---wawawawawaw
 >>>>>>> d1e3237a5680a0d1801923f128c0c211ec479c50
 function scene:create( event )
 	local sceneGroup = self.view
---jdfkjsngkjfd
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
