@@ -6,13 +6,13 @@ local widget = require( "widget" )
 
 	local function handleButtonEvent( event )
 		if (event.phase == "ended") then
-			composer.gotoScene( "formulario" , {effect = "flip", time = 1000} )
+			composer.gotoScene( "formulario" , {effect = "fade", time = 1000} )
 		end
 	end
 
 	local function handleButtonEvent2( event )
 		if (event.phase == "ended") then
-			composer.gotoScene( "login" , {effect = "flip", time = 1000} )
+			composer.gotoScene( "login" , {effect = "fade", time = 1000} )
 		end
 	end
 
