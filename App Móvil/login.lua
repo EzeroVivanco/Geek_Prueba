@@ -7,11 +7,11 @@
 -- Your code here
 local composer = require( "composer" )
 local widget = require( "widget" )
-local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress
+local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress 
 local scene = composer.newScene()
 
 SesionButtonPress = function ( event )
-	-- body
+	composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
 end
 
 function scene:create( event )
