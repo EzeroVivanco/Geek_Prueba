@@ -13,8 +13,8 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local path = system.pathForFile("eh.sql", system.DocumentsDirectory)
-	local db = sqlite3.open( path )  
+	local path = system.pathForFile("eh.sql", system.ResourceDirectory)
+	db = sqlite3.open( path )  
 
 	local function onSystemEvent( event )
         if( event.type == "applicationExit" ) then              
@@ -25,7 +25,7 @@ function scene:create( event )
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
 	print(tablesetup)
 	db:exec( tablesetup )
-	
+
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
