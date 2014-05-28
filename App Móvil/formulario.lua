@@ -11,6 +11,7 @@ local scene = composer.newScene()
 
 --sasasasasasaa
 --wewewewewewew
+--asasasasassasaasa
 function scene:create( event )
 	local sceneGroup = self.view
 --jdfkjsngkjfd
