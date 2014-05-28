@@ -6,10 +6,9 @@
 
 -- Your code here
 local composer = require( "composer" )
-local scene = composer.newScene()
-
 local widget = require( "widget" )
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress
+local scene = composer.newScene()
 
 SesionButtonPress = function ( event )
 	-- body
