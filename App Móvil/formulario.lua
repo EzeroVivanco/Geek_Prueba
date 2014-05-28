@@ -10,7 +10,11 @@ local widget = require( "widget")
 local scene = composer.newScene()
 
 --sasasasasasaa
+<<<<<<< HEAD
 --bshxahsd
+=======
+--wewewewewewe
+>>>>>>> 508f3f6cdf9b341d933504f291279eecc88fec1b
 function scene:create( event )
 	local sceneGroup = self.view
 --jdfkjsngkjfd
