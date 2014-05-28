@@ -1,95 +1,105 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+/*
+Navicat MySQL Data Transfer
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-USE `mydb` ;
+Source Server         : MySQL
+Source Server Version : 50613
+Source Host           : localhost:3306
+Source Database       : mydb
 
--- -----------------------------------------------------
--- Table `mydb`.`usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`usuarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(100) NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `status` INT NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+Target Server Type    : MYSQL
+Target Server Version : 50613
+File Encoding         : 65001
 
+Date: 2014-05-28 13:54:19
+*/
 
--- -----------------------------------------------------
--- Table `mydb`.`cat_ciudades`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`cat_ciudades` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  `estado` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+SET FOREIGN_KEY_CHECKS=0;
 
+-- ----------------------------
+-- Table structure for cat_ciudades
+-- ----------------------------
+DROP TABLE IF EXISTS `cat_ciudades`;
+CREATE TABLE `cat_ciudades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `estado` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- -----------------------------------------------------
--- Table `mydb`.`eventos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`eventos` (
-  `id` INT NOT NULL,
-  `fecha` DATE NULL,
-  `hora` TIME NULL,
-  `locacion` VARCHAR(45) NULL,
-  `numero_invitados` INT NULL,
-  `cat_ciudades_id` INT NOT NULL,
+-- ----------------------------
+-- Records of cat_ciudades
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cat_tipos_usuarios
+-- ----------------------------
+DROP TABLE IF EXISTS `cat_tipos_usuarios`;
+CREATE TABLE `cat_tipos_usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of cat_tipos_usuarios
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for eventos
+-- ----------------------------
+DROP TABLE IF EXISTS `eventos`;
+CREATE TABLE `eventos` (
+  `id` int(11) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
+  `locacion` varchar(45) DEFAULT NULL,
+  `numero_invitados` int(11) DEFAULT NULL,
+  `cat_ciudades_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_eventos_cat_ciudades1` (`cat_ciudades_id` ASC),
-  CONSTRAINT `fk_eventos_cat_ciudades1`
-    FOREIGN KEY (`cat_ciudades_id`)
-    REFERENCES `mydb`.`cat_ciudades` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `fk_eventos_cat_ciudades1` (`cat_ciudades_id`),
+  CONSTRAINT `fk_eventos_cat_ciudades1` FOREIGN KEY (`cat_ciudades_id`) REFERENCES `cat_ciudades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- ----------------------------
+-- Records of eventos
+-- ----------------------------
 
--- -----------------------------------------------------
--- Table `mydb`.`cat_tipos_usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`cat_tipos_usuarios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+-- ----------------------------
+-- Table structure for usuarios
+-- ----------------------------
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- ----------------------------
+-- Records of usuarios
+-- ----------------------------
 
--- -----------------------------------------------------
--- Table `mydb`.`xref_eventos_usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`xref_eventos_usuarios` (
-  `id` INT NOT NULL,
-  `usuarios_id` INT NOT NULL,
-  `eventos_id` INT NOT NULL,
-  `cat_tipos_usuarios_id` INT NOT NULL,
+-- ----------------------------
+-- Table structure for xref_eventos_usuarios
+-- ----------------------------
+DROP TABLE IF EXISTS `xref_eventos_usuarios`;
+CREATE TABLE `xref_eventos_usuarios` (
+  `id` int(11) NOT NULL,
+  `usuarios_id` int(11) NOT NULL,
+  `eventos_id` int(11) NOT NULL,
+  `cat_tipos_usuarios_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_xref_eventos_usuarios_usuarios` (`usuarios_id` ASC),
-  INDEX `fk_xref_eventos_usuarios_eventos1` (`eventos_id` ASC),
-  INDEX `fk_xref_eventos_usuarios_cat_tipos_usuarios1` (`cat_tipos_usuarios_id` ASC),
-  CONSTRAINT `fk_xref_eventos_usuarios_usuarios`
-    FOREIGN KEY (`usuarios_id`)
-    REFERENCES `mydb`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_xref_eventos_usuarios_eventos1`
-    FOREIGN KEY (`eventos_id`)
-    REFERENCES `mydb`.`eventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_xref_eventos_usuarios_cat_tipos_usuarios1`
-    FOREIGN KEY (`cat_tipos_usuarios_id`)
-    REFERENCES `mydb`.`cat_tipos_usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `fk_xref_eventos_usuarios_usuarios` (`usuarios_id`),
+  KEY `fk_xref_eventos_usuarios_eventos1` (`eventos_id`),
+  KEY `fk_xref_eventos_usuarios_cat_tipos_usuarios1` (`cat_tipos_usuarios_id`),
+  CONSTRAINT `fk_xref_eventos_usuarios_usuarios` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_xref_eventos_usuarios_eventos1` FOREIGN KEY (`eventos_id`) REFERENCES `eventos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_xref_eventos_usuarios_cat_tipos_usuarios1` FOREIGN KEY (`cat_tipos_usuarios_id`) REFERENCES `cat_tipos_usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- ----------------------------
+-- Records of xref_eventos_usuarios
+-- ----------------------------
