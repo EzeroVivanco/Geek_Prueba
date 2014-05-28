@@ -10,6 +10,7 @@ local widget = require( "widget")
 local scene = composer.newScene()
 
 --sasasasasasaa
+--hbch xm xhdh
 function scene:create( event )
 	local sceneGroup = self.view
 --jdfkjsngkjfd
