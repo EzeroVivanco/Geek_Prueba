@@ -32,12 +32,14 @@ function scene:create( event )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
+	usuarioField.isVisible = false 
 	sceneGroup:insert( usuarioField )
 
 	contrasenaField = native.newTextField( 160, display.contentCenterY - 25, 275, 50 )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
+	contrasenaField.isVisible = false 
 	sceneGroup:insert( contrasenaField )
 
 	sesionButton = widget.newButton{

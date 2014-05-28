@@ -12,7 +12,7 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	
+
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
