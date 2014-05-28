@@ -9,7 +9,7 @@ local composer = require( "composer" )
 local widget = require( "widget")
 local scene = composer.newScene()
 
-
+--sasasasasasaa
 function scene:create( event )
 	local sceneGroup = self.view
 --jdfkjsngkjfd
