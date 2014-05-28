@@ -12,7 +12,7 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-
+	
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
@@ -46,7 +46,9 @@ function scene:create( event )
 		top = 350,
 		width = 120,
 		height = 50,
+		defaultFile = "button.png",
 		label = "Aceptar",
+		labelColor = {default={255,255,255}, over={240,248,255}}
 	}
 	sceneGroup:insert( botonAceptar )
 end
