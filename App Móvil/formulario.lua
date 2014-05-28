@@ -7,11 +7,25 @@
 -- Your code herelocal defaultField
 local composer = require( "composer" )
 local widget = require( "widget")
+local sqlite3 = require "sqlite3"
 local scene = composer.newScene()
 
->>>>>>> d1e3237a5680a0d1801923f128c0c211ec479c50
 function scene:create( event )
 	local sceneGroup = self.view
+
+	local path = system.pathForFile("eh.sql", system.DocumentsDirectory)
+	local db = sqlite3.open( path )  
+
+	local function onSystemEvent( event )
+        if( event.type == "applicationExit" ) then              
+            db:close()
+        end
+	end
+
+	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
+	print(tablesetup)
+	db:exec( tablesetup )
+	
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
@@ -50,6 +64,7 @@ function scene:create( event )
 		labelColor = {default={255,255,255}, over={240,248,255}}
 	}
 	sceneGroup:insert( botonAceptar )
+	Runtime:addEventListener( "system", onSystemEvent )
 end
 
 function scene:show( event )
@@ -64,6 +79,5 @@ end
 
 scene:addEventListener( "create", scene)
 scene:addEventListener( "show", scene )
-
 return scene
 
