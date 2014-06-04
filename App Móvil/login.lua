@@ -10,9 +10,16 @@ local widget = require( "widget" )
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress 
 local scene = composer.newScene()
 
-SesionButtonPress = function ( event )
-	composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
-end
+local function handleButtonEvent( event )
+		if (event.phase == "ended") then
+			sesionButton = nil
+			usuarioText = nil
+			usuarioField = nil
+			contrasenaField = nil
+			contrasenaText = nil
+			composer.gotoScene( "principal" )
+		end
+	end
 
 function scene:create( event )
 	local sceneGroup = self.view
@@ -61,7 +68,7 @@ function scene:create( event )
 		font = native.systemFont,
 		labelColor = {default={255,255,255}, over={240,248,255}},
 		defaultFile = "design/borderbutton.png",
-		onEvent = SesionBotonPress
+		onEvent = handleButtonEvent
 	}
 	sceneGroup:insert( sesionButton )
 end
