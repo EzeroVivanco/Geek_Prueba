@@ -6,13 +6,17 @@ local widget = require( "widget" )
 
 	local function handleButtonEvent( event )
 		if (event.phase == "ended") then
-			composer.gotoScene( "formulario" , {effect = "fade", time = 1000} )
+			botonInicio = nil
+			botonRegistro = nil
+			composer.gotoScene( "formulario" )
 		end
 	end
 
 	local function handleButtonEvent2( event )
 		if (event.phase == "ended") then
-			composer.gotoScene( "login" , {effect = "fade", time = 1000} )
+			botonInicio = nil
+			botonRegistro = nil
+			composer.gotoScene( "login" )
 		end
 	end
 
@@ -37,7 +41,7 @@ function scene:create( event )
 		y = display.contentCenterY + 50,
 		width = 120,
 		height = 50,
-		label = "Regristrate",
+		label = "Registrate",
 		fontSize = 15,
 		onEvent = handleButtonEvent
 	}
@@ -54,6 +58,7 @@ function scene:hide( event )
 	
 		-- remove touch listener for image
 		--botonRegistro:removeEventListener( "handleButtonEvent", botonRegistro )
+		--botonInicio:removeEventListener( "handleButtonEvent2", botonInicio )
 	
 	end
 	

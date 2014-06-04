@@ -6,13 +6,12 @@
 
 -- Your code here
 local composer = require( "composer" )
+local widget = require( "widget" )
+local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress 
 local scene = composer.newScene()
 
-local widget = require( "widget" )
-local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress
-
 SesionButtonPress = function ( event )
-	-- body
+	composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
 end
 
 function scene:create( event )
@@ -32,12 +31,14 @@ function scene:create( event )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
+	usuarioField.isVisible = false 
 	sceneGroup:insert( usuarioField )
 
 	contrasenaField = native.newTextField( 160, display.contentCenterY - 25, 275, 50 )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
+	contrasenaField.isVisible = false 
 	sceneGroup:insert( contrasenaField )
 
 	sesionButton = widget.newButton{
