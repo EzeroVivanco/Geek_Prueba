@@ -13,7 +13,11 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local path = system.pathForFile("eh.sql", system.ResourceDirectory)
+	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
+	fondo:setFillColor( 255,255,255 )
+	sceneGroup:insert( fondo )
+
+	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 	db = sqlite3.open( path )  
 
 	local function onSystemEvent( event )
@@ -25,19 +29,24 @@ function scene:create( event )
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
 	print(tablesetup)
 	db:exec( tablesetup )
+	db:close( )
 
 	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
+	registro:setFillColor(0,0,0)
 	sceneGroup:insert( registro )
 
 	local usuario = display.newText( "Correo electronico", display.contentCenterX, 130, native.systemFont, 18 )
+	usuario:setFillColor(0,0,0)
 	sceneGroup:insert( usuario )
 
 	local password = display.newText( "Contraseña", display.contentCenterX, 210, native.systemFont, 18 )
+	password:setFillColor(0,0,0)
 	sceneGroup:insert( password )
 
 	local confirmacion = display.newText( "Confirma tu contraseña", display.contentCenterX, 290, native.systemFont, 18 )
+	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
 
 	campoUsuario = native.newTextField( display.contentCenterX, 170, 200, 30 )
@@ -53,6 +62,15 @@ function scene:create( event )
 	sceneGroup:insert( campoUsuario )
 	sceneGroup:insert( campoPass )
 	sceneGroup:insert( campoPass2 )
+
+	local function registrar( evento )
+		if ( "ended" == evento.phase) then
+			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
+			db:exec(insercion)
+			db:close()
+		end
+	end
+
 	local botonAceptar = widget.newButton
 	{
 		left = 100,
@@ -61,7 +79,8 @@ function scene:create( event )
 		height = 50,
 		defaultFile = "button.png",
 		label = "Aceptar",
-		labelColor = {default={255,255,255}, over={240,248,255}}
+		labelColor = {default={255,255,255}, over={240,248,255}},
+		onEvent = registrar
 	}
 	sceneGroup:insert( botonAceptar )
 	Runtime:addEventListener( "system", onSystemEvent )
