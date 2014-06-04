@@ -19,15 +19,8 @@ function scene:create( event )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
 
-	local degradado = {
-	type = 'gradient',
-	color1 = { 25/255, 181/255, 172/255, 255/255 }, 
-	color2 = { 25/255, 181/255, 172/255, 255/255 }, 
-	direction = "down"
-	}
-
-	local titleBar = display.newRect( display.contentCenterX, 0, display.contentWidth, 32 )
-	titleBar:setFillColor( degradado )
+	local titleBar = display.newRect( display.contentCenterX, 0, display.contentWidth, 52 )
+	titleBar:setFillColor( 25/255, 181/255, 172/255 )
 	titleBar.y = display.screenOriginY + titleBar.contentHeight * 0.5
 	sceneGroup:insert( titleBar )
 	
@@ -36,34 +29,37 @@ function scene:create( event )
 
 	local tabButtons = 
 	{
-		{ 
-			width = 32,
-			height = 32,
+		{
+			width = (display.contentWidth/2)-2, height = 52,
+			defaultFile = "design/leftButton.png",
+			overFile = "design/leftButton.png",
+			size = 16,
 			label = "Información",
-			size = 16,
-			labelYOffset = -8,
-			selected = true,
+			--onPress = function() composer.gotoScene( "screen1" ); end,
+			selected = true
 		},
-		{ 
-			width = 32,
-			height = 32,
+		{
+			width = (display.contentWidth/2)-2, height = 52,
+			defaultFile = "design/rightButton.png",
+			overFile = "design/rightButton.png",
 			size = 16,
-			labelYOffset = -8,
 			label = "Programa",
+			--onPress = function() composer.gotoScene( "screen2" ); end,
 		},
 	}
 
-	local tabBar = widget.newTabBar
+	--Create a tab-bar and place it at the bottom of the screen
+	local demoTabs = widget.newTabBar
 	{
-	    top = display.contentHeight - 25,
+		top = display.contentHeight - 50,
 		width = display.contentWidth,
-		--backgroundFile = "tabbar.png",
-		tabSelectedLeftFile = "tabBar_tabSelectedLeft.png",
-		tabSelectedMiddleFile = "tabBar_tabSelectedMiddle.png",
-		tabSelectedRightFile = "tabBar_tabSelectedRight.png",
-		--tabSelectedFrameWidth = 20,
-		--tabSelectedFrameHeight = 52,
-	    buttons = tabButtons
+		backgroundFile = "design/background.png",
+		tabSelectedLeftFile = "design/background.png",
+		tabSelectedMiddleFile = "design/background.png",
+		tabSelectedRightFile = "design/background.png",
+		tabSelectedFrameWidth = 20,
+		tabSelectedFrameHeight = 52,
+		buttons = tabButtons
 	}
 	--sceneGroup:insert( tabBar )
 	
