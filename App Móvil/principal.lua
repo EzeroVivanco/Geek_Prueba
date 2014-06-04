@@ -24,8 +24,20 @@ function scene:create( event )
 	titleBar.y = display.screenOriginY + titleBar.contentHeight * 0.5
 	sceneGroup:insert( titleBar )
 	
-	local titleText = display.newEmbossedText( "Etternal Honeymooners", display.contentCenterX, titleBar.y, native.systemFontBold, 20 )
+	local titleText = display.newEmbossedText( "Ethernal Honeymooners", display.contentCenterX, titleBar.y, native.systemFontBold, 20 )
 	sceneGroup:insert( titleText )
+
+	local function tapMenu( event )
+		local tapEvent = display.newText( "desplegando menu", display.contentCenterX, display.contentCenterY, native.systemFont, 20 )
+		tapEvent:setFillColor( 0,0,0 )
+		sceneGroup:insert( tapEvent )
+	end
+
+	local mainMenu = display.newRect( 23 , titleBar.y, 56, titleBar.height )
+	mainMenu:setFillColor( 25/255, 220/255, 200/255 )
+	sceneGroup:insert( mainMenu )
+
+	mainMenu:addEventListener( "tap", tapMenu )
 
 	local tabButtons = 
 	{
