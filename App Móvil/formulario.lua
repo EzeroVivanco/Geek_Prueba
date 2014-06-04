@@ -9,11 +9,15 @@ local composer = require( "composer" )
 local widget = require( "widget")
 local sqlite3 = require "sqlite3"
 local scene = composer.newScene()
+local _X = display.contentCenterX
+local _Y = display.contentCenterY
+local _W = display.contentWidth
+local _H = display.contentHeight
 
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
+	local fondo = display.newRect( _X, _Y, _W, _H )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
 
@@ -29,34 +33,32 @@ function scene:create( event )
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
 	print(tablesetup)
 	db:exec( tablesetup )
-	db:close( )
-
 	local campoUsuario, campoPass, campoPass2
 
-	local registro = display.newText( "Registro", display.contentCenterX, 70, native.systemFont, 18 )
+	local registro = display.newText( "Registro", _X, _Y - 150, native.systemFont, 18 )
 	registro:setFillColor(0,0,0)
 	sceneGroup:insert( registro )
 
-	local usuario = display.newText( "Correo electronico", display.contentCenterX, 130, native.systemFont, 18 )
+	local usuario = display.newText( "Correo electronico", _X, _Y - 80, native.systemFont, 18 )
 	usuario:setFillColor(0,0,0)
 	sceneGroup:insert( usuario )
 
-	local password = display.newText( "Contraseña", display.contentCenterX, 210, native.systemFont, 18 )
+	local password = display.newText( "Contraseña", _X, _Y, native.systemFont, 18 )
 	password:setFillColor(0,0,0)
 	sceneGroup:insert( password )
 
-	local confirmacion = display.newText( "Confirma tu contraseña", display.contentCenterX, 290, native.systemFont, 18 )
+	local confirmacion = display.newText( "Confirma tu contraseña", _X, _Y + 80, native.systemFont, 18 )
 	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
 
-	campoUsuario = native.newTextField( display.contentCenterX, 170, 200, 30 )
+	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40 )
 	campoUsuario.inputType = "email"
 	campoUsuario.placeholder = "ejemplo@mail.com"
 
-	campoPass = native.newTextField( display.contentCenterX, 250, 200, 30 )
+	campoPass = native.newTextField( _X, _Y + 40, 250, 40 )
 	campoPass.isSecure = true
 
-	campoPass2 = native.newTextField( display.contentCenterX, 330, 200, 30 )
+	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40 )
 	campoPass2.isSecure = true
 
 	sceneGroup:insert( campoUsuario )
@@ -65,6 +67,7 @@ function scene:create( event )
 
 	local function registrar( evento )
 		if ( "ended" == evento.phase) then
+			db = sqlite3.open( path ) 
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
 			db:close()
@@ -74,9 +77,7 @@ function scene:create( event )
 	local botonAceptar = widget.newButton
 	{
 		x = display.contentCenterX,
-		y = display.contentCenterY + 135,
-		left = 100,
-		top = 350,
+		y = _Y + 170,
 		width = 150,
 		height = 50,
 		defaultFile = "design/borderbutton.png",

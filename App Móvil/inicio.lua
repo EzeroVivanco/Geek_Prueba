@@ -3,7 +3,10 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 local widget = require( "widget" )
-
+local _X = display.contentCenterX
+local _Y = display.contentCenterY
+local _W = display.contentWidth
+local _H = display.contentHeight
 	local function handleButtonEvent( event )
 		if (event.phase == "ended") then
 			botonInicio = nil
@@ -23,14 +26,14 @@ local widget = require( "widget" )
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
+	local fondo = display.newRect( _X, _Y, _W, _H )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
 
 	local botonInicio = widget.newButton
 	{
-		x = display.contentCenterX,
-		y = display.contentCenterY,
+		x = _X,
+		y = _Y,
 		width = 120,
 		height = 50,
 		label = "Iniciar sesión",
@@ -42,8 +45,8 @@ function scene:create( event )
 
 	local botonRegistro = widget.newButton
 	{
-		x = display.contentCenterX,
-		y = display.contentCenterY + 50,
+		x = _X,
+		y = _Y + 50,
 		width = 120,
 		height = 50,
 		label = "Registrate",
