@@ -33,7 +33,7 @@ function scene:create( event )
 	local botonInicio = widget.newButton
 	{
 		x = _X,
-		y = _Y - 30,
+		y = _Y,
 		width = 180,
 		height = 50,
 		label = "Iniciar sesión",
@@ -48,13 +48,14 @@ function scene:create( event )
 	local botonRegistro = widget.newButton
 	{
 		x = _X,
-		y = _Y + 30,
+		y = _H,
 		width = 150,
 		height = 50,
 		label = "Registrate",
-		defaultFile = "design/borderbutton.png",
-		labelColor = {default={255,255,255}, over={240,248,255}},
+		--defaultFile = "design/borderbutton.png",
+		labelColor = {default={0,0,0}, over={240,248,255}},
 		fontSize = 15,
+		textOnly = true,
 		onEvent = handleButtonEvent
 	}
 	sceneGroup:insert( botonRegistro )
