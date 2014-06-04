@@ -17,12 +17,26 @@ local scene = composer.newScene()
 
 local function handleButtonEvent( event )
 		if (event.phase == "ended") then
-			sesionButton = nil
-			usuarioText = nil
-			usuarioField = nil
-			contrasenaField = nil
-			contrasenaText = nil
-			composer.gotoScene( "principal" )
+			local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
+			local db = sqlite3.open( path ) 
+
+			for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'") do
+				if(row.email == usuarioField.text and row.password == contrasenaField.text) then
+					local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
+					acceso:setFillColor( 0,0,0 )
+					sesionButton = nil
+					usuarioText = nil
+					usuarioField = nil
+					contrasenaField = nil
+					contrasenaText = nil
+					--db:close( )
+					composer.gotoScene( "principal" )
+				else
+					local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+					acceso:setFillColor( 0,0,0 )
+				end
+			end
+			db:close( )
 		end
 	end
 
@@ -36,6 +50,7 @@ SesionBotonPress = function ( event )
 			if(row.email == usuarioField.text and row.password == contrasenaField.text) then
 				local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
 				acceso:setFillColor( 0,0,0 )
+				composer.gotoScene( "principal" )
 			else
 				local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
 				acceso:setFillColor( 0,0,0 )

@@ -74,7 +74,7 @@ function scene:create( event )
 			db = sqlite3.open( path ) 
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
-			db:close()
+			--db:close()
 		end
 	end
 

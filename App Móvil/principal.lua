@@ -55,12 +55,12 @@ function scene:create( event )
 
 	local tabBar = widget.newTabBar
 	{
-	    top = display.contentHeight - 10,
+	    top = display.contentHeight - 25,
 		width = display.contentWidth,
-		--backgroundFile = "design/tabbar.png",
-		--tabSelectedLeftFile = "design/tabBar_tabSelectedLeft.png",
-		--tabSelectedMiddleFile = "design/tabBar_tabSelectedMiddle.png",
-		--tabSelectedRightFile = "design/tabBar_tabSelectedRight.png",
+		--backgroundFile = "tabbar.png",
+		tabSelectedLeftFile = "tabBar_tabSelectedLeft.png",
+		tabSelectedMiddleFile = "tabBar_tabSelectedMiddle.png",
+		tabSelectedRightFile = "tabBar_tabSelectedRight.png",
 		--tabSelectedFrameWidth = 20,
 		--tabSelectedFrameHeight = 52,
 	    buttons = tabButtons
