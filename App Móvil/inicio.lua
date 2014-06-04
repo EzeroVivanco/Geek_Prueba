@@ -6,10 +6,15 @@ local widget = require( "widget" )
 
 	local function handleButtonEvent( event )
 		if (event.phase == "ended") then
-			composer.gotoScene( "formulario" , {effect = "flip", time = 1000} )
+			composer.gotoScene( "formulario" , {effect = "fade", time = 1000} )
 		end
 	end
 
+	local function handleButtonEvent2( event )
+		if (event.phase == "ended") then
+			composer.gotoScene( "login" , {effect = "fade", time = 1000} )
+		end
+	end
 
 function scene:create( event )
 	local sceneGroup = self.view
@@ -20,6 +25,7 @@ function scene:create( event )
 		width = 120,
 		height = 50,
 		label = "Iniciar sesión",
+		onEvent = handleButtonEvent2
 	}
 	sceneGroup:insert( botonInicio)
 
@@ -35,7 +41,6 @@ function scene:create( event )
 		fontSize = 15,
 		onEvent = handleButtonEvent
 	}
-
 	sceneGroup:insert( botonRegistro )
 end
 
