@@ -16,16 +16,13 @@ end
 
 function scene:create( event )
 	local sceneGroup = self.view
-
-<<<<<<< HEAD
-	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
-=======
+	
 	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
 
+	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
 	usuarioText = display.newText( "Nombre de Usuario o Correo Electrónico", 0, 0, native.systemFont, 15 )
->>>>>>> 8cd1736e0f186dbae64db53c62acf5abb6420bef
 	usuarioText.x = display.contentCenterX
 	usuarioText.y = display.contentCenterY - 150
 	usuarioText:setFillColor( 0,0,0 )
