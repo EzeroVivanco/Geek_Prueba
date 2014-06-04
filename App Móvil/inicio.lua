@@ -22,6 +22,11 @@ local widget = require( "widget" )
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
+	fondo:setFillColor( 255,255,255 )
+	sceneGroup:insert( fondo )
+
 	local botonInicio = widget.newButton
 	{
 		x = display.contentCenterX,
