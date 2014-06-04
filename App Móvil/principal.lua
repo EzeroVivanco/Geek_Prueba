@@ -19,20 +19,25 @@ function scene:create( event )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
 
-	local degradado = {
-	type = 'gradient',
-	color1 = { 25/255, 181/255, 172/255, 255/255 }, 
-	color2 = { 25/255, 181/255, 172/255, 255/255 }, 
-	direction = "down"
-	}
-
 	local titleBar = display.newRect( display.contentCenterX, 0, display.contentWidth, 32 )
-	titleBar:setFillColor( degradado )
+	titleBar:setFillColor( 25/255, 181/255, 172/255	 )
 	titleBar.y = display.screenOriginY + titleBar.contentHeight * 0.5
 	sceneGroup:insert( titleBar )
 	
-	local titleText = display.newEmbossedText( "Etternal Honeymooners", display.contentCenterX, titleBar.y, native.systemFontBold, 20 )
+	local titleText = display.newEmbossedText( "Ethernal Honeymooners", display.contentCenterX, titleBar.y, native.systemFontBold, 20 )
 	sceneGroup:insert( titleText )
+
+	local function tapMenu( event )
+		local tapEvent = display.newText( "desplegando menu", display.contentCenterX, display.contentCenterY, native.systemFont, 20 )
+		tapEvent:setFillColor( 0,0,0 )
+		sceneGroup:insert( tapEvent )
+	end
+
+	local mainMenu = display.newRect( 23 , titleBar.y, 56, titleBar.height )
+	mainMenu:setFillColor( 25/255, 220/255, 200/255 )
+	sceneGroup:insert( mainMenu )
+
+	mainMenu:addEventListener( "tap", tapMenu )
 
 	local tabButtons = 
 	{
@@ -42,11 +47,8 @@ function scene:create( event )
 			label = "Información",
 			size = 16,
 			labelYOffset = -8,
-			selected = true,
 		},
 		{ 
-			width = 32,
-			height = 32,
 			size = 16,
 			labelYOffset = -8,
 			label = "Programa",
