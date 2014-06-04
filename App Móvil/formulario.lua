@@ -77,15 +77,8 @@ function scene:create( event )
 	local botonAceptar = widget.newButton
 	{
 		x = display.contentCenterX,
-		y = display.contentCenterY + 135,
-		left = 100,
-<<<<<<< HEAD
-		top = _Y + 150,
-		width = 120,
-=======
-		top = 350,
+		y = _Y + 170,
 		width = 150,
->>>>>>> 73e0c05bd5cbcf122d8742a523fea8c3020a616c
 		height = 50,
 		defaultFile = "design/borderbutton.png",
 		label = "Aceptar",
