@@ -73,19 +73,10 @@ function scene:create( event )
 	sceneGroup:insert( contrasenaField )
 
 	sesionButton = widget.newButton{
-<<<<<<< HEAD
 		x = _X,
 		y = _Y + 30,
-		label = "Iniciar Sesión",
-		font = native.systemFont,
-=======
-		x = display.contentCenterX,
-		y = display.contentCenterY + 30,
-		left = 100,
-		top = 350,
 		width = 150,
 		height = 50,
->>>>>>> 73e0c05bd5cbcf122d8742a523fea8c3020a616c
 		fontSize = 20,
 		emboss = true,
 		label = " Iniciar Sesión",
