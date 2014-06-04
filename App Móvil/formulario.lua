@@ -73,11 +73,13 @@ function scene:create( event )
 
 	local botonAceptar = widget.newButton
 	{
+		x = display.contentCenterX,
+		y = display.contentCenterY + 135,
 		left = 100,
 		top = 350,
-		width = 120,
+		width = 150,
 		height = 50,
-		defaultFile = "button.png",
+		defaultFile = "design/borderbutton.png",
 		label = "Aceptar",
 		labelColor = {default={255,255,255}, over={240,248,255}},
 		onEvent = registrar

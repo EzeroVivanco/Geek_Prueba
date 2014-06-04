@@ -16,7 +16,7 @@ end
 
 function scene:create( event )
 	local sceneGroup = self.view
-	
+
 	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
 	fondo:setFillColor( 255,255,255 )
 	sceneGroup:insert( fondo )
@@ -51,10 +51,15 @@ function scene:create( event )
 	sesionButton = widget.newButton{
 		x = display.contentCenterX,
 		y = display.contentCenterY + 30,
-		label = "Iniciar Sesión",
-		font = native.systemFont,
+		left = 100,
+		top = 350,
+		width = 150,
+		height = 50,
 		fontSize = 20,
 		emboss = true,
+		label = " Iniciar Sesión",
+		font = native.systemFont,
+		labelColor = {default={255,255,255}, over={240,248,255}},
 		defaultFile = "design/borderbutton.png",
 		onEvent = SesionBotonPress
 	}
