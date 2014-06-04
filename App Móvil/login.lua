@@ -30,19 +30,16 @@ SesionBotonPress = function ( event )
 	--composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
 	if ( "ended" == event.phase) then
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
-		local db = sqlite3.open( path )
+		local db = sqlite3.open( path ) 
 
-		local people = {} -- starts off emtpy
-
-		for row in db:nrows("SELECT * FROM user") do
-			print( "Row " .. row.email )
-
-			-- create table at next available array index
-			people[#people+1] =
-			{
-				name = row.email,
-				pass = row.password
-			}
+		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'") do
+			if(row.email == usuarioField.text and row.password == contrasenaField.text) then
+				local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
+				acceso:setFillColor( 0,0,0 )
+			else
+				local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+				acceso:setFillColor( 0,0,0 )
+			end
 		end
 
 		db:close( )
@@ -73,14 +70,16 @@ function scene:create( event )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
-	usuarioField.isVisible = false 
+	usuarioField.align = "center"
+	--usuarioField.isVisible = false 
 	sceneGroup:insert( usuarioField )
 
 	contrasenaField = native.newTextField( 160, _Y - 25, 275, 50 )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
-	contrasenaField.isVisible = false 
+	contrasenaField.align = "center"
+	--contrasenaField.isVisible = false 
 	sceneGroup:insert( contrasenaField )
 
 	sesionButton = widget.newButton{

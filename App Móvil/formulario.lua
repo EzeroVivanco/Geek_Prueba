@@ -52,14 +52,18 @@ function scene:create( event )
 	sceneGroup:insert( confirmacion )
 
 	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40 )
+	campoUsuario.align = "center"
 	campoUsuario.inputType = "email"
 	campoUsuario.placeholder = "ejemplo@mail.com"
 
 	campoPass = native.newTextField( _X, _Y + 40, 250, 40 )
+	campoPass.align = "center"
 	campoPass.isSecure = true
 
 	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40 )
 	campoPass2.isSecure = true
+	campoPass2.align = "center"
+	campoPass2:setTextColor( 0, 0, 0 )
 
 	sceneGroup:insert( campoUsuario )
 	sceneGroup:insert( campoPass )
