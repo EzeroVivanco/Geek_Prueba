@@ -17,7 +17,7 @@ end
 function scene:create( event )
 	local sceneGroup = self.view
 
-	usuarioText = display.newText( "Nombre de Usuario o Correo Electrónico", 0, 0, native.systemFont, 15 )
+	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
 	usuarioText.x = display.contentCenterX
 	usuarioText.y = display.contentCenterY - 150
 	sceneGroup:insert( usuarioText )
@@ -48,6 +48,7 @@ function scene:create( event )
 		font = native.systemFont,
 		fontSize = 20,
 		emboss = true,
+		defaultFile = "design/borderbutton.png",
 		onEvent = SesionBotonPress
 	}
 	sceneGroup:insert( sesionButton )
