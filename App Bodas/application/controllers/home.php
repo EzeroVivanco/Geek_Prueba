@@ -20,7 +20,7 @@ class Home extends CI_Controller {
      * Despliega la pantalla del home
      */
     public function index(){
-        $this->load->view('web/vwLogin');
+        $this->load->view('web/vwLayout');
     }
     
 

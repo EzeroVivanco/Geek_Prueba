@@ -9,3 +9,15 @@ body {
     text-align: left;
     font-family: : Times New Roman 12 px;
 }
+.panel.callout {
+    background: white;
+   
+}
+.button
+{
+    background: mediumturquoise;
+}
+.fond
+{
+    background: white;
+}
