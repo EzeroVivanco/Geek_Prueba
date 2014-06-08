@@ -19,7 +19,7 @@ local _H = display.contentHeight
 		if (event.phase == "ended") then
 			botonInicio = nil
 			botonRegistro = nil
-			composer.gotoScene( "login" )
+			composer.gotoScene( "principal" )
 		end
 	end
 
