@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * GeekBucket 2014
  * Author: Alberto Vera Espitia

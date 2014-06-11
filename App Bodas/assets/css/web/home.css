@@ -11,7 +11,7 @@ body {
 }
 .panel.callout {
     background: white;
-   
+
 }
 .button
 {
@@ -20,4 +20,19 @@ body {
 .fond
 {
     background: white;
+}
+.top-bar{	
+
+    height: 70;
+
+
+}
+a{
+    font-size: 10px;
+}
+.imagen{
+    display: block;
+    margin: auto;
+    height: 25px;
+    text-align: center;
 }
