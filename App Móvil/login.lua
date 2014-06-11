@@ -12,7 +12,7 @@ local _X = display.contentCenterX
 local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
-local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, sesionButtonPress 
+local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton 
 local scene = composer.newScene()
 
 local function handleButtonEvent( event )
@@ -69,7 +69,6 @@ function scene:create( event )
 	sceneGroup:insert( fondo )
 
 	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
-	usuarioText = display.newText( "Nombre de Usuario o Correo Electrónico", 0, 0, native.systemFont, 15 )
 	usuarioText.x = _X
 	usuarioText.y = _Y - 150
 	usuarioText:setFillColor( 0,0,0 )
@@ -128,8 +127,11 @@ function scene:hide( event )
 	local phase = event.phase
 	
 	if "will" == phase then
-
 		sesionButton = nil
+		usuarioText = nil
+		usuarioField = nil
+		contrasenaField = nil
+		contrasenaText = nil
 	end
 	
 end

@@ -74,6 +74,13 @@ function scene:create( event )
 			db = sqlite3.open( path ) 
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
+			registro = nil
+			usuario = nil
+			password = nil
+			confirmacion = nil
+			campoUsuario = nil
+			campoPass = nil
+			campoPass2 = nil
 			composer.gotoScene( "inicio" )
 			--db:close()
 		end
@@ -99,12 +106,36 @@ function scene:show( event )
 	local phase = event.phase
 	
 	if "did" == phase then
-		composer.removeScene( "scene1" )
+		composer.removeScene( "inicio" )
 	end
 	
 end
 
+function scene:hide( event )
+	
+	local phase = event.phase
+	
+	if "will" == phase then
+		registro = nil
+		usuario = nil
+		password = nil
+		confirmacion = nil
+		campoUsuario = nil
+		campoPass = nil
+		campoPass2 = nil
+		composer.removeScene( "formulario" )
+	end
+	
+end
+
+function scene:destroy( event )
+--	composer.removeScene( "formulario" )
+end
+
 scene:addEventListener( "create", scene)
 scene:addEventListener( "show", scene )
+scene:addEventListener( "hide", scene )
+scene:addEventListener( "destroy", scene )
+
 return scene
 
