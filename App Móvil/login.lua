@@ -117,7 +117,7 @@ function scene:show( event )
 	local phase = event.phase
 	
 	if "did" == phase then
-		composer.removeScene( "main" )
+		composer.removeScene( "inicio" )
 	end
 	
 end
