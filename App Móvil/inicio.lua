@@ -60,13 +60,6 @@ function scene:create( event )
 end
 
 function scene:show( event )
-<<<<<<< HEAD
-	local phase = event.phase
-	if "did" == phase then
-		composer.removeScene( "formulario" )
-	end
-=======
-	
 	local phase = event.phase
 	
 	if "did" == phase then
@@ -78,8 +71,6 @@ function scene:show( event )
 		composer.removeScene( "login" )
 	
 	end
-	
->>>>>>> origin/master
 end
 
 function scene:hide( event )
