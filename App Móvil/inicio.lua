@@ -61,6 +61,22 @@ function scene:create( event )
 	sceneGroup:insert( botonRegistro )
 end
 
+function scene:show( event )
+	
+	local phase = event.phase
+	
+	if "did" == phase then
+	
+		print( "regresando a inicio" )
+	
+		-- remove previous scene's view
+		composer.removeScene( "formulario" )
+		composer.removeScene( "login" )
+	
+	end
+	
+end
+
 function scene:hide( event )
 	
 	local phase = event.phase
@@ -85,5 +101,6 @@ end
 scene:addEventListener( "create", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
+scene:addEventListener( "show", scene )
 
 return scene
