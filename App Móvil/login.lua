@@ -7,34 +7,33 @@
 -- Your code here
 local composer = require( "composer" )
 local widget = require( "widget" )
-require "sqlite3"
+local sqlite3 = require "sqlite3"
+
+local scene = composer.newScene()
+
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
+
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton 
-local scene = composer.newScene()
 
 local function handleButtonEvent( event )
-		if (event.phase == "ended") then
-			local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
-			local db = sqlite3.open( path ) 
+	if (event.phase == "ended") then
+		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
+		local db = sqlite3.open( path ) 
 
-			if(db:exec("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'")) then
-
-					local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
-					acceso:setFillColor( 0,0,0 )
-					composer.gotoScene( "principal", "crossFade", 500 )
-
-			else
-
-				local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+		if(db:exec("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'")) then
+				local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
 				acceso:setFillColor( 0,0,0 )
-
-			end
-			db:close( )
+				composer.gotoScene( "principal", "crossFade", 500 )
+		else
+			local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+			acceso:setFillColor( 0,0,0 )
 		end
+		db:close( )
 	end
+end
 
 SesionBotonPress = function ( event )
 	--composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
@@ -52,7 +51,6 @@ SesionBotonPress = function ( event )
 				acceso:setFillColor( 0,0,0 )
 			end
 		end
-
 		db:close( )
 	end
 end
@@ -113,9 +111,8 @@ function scene:show( event )
 	if "did" == phase then
 		composer.removeScene( "inicio" )
 		composer.removeScene( "principal" )
-	
+	end
 end
-
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 
