@@ -42,18 +42,18 @@ function scene:create( event )
 	local tabButtons = 
 	{
 		{
-			width = (display.contentWidth/2)-2, height = 52,
-			defaultFile = "design/leftButton.png",
-			overFile = "design/leftButton.png",
+			width = 40, height = 10,
+			defaultFile = "design/unchecked.png",
+			overFile = "design/checked.png",
 			size = 16,
 			label = "Información",
 			--onPress = function() composer.gotoScene( "screen1" ); end,
 			selected = true
 		},
 		{
-			width = (display.contentWidth/2)-2, height = 52,
-			defaultFile = "design/rightButton.png",
-			overFile = "design/rightButton.png",
+			width = 40, height = 10,
+			defaultFile = "design/unchecked.png",
+			overFile = "design/checked.png",
 			size = 16,
 			label = "Programa",
 			--onPress = function() composer.gotoScene( "screen2" ); end,
@@ -63,12 +63,12 @@ function scene:create( event )
 	--Create a tab-bar and place it at the bottom of the screen
 	local demoTabs = widget.newTabBar
 	{
-		top = display.contentHeight - 50,
+		top = display.contentHeight - 25,
 		width = display.contentWidth,
 		backgroundFile = "design/background.png",
-		tabSelectedLeftFile = "design/background.png",
-		tabSelectedMiddleFile = "design/background.png",
-		tabSelectedRightFile = "design/background.png",
+		tabSelectedLeftFile = "design/background4.png",
+		tabSelectedMiddleFile = "design/background4.png",
+		tabSelectedRightFile = "design/background4.png",
 		tabSelectedFrameWidth = 20,
 		tabSelectedFrameHeight = 52,
 		buttons = tabButtons

@@ -129,6 +129,13 @@ function scene:hide( event )
 end
 
 function scene:destroy( event )
+		registro = nil
+		usuario = nil
+		password = nil
+		confirmacion = nil
+		campoUsuario = nil
+		campoPass = nil
+		campoPass2 = nil
 --	composer.removeScene( "formulario" )
 end
 
