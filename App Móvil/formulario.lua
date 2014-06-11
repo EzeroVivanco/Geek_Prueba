@@ -74,8 +74,7 @@ function scene:create( event )
 			db = sqlite3.open( path ) 
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
-			composer.gotoScene( "inicio" )
-			--db:close()
+			composer.gotoScene( "inicio", "flip", 500 )
 		end
 	end
 
@@ -99,7 +98,7 @@ function scene:show( event )
 	local phase = event.phase
 	
 	if "did" == phase then
-		composer.removeScene( "scene1" )
+		composer.removeScene( "inicio" )
 	end
 	
 end

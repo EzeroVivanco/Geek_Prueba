@@ -11,15 +11,13 @@ local _H = display.contentHeight
 		if (event.phase == "ended") then
 			botonInicio = nil
 			botonRegistro = nil
-			composer.gotoScene( "formulario" )
+			composer.gotoScene( "formulario", "flip", 500 )
 		end
 	end
 
 	local function handleButtonEvent2( event )
 		if (event.phase == "ended") then
-			botonInicio = nil
-			botonRegistro = nil
-			composer.gotoScene( "principal" )
+			composer.gotoScene( "login" , "flip", 500)
 		end
 	end
 
@@ -52,7 +50,6 @@ function scene:create( event )
 		width = 150,
 		height = 50,
 		label = "Registrate",
-		--defaultFile = "design/borderbutton.png",
 		labelColor = {default={0,0,0}, over={240,248,255}},
 		fontSize = 15,
 		textOnly = true,
@@ -66,10 +63,7 @@ function scene:show( event )
 	local phase = event.phase
 	
 	if "did" == phase then
-	
-		print( "regresando a inicio" )
-	
-		-- remove previous scene's view
+
 		composer.removeScene( "formulario" )
 		composer.removeScene( "login" )
 	
@@ -77,30 +71,7 @@ function scene:show( event )
 	
 end
 
-function scene:hide( event )
-	
-	local phase = event.phase
-	
-	if "will" == phase then
-	
-		print( "1: hide event, phase will" )
-	
-		-- remove touch listener for image
-		--botonRegistro:removeEventListener( "handleButtonEvent", botonRegistro )
-		--botonInicio:removeEventListener( "handleButtonEvent2", botonInicio )
-	
-	end
-	
-end
-
-function scene:destroy( event )
-	print( "((destroying scene 1's view))" )
-end
-
-
 scene:addEventListener( "create", scene )
-scene:addEventListener( "hide", scene )
-scene:addEventListener( "destroy", scene )
 scene:addEventListener( "show", scene )
 
 return scene
