@@ -7,8 +7,11 @@ local _W = display.contentWidth
 local _H = display.contentHeight
 	local function handleButtonEvent( event )
 		if (event.phase == "ended") then
-			botonInicio = nil
-			botonRegistro = nil
+			--botonInicio = nil
+			--botonRegistro = nil
+			local currentScore = 200
+			local options = { level="Level 1", score=currentScore }
+			local results = composer.loadScene( "formulario", true, options )
 			composer.gotoScene( "formulario", "flip", 500 )
 		end
 	end

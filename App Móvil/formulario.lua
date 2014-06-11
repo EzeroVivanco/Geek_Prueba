@@ -14,7 +14,9 @@ local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
 
-function scene:create( event )
+function scene:show( event )
+	composer.removeScene( "inicio" )
+
 	local sceneGroup = self.view
 
 	local fondo = display.newRect( _X, _Y, _W, _H )
@@ -33,7 +35,6 @@ function scene:create( event )
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
 	print(tablesetup)
 	db:exec( tablesetup )
-	local campoUsuario, campoPass, campoPass2
 
 	local registro = display.newText( "Registro", _X, _Y - 150, native.systemFont, 18 )
 	registro:setFillColor(0,0,0)
@@ -50,6 +51,8 @@ function scene:create( event )
 	local confirmacion = display.newText( "Confirma tu contraseña", _X, _Y + 80, native.systemFont, 18 )
 	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
+	
+	local campoUsuario, campoPass, campoPass2
 
 	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40 )
 	campoUsuario.align = "center"
@@ -93,17 +96,6 @@ function scene:create( event )
 	Runtime:addEventListener( "system", onSystemEvent )
 end
 
-function scene:show( event )
-	
-	local phase = event.phase
-	
-	if "did" == phase then
-		composer.removeScene( "inicio" )
-	end
-	
-end
-
-scene:addEventListener( "create", scene)
 scene:addEventListener( "show", scene )
 return scene
 

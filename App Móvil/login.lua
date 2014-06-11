@@ -57,7 +57,11 @@ SesionBotonPress = function ( event )
 	end
 end
 
-function scene:create( event )
+function scene:show( event )
+
+	composer.removeScene( "inicio" )
+	composer.removeScene( "principal" )
+	
 	local sceneGroup = self.view
 
 	local fondo = display.newRect( _X, _Y, _W, _H )
@@ -104,19 +108,9 @@ function scene:create( event )
 		onEvent = handleButtonEvent
 	}
 	sceneGroup:insert( sesionButton )
+
 end
 
-function scene:show( event )
-	
-	local phase = event.phase
-	
-	if "did" == phase then
-		composer.removeScene( "inicio" )
-		composer.removeScene( "principal" )
-	
-end
-
-scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 
 return scene
