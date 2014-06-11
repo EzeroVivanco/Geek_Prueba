@@ -19,18 +19,8 @@ function scene:show( event )
 
 	local sceneGroup = self.view
 
-	local fondo = display.newRect( _X, _Y, _W, _H )
-	fondo:setFillColor( 255,255,255 )
-	sceneGroup:insert( fondo )
-
 	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 	db = sqlite3.open( path )  
-
-	local function onSystemEvent( event )
-        if( event.type == "applicationExit" ) then              
-            db:close()
-        end
-	end
 
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
 	print(tablesetup)
@@ -77,6 +67,7 @@ function scene:show( event )
 			db = sqlite3.open( path ) 
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
+			db:close()
 			composer.gotoScene( "inicio", "flip", 500 )
 		end
 	end
@@ -93,7 +84,6 @@ function scene:show( event )
 		onEvent = registrar
 	}
 	sceneGroup:insert( botonAceptar )
-	Runtime:addEventListener( "system", onSystemEvent )
 end
 
 scene:addEventListener( "show", scene )

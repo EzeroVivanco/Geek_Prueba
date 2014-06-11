@@ -25,10 +25,6 @@ local _H = display.contentHeight
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local fondo = display.newRect( _X, _Y, _W, _H )
-	fondo:setFillColor( 255,255,255 )
-	sceneGroup:insert( fondo )
-
 	local botonInicio = widget.newButton
 	{
 		x = _X,
@@ -47,7 +43,7 @@ function scene:create( event )
 	local botonRegistro = widget.newButton
 	{
 		x = _X,
-		y = _H,
+		y = _H - 25,
 		width = 150,
 		height = 50,
 		label = "Registrate",

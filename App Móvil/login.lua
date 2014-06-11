@@ -24,8 +24,8 @@ local function handleButtonEvent( event )
 		local db = sqlite3.open( path ) 
 
 		if(db:exec("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'")) then
-				local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
-				acceso:setFillColor( 0,0,0 )
+				--local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
+				--acceso:setFillColor( 0,0,0 )
 				composer.gotoScene( "principal", "crossFade", 500 )
 		else
 			local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
@@ -36,7 +36,6 @@ local function handleButtonEvent( event )
 end
 
 SesionBotonPress = function ( event )
-	--composer.gotoScene("validacionDatos.lua", {params = { user = usuarioField.text, pass = contrasenaField.text} })
 	if ( "ended" == event.phase) then
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
@@ -61,11 +60,7 @@ function scene:show( event )
 	composer.removeScene( "principal" )
 	
 	local sceneGroup = self.view
-
-	local fondo = display.newRect( _X, _Y, _W, _H )
-	fondo:setFillColor( 255,255,255 )
-	sceneGroup:insert( fondo )
-
+	
 	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
 	usuarioText.x = _X
 	usuarioText.y = _Y - 150

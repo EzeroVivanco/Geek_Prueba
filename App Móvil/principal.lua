@@ -8,9 +8,13 @@
 local composer = require( "composer" )
 local widget = require( "widget" )
 
+local _X = display.contentCenterX
+local _Y = display.contentCenterY
+local _W = display.contentWidth
+local _H = display.contentHeight
 local scene = composer.newScene()
 
-function widget.newPanel( options )
+	function widget.newPanel( options )
     local customOptions = options or {}
     local opt = {}
     opt.location = customOptions.location or "top"
@@ -82,29 +86,18 @@ function widget.newPanel( options )
     return container
 end
 
-function scene:create( event )
+function scene:show( event )
+	composer.removeScene( "login" )
 	local sceneGroup = self.view
 	local widgetGroup = display.newGroup()
 	
 	display.setStatusBar( display.HiddenStatusBar )
 
-	local fondo = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight )
-	fondo:setFillColor( 255,255,255 )
-	sceneGroup:insert( fondo )
-
-	--local titleBar = display.newRect( display.contentCenterX, 0, display.contentWidth, 52 )
-	--titleBar:setFillColor( 25/255, 181/255, 172/255 )
-	--titleBar.y = display.screenOriginY + titleBar.contentHeight * 0.5
-	--sceneGroup:insert( titleBar )
-	
-	--local titleText = display.newEmbossedText( "Ethernal Honeymooners", display.contentCenterX, titleBar.y, native.systemFontBold, 20 )
-	--sceneGroup:insert( titleText )
-
 	local panel = widget.newPanel{
 		location = "left",
 		onComplete = panelTransDone,
 		width = display.contentWidth * 0.8,
-		height = display.contentHeight,
+		height = display.contentHeight-80,
 		speed = 250,
 		inEasing = easing.linear,
 		outEasing = easing.linear,
@@ -122,56 +115,42 @@ function scene:create( event )
 		panel:show()
 	end
 
-	local mainMenu = display.newRect( 0 , 26, 56, 52 )
+	local mainMenu = display.newRect( display.screenOriginX + 20 , display.screenOriginY+20, 40, 40 )
 	mainMenu:setFillColor( 25/255, 220/255, 200/255 )
 	mainMenu:addEventListener( "tap", tapMenu )
 	sceneGroup:insert( mainMenu )
 
-	local tabButtons = 
-	{
-		{
-			width = 40, height = 10,
-			defaultFile = "design/unchecked.png",
-			overFile = "design/checked.png",
-			size = 16,
-			label = "Información",
-			--onPress = function() composer.gotoScene( "screen1" ); end,
-			selected = true
-		},
-		{
-			width = 40, height = 10,
-			defaultFile = "design/unchecked.png",
-			overFile = "design/checked.png",
-			size = 16,
-			label = "Programa",
-			--onPress = function() composer.gotoScene( "screen2" ); end,
-		},
-	}
+	local leftTabBar = display.newRect(_W/4,_H-20,_W/2 - 0.5,40)
+	leftTabBar:setFillColor( 25/255, 220/255, 200/255 )
+	sceneGroup:insert( leftTabBar )
 
-	--Create a tab-bar and place it at the bottom of the screen
-	local demoTabs = widget.newTabBar
-	{
-		top = display.contentHeight,
-		width = display.contentWidth,
-		backgroundFile = "design/background.png",
-		tabSelectedLeftFile = "design/background4.png",
-		tabSelectedMiddleFile = "design/background4.png",
-		tabSelectedRightFile = "design/background4.png",
-		tabSelectedFrameWidth = 20,
-		tabSelectedFrameHeight = 52,
-		buttons = tabButtons
-	}
-	--sceneGroup:insert( tabBar )
-end
+	local rightTabBar = display.newRect((_W/4)*3 + 0.5,_H-20,_W/2 - 0.5,40)
+	rightTabBar:setFillColor( 25/255, 220/255, 200/255 )
+	sceneGroup:insert( rightTabBar )
 
-function scene:show( event )
-	
-	local phase = event.phase
-	
-	if "did" == phase then
-		composer.removeScene( "login" )
-	end
-	
+	local infoText = display.newText{
+	text = "  Informacion",    
+	width = leftTabBar.width,
+    x = leftTabBar.x,
+    y = leftTabBar.y,
+    font = native.systemFontBold,   
+    fontSize = 18,
+    align = "center" 
+	}
+	infoText:setFillColor( 192, 192, 192 )
+	sceneGroup:insert( infoText )
+
+	local programaText = display.newText{
+	text = "Programa",    
+	width = leftTabBar.width,
+    x = rightTabBar.x,
+    y = rightTabBar.y,
+    font = native.systemFontBold,   
+    fontSize = 18,
+    align= "center"
+	}
+	infoText:setFillColor( 192, 192, 192 )
+	sceneGroup:insert( programaText )
 end
 
 scene:addEventListener( "create", scene )
