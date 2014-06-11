@@ -29,16 +29,11 @@
             </div>
 
             <div class="large-block-grid-10 panel">
-                <center>
-                    <p>.................</p>
-                </center>
             </div>
         </div>
         <div>
-            <a class="button right">Registratet</a>  
+            <input type="button" class="button right" onclick="<?php redirect('/admin/home', 'refresh'); ?>" value="Registrate">
         </div>
-
-
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
         <!-- Funcionalidad JS de la pagina -->
