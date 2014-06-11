@@ -87,23 +87,7 @@ function scene:show( event )
 	
 end
 
-function scene:hide( event )
-	
-	local phase = event.phase
-	
-	if "will" == phase then
-
-	end
-	
-end
-
-function scene:destroy( event )
-	
-end
-
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
-scene:addEventListener( "hide", scene )
-scene:addEventListener( "destroy", scene )
 
 return scene

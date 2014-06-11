@@ -20,21 +20,17 @@ local function handleButtonEvent( event )
 			local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 			local db = sqlite3.open( path ) 
 
-			for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'") do
-				--if(row.email == usuarioField.text and row.password == contrasenaField.text) then
+			if(db:exec("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'")) then
+
 					local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
 					acceso:setFillColor( 0,0,0 )
-					sesionButton = nil
-					usuarioText = nil
-					usuarioField = nil
-					contrasenaField = nil
-					contrasenaText = nil
-					--db:close( )
-					composer.gotoScene( "principal" )
-				--else
-					--local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
-					--acceso:setFillColor( 0,0,0 )
-				--end
+					composer.gotoScene( "principal", "crossFade", 500 )
+
+			else
+
+				local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+				acceso:setFillColor( 0,0,0 )
+
 			end
 			db:close( )
 		end
@@ -86,7 +82,6 @@ function scene:create( event )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
 	usuarioField.align = "center"
-	--usuarioField.isVisible = false 
 	sceneGroup:insert( usuarioField )
 
 	contrasenaField = native.newTextField( 160, _Y - 25, 275, 50 )
@@ -94,7 +89,6 @@ function scene:create( event )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
 	contrasenaField.align = "center"
-	--contrasenaField.isVisible = false 
 	sceneGroup:insert( contrasenaField )
 
 	sesionButton = widget.newButton{
@@ -118,29 +112,13 @@ function scene:show( event )
 	local phase = event.phase
 	
 	if "did" == phase then
-		composer.removeScene( "main" )
+		composer.removeScene( "inicio" )
+		composer.removeScene( "principal" )
 	end
-	
-end
-
-function scene:hide( event )
-	
-	local phase = event.phase
-	
-	if "will" == phase then
-
-		sesionButton = nil
-	end
-	
-end
-
-function scene:destroy( event )
 	
 end
 
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
-scene:addEventListener( "hide", scene )
-scene:addEventListener( "destroy", scene )
 
 return scene
