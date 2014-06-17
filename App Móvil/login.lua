@@ -32,7 +32,8 @@ local function handleButtonEvent( event )
 				--local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
 				--acceso:setFillColor( 0,0,0 )
 			end
-		db:close( )
+		end
+		db:close()
 	end
 end
 
