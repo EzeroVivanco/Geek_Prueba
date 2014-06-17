@@ -8,17 +8,21 @@
 local composer = require( "composer" )
 local widget = require( "widget" )
 
+local scene = composer.newScene()
+
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
-local scene = composer.newScene()
 
-	function widget.newPanel( options )
+local statusMenu = false
+
+function widget.newPanel( options )
     local customOptions = options or {}
     local opt = {}
     opt.location = customOptions.location or "top"
     local default_width, default_height
+
     if ( opt.location == "top" or opt.location == "bottom" ) then
         default_width = display.contentWidth
         default_height = display.contentHeight * 0.33
@@ -26,32 +30,39 @@ local scene = composer.newScene()
         default_width = display.contentWidth * 0.33
         default_height = display.contentHeight
     end
+    
     opt.width = customOptions.width or default_width
     opt.height = customOptions.height or default_height
     opt.speed = customOptions.speed or 500
     opt.inEasing = customOptions.inEasing or easing.linear
     opt.outEasing = customOptions.outEasing or easing.linear
+
     if ( customOptions.onComplete and type(customOptions.onComplete) == "function" ) then
         opt.listener = customOptions.onComplete
     else 
         opt.listener = nil
     end
+    
     local container = display.newContainer( opt.width, opt.height )
+    
     if ( opt.location == "left" ) then
         container.anchorX = 1.0
         container.x = display.screenOriginX
         container.anchorY = 0.5
         container.y = display.contentCenterY
     end
+    
     function container:show()
         local options = {
             time = opt.speed,
             transition = opt.inEasing
         }
+        
         if ( opt.listener ) then
             options.onComplete = opt.listener
             self.completeState = "shown"
         end
+        
         if ( opt.location == "top" ) then
             options.y = display.screenOriginY + opt.height
         elseif ( opt.location == "bottom" ) then
@@ -61,17 +72,21 @@ local scene = composer.newScene()
         else
             options.x = display.actualContentWidth - opt.width
         end 
+        
         transition.to( self, options )
     end
+
     function container:hide()
         local options = {
             time = opt.speed,
             transition = opt.outEasing
         }
+
         if ( opt.listener ) then
             options.onComplete = opt.listener
             self.completeState = "hidden"
         end
+        
         if ( opt.location == "top" ) then
             options.y = display.screenOriginY
         elseif ( opt.location == "bottom" ) then
@@ -81,6 +96,7 @@ local scene = composer.newScene()
         else
             options.x = display.actualContentWidth
         end 
+        
         transition.to( self, options )
     end
     return container
@@ -96,7 +112,7 @@ function scene:show( event )
 	local panel = widget.newPanel{
 		location = "left",
 		onComplete = panelTransDone,
-		width = display.contentWidth * 0.8,
+		width = display.contentWidth * 0.6,
 		height = display.contentHeight-80,
 		speed = 250,
 		inEasing = easing.linear,
@@ -112,13 +128,26 @@ function scene:show( event )
 	panel:insert( panel.title )
 
 	local function tapMenu( event )
-		panel:show()
+		if(statusMenu) then
+			panel:hide()
+			statusMenu = false
+			print( statusMenu )
+		else
+			panel:show()
+			statusMenu = true
+			print( statusMenu )
+		end
+		return true
 	end
 
 	local mainMenu = display.newRect( display.screenOriginX + 20 , display.screenOriginY+20, 40, 40 )
 	mainMenu:setFillColor( 25/255, 220/255, 200/255 )
 	mainMenu:addEventListener( "tap", tapMenu )
 	sceneGroup:insert( mainMenu )
+
+	local topBar = display.newRect( display.contentCenterX , display.screenOriginY+20, display.contentWidth, 40 )
+	topBar:setFillColor( 25/255, 220/255, 200/255 )
+	sceneGroup:insert( topBar )
 
 	local leftTabBar = display.newRect(_W/4,_H-20,_W/2 - 0.5,40)
 	leftTabBar:setFillColor( 25/255, 220/255, 200/255 )
@@ -129,7 +158,31 @@ function scene:show( event )
 	sceneGroup:insert( rightTabBar )
 
 	local infoText = display.newText{
-	text = "  Informacion",    
+	text = "  Etternal Honeymooners",    
+	width = topBar.width,
+    x = topBar.x,
+    y = topBar.y,
+    font = native.systemFontBold,   
+    fontSize = 18,
+    align = "center" 
+	}
+	infoText:setFillColor( 192, 192, 192 )
+	sceneGroup:insert( topBar )
+
+	local infoText = display.newText{
+	text = "|||",    
+	width = mainMenu.width,
+    x = mainMenu.x,
+    y = mainMenu.y,
+    font = native.systemFontBold,   
+    fontSize = 18,
+    align = "center" 
+	}
+	infoText:setFillColor( 192, 192, 192 )
+	sceneGroup:insert( mainMenu )
+
+	local infoText = display.newText{
+	text = "  Información",    
 	width = leftTabBar.width,
     x = leftTabBar.x,
     y = leftTabBar.y,

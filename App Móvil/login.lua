@@ -23,33 +23,15 @@ local function handleButtonEvent( event )
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
 
-		if(db:exec("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'")) then
+		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
+			if(row) then
 				--local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
 				--acceso:setFillColor( 0,0,0 )
-				composer.gotoScene( "principal", "crossFade", 500 )
-		else
-			local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
-			acceso:setFillColor( 0,0,0 )
-		end
-		db:close( )
-	end
-end
-
-SesionBotonPress = function ( event )
-	if ( "ended" == event.phase) then
-		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
-		local db = sqlite3.open( path ) 
-
-		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'") do
-			if(row.email == usuarioField.text and row.password == contrasenaField.text) then
-				local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
-				acceso:setFillColor( 0,0,0 )
 				composer.gotoScene( "principal" )
 			else
-				local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
-				acceso:setFillColor( 0,0,0 )
+				--local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
+				--acceso:setFillColor( 0,0,0 )
 			end
-		end
 		db:close( )
 	end
 end

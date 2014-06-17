@@ -8,11 +8,15 @@
 local composer = require( "composer" )
 local widget = require( "widget")
 local sqlite3 = require "sqlite3"
+
 local scene = composer.newScene()
+
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
+
+local campoUsuario, campoPass, campoPass2
 
 function scene:show( event )
 	composer.removeScene( "inicio" )
@@ -41,25 +45,22 @@ function scene:show( event )
 	local confirmacion = display.newText( "Confirma tu contraseña", _X, _Y + 80, native.systemFont, 18 )
 	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
-	
-	local campoUsuario, campoPass, campoPass2
 
 	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40 )
 	campoUsuario.align = "center"
 	campoUsuario.inputType = "email"
-	campoUsuario.placeholder = "ejemplo@mail.com"
+	campoUsuario.placeholder = "usuario@ejemplo.com"
+	sceneGroup:insert( campoUsuario )
 
 	campoPass = native.newTextField( _X, _Y + 40, 250, 40 )
 	campoPass.align = "center"
 	campoPass.isSecure = true
+	sceneGroup:insert( campoPass )
 
 	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40 )
 	campoPass2.isSecure = true
 	campoPass2.align = "center"
 	campoPass2:setTextColor( 0, 0, 0 )
-
-	sceneGroup:insert( campoUsuario )
-	sceneGroup:insert( campoPass )
 	sceneGroup:insert( campoPass2 )
 
 	local function registrar( evento )
@@ -68,7 +69,7 @@ function scene:show( event )
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
 			db:close()
-			composer.gotoScene( "inicio", "flip", 500 )
+			composer.gotoScene( "inicio")--, "flip", 500 )
 		end
 	end
 
