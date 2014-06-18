@@ -23,13 +23,14 @@ local function handleButtonEvent( event )
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
 
-		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			if(row) then
+		--for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
+			if db:exec( "SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'" ) > 0 then
+			--if(row.email == usuarioField.text and row.password == contrasenaField.text) then
 				composer.gotoScene( "principal" )
 			else
-				composer.showOverlay("popup")
+				composer.showOverlay( "popup" )
 			end
-		end
+		--end
 		db:close()
 	end
 end
