@@ -25,13 +25,10 @@ local function handleButtonEvent( event )
 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
 			if(row) then
-				--local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
-				--acceso:setFillColor( 0,0,0 )
 				native.setKeyboardFocus( nil )
 				composer.gotoScene( "principal" )
 			else
-				--local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
-				--acceso:setFillColor( 0,0,0 )
+				composer.showOverlay("popup")
 			end
 		end
 		db:close()
