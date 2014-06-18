@@ -118,26 +118,26 @@ function widget.newPanel( options )
 end
 
 local panel= widget.newPanel{
-            location = "left",
-            onComplete = panelTransDone,
-            width = display.contentWidth * 0.6,
-            height = display.contentHeight-80,
-            speed = 250,
-            inEasing = easing.linear,
-            outEasing = easing.linear,
-        }
+    location = "left",
+    onComplete = panelTransDone,
+    width = display.contentWidth * 0.6,
+    height = display.contentHeight-80,
+    speed = 250,
+    inEasing = easing.linear,
+    outEasing = easing.linear,
+}
 
-        panel.background = display.newRect( 0, 0, panel.width, panel.height )
-        panel.background:setFillColor( 28/255, 28/255, 28/255 )
-        panel:insert( panel.background )
+panel.background = display.newRect( 0, 0, panel.width, panel.height )
+panel.background:setFillColor( 28/255, 28/255, 28/255 )
+panel:insert( panel.background )
 
-        panel.title = display.newText( "Texto del Menú", 0, 0, native.systemFontBold, 18 )
-        panel.title:setFillColor( 1, 1, 1 )
-        panel:insert( panel.title )
+panel.title = display.newText( "Texto del Menú", 0, 0, native.systemFontBold, 18 )
+panel.title:setFillColor( 1, 1, 1 )
+panel:insert( panel.title )
 
 function checkSwipeDirection()
     if bDoingTouch == true then
-        xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value. 
+        xDistance =  math.abs(endX - beginX)
         yDistance =  math.abs(endY - beginY)
 
         if xDistance > yDistance then
@@ -164,7 +164,7 @@ function checkSwipeDirection()
             end
         end
     end
- end
+end
 
  function swipe(event)
     if event.phase == "began" then
