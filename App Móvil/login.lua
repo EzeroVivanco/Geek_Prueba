@@ -18,22 +18,29 @@ local _H = display.contentHeight
 
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton 
 
+local status = false
+
 local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
 
 		--for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			if db:exec( "SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'" ) > 0 then
+		--if db:exec( "SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'" ) > 0 then
 			--if(row.email == usuarioField.text and row.password == contrasenaField.text) then
-		--for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			--if(row) then
+		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
+			--if(row.email == usuarioField.text) then
 				native.setKeyboardFocus( nil )
 				composer.gotoScene( "principal" )
-			else
-				composer.showOverlay( "popup" )
-			end
-		--end
+				--print( row.email )
+				status = true
+				break
+			--end
+		end
+		if (status == false) then
+			--print( row.email )
+			composer.showOverlay( "popup" )
+		end
 		db:close()
 	end
 end
