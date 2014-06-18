@@ -22,10 +22,10 @@
                 </label>
                 <br>
                 <!--                <a href="application/controllers/registra_evento.php" class="button expand">Finalizar</a>-->
-                <a href="#" class="button expand">Finalizar</a>
+                <a onclick="location.href = '<?php echo base_url('admin/dashboard') ?>'" class="button expand">Finalizar</a>
                 <br>
                 <br>
-                <a href="#" class="button expand">Capturar mas información</a>
+                <a onclick='location.href = "<?php echo base_url('web/CrearBoda/informacion'); ?>"' class="button expand">Capturar mas información</a>
             </div>
         </div>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -18,7 +18,7 @@
                     <p>!Haz sido registrado con exito!</p>
                     <h2>BIENVENIDO</h2>
                     <br>
-                    <a id="boton" class="button" >Continuar</a>
+                    <a onclick="location.href='<?php echo base_url('web/CrearBoda') ?>' " id="boton" class="button" >Continuar</a>
                 </center>
             </div>
         </div>

@@ -14,17 +14,26 @@
     <body>
         <div class="row" id="centrar">
             <div class="callout panel">
-                <label>Correo Electronico
-                    <input type="text"/>
-                </label>
-                <label>Contraseña
-                    <input type="password" id="password" required pattern="[a-zA-Z]+">
-                </label>
-                <label>Confirmar Contraseña
-                    <input type="password" id="repeatPass" required pattern="[a-zA-Z]+">
-                </label>
-                <div align="center"><a  href="#"class="button expand">Iniciar Sesion</a></div>
-            </div></div>
+                <?php
+                echo form_open('web/Registro/registro_', array('id' => 'formlogin'));
+                $btSubmit = array(
+                    'name' => 'btSubmit',
+                    'id' => 'btSubmit',
+                    'value' => 'Registrarse',
+                    'class' => 'button expand',
+                    'onSubmit' => 'return '
+                );
+                echo '<label>Correo Electronico<input type="email" name="username" id="username"></label>';
+                echo '<label>Contraseña<input type="password" name="password" id="username" required pattern="[a-zA-Z-0-9]+"></label>';
+                echo '<label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>';
+                if (!empty($sMsjError))
+                    echo "<div class='div_error'>$sMsjError</div>";
+                echo '<br/>', form_submit($btSubmit);
+                echo form_close();
+                ?>
+                <center><a onclick="location.href = '<?php echo base_url('web/Login') ?>'">Iniciar Sesion</a></center>
+            </div>
+        </div>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
         <!-- Funcionalidad JS de la pagina -->

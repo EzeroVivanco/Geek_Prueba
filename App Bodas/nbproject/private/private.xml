@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/vwHeader.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/vwFooter.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/app/vwHome.php</file>
+            <file>file:/C:/wamp/www/bodas/application/views/web/vwCrearBoda.php</file>
             <file>file:/C:/wamp/www/bodas/application/controllers/admin/dashboard.php</file>
-            <file>file:/C:/wamp/www/bodas/application/config/routes.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/vwPortal.php</file>
-            <file>file:/C:/wamp/www/bodas/application/config/profiler.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/vwActividades.php</file>
-            <file>file:/C:/wamp/www/bodas/application/index.html</file>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/vwDefine.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/admin/index.html</file>
+            <file>file:/C:/wamp/www/bodas/application/controllers/web/login.php</file>
+            <file>file:/C:/wamp/www/bodas/application/views/web/vwRegistro.php</file>
+            <file>file:/C:/wamp/www/bodas/application/views/web/vwInformacion.php</file>
+            <file>file:/C:/wamp/www/bodas/application/views/web/vwLogin.php</file>
+            <file>file:/C:/wamp/www/bodas/application/models/registro_db.php</file>
+            <file>file:/C:/wamp/www/bodas/application/controllers/web/registro.php</file>
+            <file>file:/C:/wamp/www/bodas/application/views/web/vwLayout.php</file>
         </group>
     </open-files>
 </project-private>

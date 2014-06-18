@@ -12,28 +12,29 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <div>
-            <div class="large-block-grid-12 panel">
+        <!--Header-->
+        <div class="panel">
+            <center>
+                <h1>Publicidad</h1>
+            </center>
+        </div>
+        <div class="panel">
+            <div class="panel-layout">
                 <center>
-                    <p>!Publicidad!</p>
-                    <br><br>
+                    <h5>SIGUENOS 
+                        <a href ='https://www.facebook.com/pages/Geek-Bucket-Fabrica-de-software/165847196760102?fref=ts' ><img src="<?php echo base_url() . IMG; ?>web/facebook.png" width="20" ></a>
+                        <a href = "https://twitter.com/" ><img src="<?php echo base_url() . IMG; ?>web/twiter.png" width="35"></a>
+                        <a href = "#" ><img src="<?php echo base_url() . IMG; ?>web/p.png" width="35"></a>
+                        <a href = "http://instagram.com/" ><img src="<?php echo base_url() . IMG; ?>web/instagram.png" width="30"></a>
+                        <img src="<?php echo base_url() . IMG; ?>web/honeymooners.png" width="400">
+                 
+                    </h5>
+                       <div class="search-label right-align">
+                            <input type="text" placeholder="BUSCAR">			
+                        </div>	
                 </center>
             </div>
-
-            <div class="large-block-grid-11 panel fond">
-                <center>
-                    <h2>ETHERNAL HONEY.....</h2>
-                    <!--<img src="../../../assets/img/web/layout.jpg">-->
-                    <div class="large-2 columns"> <input type="text" placeholder="Buscar" /></div>
-                </center>
-            </div>
-
-            <div class="large-block-grid-10 panel">
-            </div>
-        </div>
-        <div>
-            <input type="button" class="button right" onclick="<?php redirect('/admin/home', 'refresh'); ?>" value="Registrate">
-        </div>
+            <a onclick="location.href = '<?php echo base_url('web/Registro') ?>'" id="boton" class="button right" >Registrate</a>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
         <!-- Funcionalidad JS de la pagina -->
