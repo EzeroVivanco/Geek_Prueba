@@ -27,6 +27,7 @@ local function handleButtonEvent( event )
 			if(row) then
 				--local acceso = display.newText( "conexion exitosa", _X, 10, native.systemFont, 15 )
 				--acceso:setFillColor( 0,0,0 )
+				native.setKeyboardFocus( nil )
 				composer.gotoScene( "principal" )
 			else
 				--local acceso = display.newText( "usuario y/o contrasñea invalido", _X, 10, native.systemFont, 15 )
@@ -56,14 +57,32 @@ function scene:show( event )
 	contrasenaText:setFillColor( 0,0,0 )
 	sceneGroup:insert( contrasenaText )
 
-	usuarioField = native.newTextField( 160, _Y - 110, 275, 50 )
+	local function onUsername( event )
+	    if ( "began" == event.phase ) then
+	        -- This is the "keyboard appearing" event.
+	        -- In some cases you may want to adjust the interface while the keyboard is open.
+
+	    elseif ( "submitted" == event.phase ) then
+	        -- Automatically tab to password field if user clicks "Return" on virtual keyboard.
+	        native.setKeyboardFocus( contrasenaField )
+	    end
+	end
+
+	local function onPassword( event )
+	    -- Hide keyboard when the user clicks "Return" in this field
+	    if ( "submitted" == event.phase ) then
+	        native.setKeyboardFocus( nil )
+	    end
+	end
+
+	usuarioField = native.newTextField( 160, _Y - 110, 275, 50, onUsername )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
 	usuarioField.align = "center"
 	sceneGroup:insert( usuarioField )
 
-	contrasenaField = native.newTextField( 160, _Y - 25, 275, 50 )
+	contrasenaField = native.newTextField( 160, _Y - 25, 275, 50, onPassword )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
