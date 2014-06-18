@@ -15,6 +15,21 @@ local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
 
+local beginX 
+local beginY  
+local endX  
+local endY 
+ 
+local xDistance  
+local yDistance
+ 
+local bDoingTouch
+local minSwipeDistance = 50
+local totalSwipeDistanceLeft
+local totalSwipeDistanceRight
+local totalSwipeDistanceUp
+local totalSwipeDistanceDown
+
 local statusMenu = false
 
 function widget.newPanel( options )
@@ -102,6 +117,69 @@ function widget.newPanel( options )
     return container
 end
 
+local panel= widget.newPanel{
+            location = "left",
+            onComplete = panelTransDone,
+            width = display.contentWidth * 0.6,
+            height = display.contentHeight-80,
+            speed = 250,
+            inEasing = easing.linear,
+            outEasing = easing.linear,
+        }
+
+        panel.background = display.newRect( 0, 0, panel.width, panel.height )
+        panel.background:setFillColor( 28/255, 28/255, 28/255 )
+        panel:insert( panel.background )
+
+        panel.title = display.newText( "Texto del Menú", 0, 0, native.systemFontBold, 18 )
+        panel.title:setFillColor( 1, 1, 1 )
+        panel:insert( panel.title )
+
+function checkSwipeDirection()
+    if bDoingTouch == true then
+        xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value. 
+        yDistance =  math.abs(endY - beginY)
+
+        if xDistance > yDistance then
+            if beginX > endX then
+                totalSwipeDistanceLeft = beginX - endX
+                if totalSwipeDistanceLeft > minSwipeDistance then
+                    if(statusMenu) then
+                        panel:hide()
+                        statusMenu = false
+                        print( statusMenu )
+                        print("Swiped Left")
+                    end
+                end
+            else 
+                totalSwipeDistanceRight = endX - beginX
+                if totalSwipeDistanceRight > minSwipeDistance then
+                    if(statusMenu == false) then
+                        panel:show()
+                        statusMenu = true
+                        print( statusMenu )
+                        print("Swiped Right")
+                    end
+                end
+            end
+        end
+    end
+ end
+
+ function swipe(event)
+    if event.phase == "began" then
+        bDoingTouch = true
+        beginX = event.x
+        beginY = event.y
+    end
+    if event.phase == "ended"  then
+        endX = event.x
+        endY = event.y
+        checkSwipeDirection();
+        bDoingTouch = false
+    end
+end
+
 function scene:show( event )
 	composer.removeScene( "login" )
 	local sceneGroup = self.view
@@ -109,33 +187,13 @@ function scene:show( event )
 	
 	display.setStatusBar( display.HiddenStatusBar )
 
-	local panel = widget.newPanel{
-		location = "left",
-		onComplete = panelTransDone,
-		width = display.contentWidth * 0.6,
-		height = display.contentHeight-80,
-		speed = 250,
-		inEasing = easing.linear,
-		outEasing = easing.linear,
-	}
-
-	panel.background = display.newRect( 0, 0, panel.width, panel.height )
-	panel.background:setFillColor( 28/255, 28/255, 28/255 )
-	panel:insert( panel.background )
-
-	panel.title = display.newText( "Texto del Menú", 0, 0, native.systemFontBold, 18 )
-	panel.title:setFillColor( 1, 1, 1 )
-	panel:insert( panel.title )
-
 	local function tapMenu( event )
 		if(statusMenu) then
 			panel:hide()
 			statusMenu = false
-			print( statusMenu )
 		else
 			panel:show()
 			statusMenu = true
-			print( statusMenu )
 		end
 		return true
 	end
@@ -206,6 +264,7 @@ function scene:show( event )
 	sceneGroup:insert( programaText )
 end
 
+Runtime:addEventListener("touch", swipe)
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 
