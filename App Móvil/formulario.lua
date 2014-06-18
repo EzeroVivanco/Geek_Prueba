@@ -26,10 +26,6 @@ function scene:show( event )
 	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 	db = sqlite3.open( path )  
 
-	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
-	print(tablesetup)
-	db:exec( tablesetup )
-
 	local registro = display.newText( "Registro", _X, _Y - 150, native.systemFont, 18 )
 	registro:setFillColor(0,0,0)
 	sceneGroup:insert( registro )

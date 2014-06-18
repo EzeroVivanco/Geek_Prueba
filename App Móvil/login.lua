@@ -31,7 +31,7 @@ local function handleButtonEvent( event )
 			break
 		end
 		if (status == false) then
-			composer.showOverlay( "popup" )
+			--composer.showOverlay( "popup" )
 		end
 		db:close()
 	end
