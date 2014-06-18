@@ -199,20 +199,20 @@ function scene:show( event )
 	end
 
 	local mainMenu = display.newRect( display.screenOriginX + 20 , display.screenOriginY+20, 40, 40 )
-	mainMenu:setFillColor( 25/255, 220/255, 200/255 )
+	mainMenu:setFillColor( 25/255, 181/255, 172/255 )
 	mainMenu:addEventListener( "tap", tapMenu )
 	sceneGroup:insert( mainMenu )
 
 	local topBar = display.newRect( display.contentCenterX , display.screenOriginY+20, display.contentWidth, 40 )
-	topBar:setFillColor( 25/255, 220/255, 200/255 )
+	topBar:setFillColor( 25/255, 181/255, 172/255 )
 	sceneGroup:insert( topBar )
 
 	local leftTabBar = display.newRect(_W/4,_H-20,_W/2 - 0.5,40)
-	leftTabBar:setFillColor( 25/255, 220/255, 200/255 )
+	leftTabBar:setFillColor( 25/255, 181/255, 172/255 )
 	sceneGroup:insert( leftTabBar )
 
 	local rightTabBar = display.newRect((_W/4)*3 + 0.5,_H-20,_W/2 - 0.5,40)
-	rightTabBar:setFillColor( 25/255, 220/255, 200/255 )
+	rightTabBar:setFillColor( 25/255, 181/255, 172/255 )
 	sceneGroup:insert( rightTabBar )
 
 	local infoText = display.newText{
