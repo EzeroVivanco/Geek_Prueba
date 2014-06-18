@@ -94,12 +94,18 @@ function scene:show( event )
 
 	local function registrar( evento )
 		if ( "ended" == evento.phase) then
-			db = sqlite3.open( path ) 
-			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
-			db:exec(insercion)
-			db:close()
-			native.setKeyboardFocus( nil )
-			composer.gotoScene( "inicio")--, "flip", 500 )
+			if(campoUsuario.text == "" or campoPass.text == "" or campoPass2.text == "")then
+
+			elseif (campoPass.text ~= campoPass2.text) then
+
+			else--if (campoUsuario ~= "" and campoPass ~= "" and campoPass2 ~= "" and campoPass == campoPass2) then 
+				db = sqlite3.open( path )
+				local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
+				db:exec(insercion)
+				db:close()
+				native.setKeyboardFocus( nil )
+				composer.gotoScene( "inicio")--, "flip", 500 )
+			end
 		end
 	end
 
