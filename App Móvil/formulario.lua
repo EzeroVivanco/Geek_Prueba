@@ -46,18 +46,47 @@ function scene:show( event )
 	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
 
-	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40 )
+	local function onUsername( event )
+	    if ( "began" == event.phase ) then
+	        -- This is the "keyboard appearing" event.
+	        -- In some cases you may want to adjust the interface while the keyboard is open.
+
+	    elseif ( "submitted" == event.phase ) then
+	        -- Automatically tab to password field if user clicks "Return" on virtual keyboard.
+	        native.setKeyboardFocus( campoPass )
+	    end
+	end
+
+	local function onPassword ( event )
+	    if ( "began" == event.phase ) then
+	        -- This is the "keyboard appearing" event.
+	        -- In some cases you may want to adjust the interface while the keyboard is open.
+
+	    elseif ( "submitted" == event.phase ) then
+	        -- Automatically tab to password field if user clicks "Return" on virtual keyboard.
+	        native.setKeyboardFocus( campoPass2 )
+	    end
+	end
+
+	local function onPasswordValidated( event )
+	    -- Hide keyboard when the user clicks "Return" in this field
+	    if ( "submitted" == event.phase ) then
+	        native.setKeyboardFocus( nil )
+	    end
+	end
+
+	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40, onUsername )
 	campoUsuario.align = "center"
 	campoUsuario.inputType = "email"
 	campoUsuario.placeholder = "usuario@ejemplo.com"
 	sceneGroup:insert( campoUsuario )
 
-	campoPass = native.newTextField( _X, _Y + 40, 250, 40 )
+	campoPass = native.newTextField( _X, _Y + 40, 250, 40, onPassword )
 	campoPass.align = "center"
 	campoPass.isSecure = true
 	sceneGroup:insert( campoPass )
 
-	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40 )
+	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40, onPasswordValidated )
 	campoPass2.isSecure = true
 	campoPass2.align = "center"
 	campoPass2:setTextColor( 0, 0, 0 )
@@ -69,6 +98,7 @@ function scene:show( event )
 			local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
 			db:exec(insercion)
 			db:close()
+			native.setKeyboardFocus( nil )
 			composer.gotoScene( "inicio")--, "flip", 500 )
 		end
 	end
