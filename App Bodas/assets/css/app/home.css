@@ -8,3 +8,30 @@ body {
 .fixed {
 
 }
+/*Estilo del Dashboard left-bar*/
+.left-bar{
+    width: 10%;
+    height: 100%;   
+    background: #288D6D;
+    color: white;
+    }
+    .font{
+        font-size: 10px;
+        color: white;
+        background: #288D6D;
+    }
+    span{
+        font-size: 30px;
+        color: white;
+        width: 10px;
+        background: rgb(33,165,92); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(33,165,92,1) 0%, rgba(25,109,20,1) 50%, rgba(29,107,17,1) 51%, rgba(33,165,92,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(33,165,92,1)), color-stop(50%,rgba(25,109,20,1)), color-stop(51%,rgba(29,107,17,1)), color-stop(100%,rgba(33,165,92,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21a55c', endColorstr='#21a55c',GradientType=0 ); /* IE6-9 */
+
+        border-top: -40px;
+    }
