@@ -4,10 +4,10 @@ body {
 }
 #centrar{
     margin: auto;
-    padding: 20px 500px 20px 500px;
-    width: 100%;
+    /*padding: 20px 500px 20px 500px;*/
+    width: 25%;
     text-align: left;
-    font-family: : Times New Roman 12 px;
+    font-family:Times New Roman 12px;
 }
 .panel.callout {
     background: white;
