@@ -19,15 +19,3 @@
         </section>
     </nav>
 </div>
-<div class="left-bar">
-    <div>
-        <center>
-            <br/>
-            <br/>
-            <br />
-            <p>Cuenta Regresiva</p>
-            <span id="dias">00</span> <span id="horas">00</span> <span id="minutos">00</span><br />
-            <span class="font">Dias</span> <span class="font">Horas</span> <span class="font">Minutos</span>
-        </center>
-    </div>
-</div>

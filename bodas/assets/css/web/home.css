@@ -1,5 +1,7 @@
 /* -----------------  Estilos generales  ----------------- */
 body {
+    width: 80%;
+    margin: auto;
     padding-top: 30px;
 }
 #centrar{
