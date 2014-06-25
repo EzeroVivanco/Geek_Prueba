@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/bodas/application/views/web/vwCrearBoda.php</file>
-            <file>file:/C:/wamp/www/bodas/application/controllers/admin/dashboard.php</file>
-            <file>file:/C:/wamp/www/bodas/application/controllers/web/login.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/web/vwRegistro.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/web/vwInformacion.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/web/vwLogin.php</file>
-            <file>file:/C:/wamp/www/bodas/application/models/registro_db.php</file>
-            <file>file:/C:/wamp/www/bodas/application/controllers/web/registro.php</file>
-            <file>file:/C:/wamp/www/bodas/application/views/web/vwLayout.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

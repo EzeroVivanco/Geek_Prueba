@@ -38,11 +38,11 @@ class Login extends CI_Controller {
         // nos aseguramos que coincidan email y contraseña
         if ($this->login_db->no_existe_cuenta($sEmail, $sPass, 2)) {
             // cargamos de nuevo la vista, pero pasandole el error producido
-            $this->_cargar_login_vista('<FONT COLOR=RED>*</FONT> El <b>Email</b> y la <b>contraseña</b>no coinciden');
+            $this->_cargar_login_vista('El Email y la contraseña no coinciden');
         } else {
             // generamos la sesion
             $this->_generar_sesion($sEmail, $SesLimite);
-            $this->load->view('web/vwBienvenida');
+            $this->load->view('admin/vwPortal');
         }
     }
 

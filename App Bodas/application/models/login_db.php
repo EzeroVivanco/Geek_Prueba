@@ -1,3 +1,4 @@
+
 <?php
 
 if (!defined('BASEPATH'))
@@ -27,5 +28,4 @@ class login_db extends CI_Model {
             return false;
         }
     }
-
 }

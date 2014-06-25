@@ -34,6 +34,7 @@
                         </div>	
                 </center>
             </div>
+            <!--<a href="<?=base_url()?>web/Registro/nueva_pareja/">Añadir</a>-->
             <a onclick="location.href = '<?php echo base_url('web/Registro') ?>'" id="boton" class="button right" >Registrate</a>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>

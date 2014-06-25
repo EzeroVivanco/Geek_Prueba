@@ -26,6 +26,14 @@ class registro_db extends CI_Model {
         } else {
             return false;
         }
+        return $query;
+    }
+    //Insercion de pareja
+    function insertar_pareja($contenido)
+    {
+        $this->db->update('usuarios',$contenido);
+        return $this->db->insert_id();
+        
     }
 
 }

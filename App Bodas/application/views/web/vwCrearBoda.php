@@ -12,25 +12,30 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <div id="centrar" class="large-4 columns">
-            <div class="callout panel">
-                <label>Tu nombre
-                    <input type="text" name="primer_nombre"/>
-                </label>
-                <label>Tu pareja
-                    <input type="text" name="segundo_nombre"/>
-                </label>
-                <br>
-                <!--                <a href="application/controllers/registra_evento.php" class="button expand">Finalizar</a>-->
-                <a onclick="location.href = '<?php echo base_url('admin/dashboard') ?>'" class="button expand">Finalizar</a>
-                <br>
-                <br>
-                <a onclick='location.href = "<?php echo base_url('web/CrearBoda/informacion'); ?>"' class="button expand">Capturar mas información</a>
+        <form action="<?php echo base_url() ?>web/registro/nueva_pareja" method="post">
+            <div id="centrar" class="large-4 columns">
+                <div class="callout panel">
+                    <label>Tu nombre
+                        <input type="text" name="nombre"/>
+                    </label>
+                    <label>Tu pareja
+                        <input type="text" name="nombre_pareja"/>
+                    </label>
+                    <br>
+                    <?php
+                    if (!empty($sMsjError)) {
+                        echo "<center><div data-alert class='alert-box alert round'>$sMsjError</div></center>";
+                    }
+                    ?>
+                    <input type="submit" value="Añadir" class="button expand"/>
+                    </form>
+                    <br>
+                    <a onclick='location.href = "<?php echo base_url('web/CrearBoda/informacion'); ?>"' class="button expand">Capturar mas información</a>
+                </div>
             </div>
-        </div>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
-        <!-- Funcionalidad JS de la pagina -->
-        <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
+            <!-- Funcionalidad JS de la pagina -->
+            <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
     </body>
 </html>

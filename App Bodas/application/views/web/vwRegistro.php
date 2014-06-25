@@ -27,7 +27,7 @@
                 echo '<label>Contraseña<input type="password" name="password" id="username" required pattern="[a-zA-Z-0-9]+"></label>';
                 echo '<label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>';
                 if (!empty($sMsjError))
-                    echo "<div class='div_error'>$sMsjError</div>";
+                    echo "<center><div data-alert class='alert-box alert round'>$sMsjError</div></center>";
                 echo '<br/>', form_submit($btSubmit);
                 echo form_close();
                 ?>

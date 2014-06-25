@@ -18,6 +18,11 @@ class Registro extends CI_controller {
     public function index() {
         $this->load->view('web/vwRegistro');
     }
+
+    public function index2() {
+        $this->load->view('web/vwCrearBoda');
+    }
+
     public function registro_() {
         if ($this->input->post('username')) {
             $sEmail = $this->input->post('username');
@@ -26,14 +31,14 @@ class Registro extends CI_controller {
             if (!empty($sPassword))
                 $sPass = md5($sPassword);
             if (!$this->registro_db->no_existe_cuenta($sEmail)) {
-                $this->_cargar_registro_vista('<FONT COLOR=red>*</FONT>El correo <b>' . $sEmail . '</b> ya esta registrado');
+                $this->_cargar_registro_vista('El correo <b>' . $sEmail . '</b> ya esta registrado');
             } else {
                 $this->registro_db->nueva_cuenta($sEmail, $sPass);
                 $this->_generar_sesion($sEmail);
-                $this->load->view('web/vwLogin');
+                $this->load->view('web/vwBienvenida');
             }
         } else {
-            $this->_cargar_registro_vista('<FONT COLOR=red>*</FONT> algo paso');
+            $this->_cargar_registro_vista('Algo paso');
         }
     }
 
@@ -54,6 +59,29 @@ class Registro extends CI_controller {
         );
         // se establece la sesion
         $this->session->set_userdata('sesion_usuario', $arrSesion);
+    }
+
+    function _cargar_error($sMsjError = '') {
+        if (!empty($sMsjError)) {
+            $datos['sMsjError'] = $sMsjError;
+        }
+        // cargamos  la interfaz
+        $this->load->view('web/vwCrearBoda', $datos);
+    }
+
+    //Creamos pareja nueva
+    function nueva_pareja() {
+
+        if (!empty($_POST['nombre']) && !empty($_POST['nombre_pareja'])) {
+            $contenido = array(
+                'nombre' => $_POST['nombre'],
+                'nombre_pareja' => $_POST['nombre_pareja']
+            );
+            $this->registro_db->insertar_pareja($contenido);
+            redirect(base_url() . 'admin/dashboard/');
+        } else {
+            $this->_cargar_error('Celda (s) vacia (s)');
+        }
     }
 
 }
