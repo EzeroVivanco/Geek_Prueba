@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<?php echo base_url() . FOUND; ?>css/foundation.css" />
     <link rel="stylesheet" href="<?php echo base_url() . FOUND; ?>css/foundation.min.css" />
     <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/web/home.js"></script>
     <link rel="stt" href="<?php echo base_url() . CSS; ?>web/home.css" />
     <link rel="stylesheet" href="<?php echo base_url() . IMG; ?>web" />
     <!--<meta http-equiv="refresh" content="5">-->
