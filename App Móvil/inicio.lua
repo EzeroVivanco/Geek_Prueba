@@ -30,11 +30,12 @@ function scene:createScene( event )
 	{
 		x = _X,
 		y = _Y,
-		width = 180,
-		height = 50,
+		width = 280,
+		height = 100,
 		label = "Iniciar sesión",
 		defaultFile = "design/borderbutton.png",
 		labelColor = {default={255,255,255}, over={240,248,255}},
+		fontSize = 40,
 		onEvent = handleButtonEvent2
 	}
 	sceneGroup:insert( botonInicio)
@@ -43,11 +44,11 @@ function scene:createScene( event )
 	{
 		x = _X,
 		y = _H - 25,
-		width = 150,
-		height = 50,
+		width = 200,
+		height = 100,
 		label = "Registrate",
 		labelColor = {default={0,0,0}, over={240,248,255}},
-		fontSize = 15,
+		fontSize = 30,
 		textOnly = true,
 		onEvent = handleButtonEvent
 	}

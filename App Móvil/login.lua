@@ -53,15 +53,15 @@ function scene:enterScene( event )
 	
 	local sceneGroup = self.view
 
-	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
+	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 30 )
 	usuarioText.x = _X
-	usuarioText.y = _Y - 100
+	usuarioText.y = _Y - 150
 	usuarioText:setFillColor( 0,0,0 )
 	sceneGroup:insert( usuarioText )
 
-	contrasenaText = display.newText( "Contraseña", 0, 0, native.systemFont, 15 )
+	contrasenaText = display.newText( "Contraseña", 0, 0, native.systemFont, 30 )
 	contrasenaText.x = _X
-	contrasenaText.y = _Y - 15
+	contrasenaText.y = _Y - 65
 	contrasenaText:setFillColor( 0,0,0 )
 	sceneGroup:insert( contrasenaText )
 
@@ -85,14 +85,14 @@ function scene:enterScene( event )
 	    end
 	end
 
-	usuarioField = native.newTextField( _X, _Y - 60, 275, 50, onUsername )
+	usuarioField = native.newTextField( _X, _Y - 110, 325, 50, onUsername )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
 	usuarioField.align = "center"
 	sceneGroup:insert( usuarioField )
 
-	contrasenaField = native.newTextField( _X, _Y + 25, 275, 50, onPassword )
+	contrasenaField = native.newTextField( _X, _Y - 25, 325, 50, onPassword )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
@@ -102,9 +102,9 @@ function scene:enterScene( event )
 	sesionButton = widget.newButton{
 		x = _X,
 		y = _Y + 80,
-		width = 150,
-		height = 50,
-		fontSize = 20,
+		width = 300,
+		height = 100,
+		fontSize = 40,
 		emboss = true,
 		label = " Iniciar Sesión",
 		font = native.systemFont,

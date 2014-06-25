@@ -26,19 +26,19 @@ function scene:enterScene( event )
 	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 	db = sqlite3.open( path )  
 
-	local registro = display.newText( "Registro", _X, _Y - 150, native.systemFont, 18 )
+	local registro = display.newText( "Registro", _X, _Y - 200, native.systemFont, 35 )
 	registro:setFillColor(0,0,0)
 	sceneGroup:insert( registro )
 
-	local usuario = display.newText( "Correo electronico", _X, _Y - 80, native.systemFont, 18 )
+	local usuario = display.newText( "Correo electronico", _X, _Y - 130, native.systemFont, 30 )
 	usuario:setFillColor(0,0,0)
 	sceneGroup:insert( usuario )
 
-	local password = display.newText( "Contraseña", _X, _Y, native.systemFont, 18 )
+	local password = display.newText( "Contraseña", _X, _Y - 40, native.systemFont, 30 )
 	password:setFillColor(0,0,0)
 	sceneGroup:insert( password )
 
-	local confirmacion = display.newText( "Confirma tu contraseña", _X, _Y + 80, native.systemFont, 18 )
+	local confirmacion = display.newText( "Confirma tu contraseña", _X, _Y + 50, native.systemFont, 30 )
 	confirmacion:setFillColor(0,0,0)
 	sceneGroup:insert( confirmacion )
 
@@ -71,18 +71,18 @@ function scene:enterScene( event )
 	    end
 	end
 
-	campoUsuario = native.newTextField( _X, _Y - 40, 250, 40, onUsername )
+	campoUsuario = native.newTextField( _X, _Y - 90, 320, 50, onUsername )
 	campoUsuario.align = "center"
 	campoUsuario.inputType = "email"
 	campoUsuario.placeholder = "usuario@ejemplo.com"
 	sceneGroup:insert( campoUsuario )
 
-	campoPass = native.newTextField( _X, _Y + 40, 250, 40, onPassword )
+	campoPass = native.newTextField( _X, _Y, 320, 50, onPassword )
 	campoPass.align = "center"
 	campoPass.isSecure = true
 	sceneGroup:insert( campoPass )
 
-	campoPass2 = native.newTextField( _X, _Y + 120, 250, 40, onPasswordValidated )
+	campoPass2 = native.newTextField( _X, _Y + 90, 320, 50, onPasswordValidated )
 	campoPass2.isSecure = true
 	campoPass2.align = "center"
 	campoPass2:setTextColor( 0, 0, 0 )
@@ -109,10 +109,11 @@ function scene:enterScene( event )
 	{
 		x = display.contentCenterX,
 		y = _Y + 170,
-		width = 150,
-		height = 50,
+		width = 250,
+		height = 70,
 		defaultFile = "design/borderbutton.png",
 		label = "Aceptar",
+		fontSize = 40,
 		labelColor = {default={255,255,255}, over={240,248,255}},
 		onEvent = registrar
 	}
