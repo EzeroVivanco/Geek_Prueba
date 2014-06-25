@@ -5,11 +5,11 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code herelocal defaultField
-local composer = require( "composer" )
+local storyboard = require( "storyboard" )
 local widget = require( "widget")
 local sqlite3 = require "sqlite3"
 
-local scene = composer.newScene()
+local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
@@ -18,8 +18,8 @@ local _H = display.contentHeight
 
 local campoUsuario, campoPass, campoPass2
 
-function scene:show( event )
-	composer.removeScene( "inicio" )
+function scene:enterScene( event )
+	storyboard.removeScene( "inicio" )
 
 	local sceneGroup = self.view
 
@@ -100,7 +100,7 @@ function scene:show( event )
 				db:exec(insercion)
 				db:close()
 				native.setKeyboardFocus( nil )
-				composer.gotoScene( "inicio")--, "flip", 500 )
+				storyboard.gotoScene( "inicio")--, "flip", 500 )
 			end
 		end
 	end
@@ -119,6 +119,6 @@ function scene:show( event )
 	sceneGroup:insert( botonAceptar )
 end
 
-scene:addEventListener( "show", scene )
+scene:addEventListener( "enterScene", scene )
 return scene
 

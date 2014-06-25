@@ -5,11 +5,11 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
-local composer = require( "composer" )
+local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 local sqlite3 = require "sqlite3"
 
-local scene = composer.newScene()
+local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
@@ -31,7 +31,7 @@ local function handleButtonEvent( event )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
 			native.setKeyboardFocus( nil )
-			composer.gotoScene( "principal" )
+			storyboard.gotoScene( "principal" )
 			status = true	
 			break
 		end
@@ -46,10 +46,10 @@ local function handleButtonEvent( event )
 	end
 end
 
-function scene:show( event )
+function scene:enterScene( event )
 
-	composer.removeScene( "inicio" )
-	composer.removeScene( "principal" )
+	storyboard.removeScene( "inicio" )
+	storyboard.removeScene( "principal" )
 	
 	local sceneGroup = self.view
 
@@ -115,6 +115,6 @@ function scene:show( event )
 	sceneGroup:insert( sesionButton )
 end
 
-scene:addEventListener( "show", scene )
+scene:addEventListener( "enterScene", scene )
 
 return scene

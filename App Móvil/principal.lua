@@ -5,10 +5,10 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
-local composer = require( "composer" )
+local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 
-local scene = composer.newScene()
+local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
@@ -180,8 +180,8 @@ end
     end
 end
 
-function scene:show( event )
-	composer.removeScene( "login" )
+function scene:enterScene( event )
+	storyboard.removeScene( "login" )
 	local sceneGroup = self.view
 	local widgetGroup = display.newGroup()
 	
@@ -265,7 +265,7 @@ function scene:show( event )
 end
 
 Runtime:addEventListener("touch", swipe)
-scene:addEventListener( "create", scene )
-scene:addEventListener( "show", scene )
+scene:addEventListener( "createScene", scene )
+scene:addEventListener( "enterScene", scene )
 
 return scene

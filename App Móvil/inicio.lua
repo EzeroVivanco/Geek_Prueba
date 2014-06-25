@@ -1,7 +1,7 @@
-local composer = require( "composer" )
+local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 
-local scene = composer.newScene()
+local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
@@ -12,18 +12,18 @@ local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local currentScore = 200
 		local options = { level="Level 1", score=currentScore }
-		local results = composer.loadScene( "formulario", true, options )
-		composer.gotoScene( "formulario")--, "flip", 500 )
+		local results = storyboard.loadScene( "formulario", true, options )
+		storyboard.gotoScene( "formulario")
 	end
 end
 
 local function handleButtonEvent2( event )
 	if (event.phase == "ended") then
-		composer.gotoScene( "login")-- , "flip", 500)
+		storyboard.gotoScene( "login")
 	end
 end
 
-function scene:create( event )
+function scene:createScene( event )
 	local sceneGroup = self.view
 
 	local botonInicio = widget.newButton
@@ -54,7 +54,7 @@ function scene:create( event )
 	sceneGroup:insert( botonRegistro )
 end
 
-function scene:show( event )
+function scene:enterScene( event )
 	local phase = event.phase
 	if "did" == phase then
 		composer.removeScene( "formulario" )
@@ -62,7 +62,7 @@ function scene:show( event )
 	end
 end
 
-scene:addEventListener( "create", scene )
-scene:addEventListener( "show", scene )
+scene:addEventListener( "createScene", scene )
+scene:addEventListener( "enterScene", scene )
 
 return scene
