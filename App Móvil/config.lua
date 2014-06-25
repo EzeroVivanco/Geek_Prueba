@@ -1,27 +1,14 @@
+local mediaRes = display.pixelWidth  / 480
+
 application = {
 	content = {
-		width = 320,
-        height = 480,
-        scale = "zoomEven",
-        
-        imageSuffix =
-        {
-            ["@2x"] = 2,
-        },    
-	},
+		width = display.pixelWidth / mediaRes,
+        height = display.pixelHeight / mediaRes, 
+        scale = "letterBox",
 
-    --[[
-    -- Push notifications
-
-    notification =
-    {
-        iphone =
-        {
-            types =
-            {
-                "badge", "sound", "alert", "newsstand"
-            }
+        imageSuffix = {
+            ["-small"] = 0.375,
+            ["@2x"] = 1.5
         }
-    }
-    --]]    
+	}
 }

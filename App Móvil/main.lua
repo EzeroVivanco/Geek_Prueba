@@ -7,6 +7,7 @@
 -- Your code here
 local storyboard = require "storyboard"
 local sqlite3 = require "sqlite3"
+display.setStatusBar( display.HiddenStatusBar )
 local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 db = sqlite3.open( path )  
 local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]

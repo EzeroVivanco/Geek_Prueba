@@ -31,7 +31,7 @@ local function handleButtonEvent( event )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
 			native.setKeyboardFocus( nil )
-			storyboard.gotoScene( "principal" )
+			storyboard.gotoScene( "home" )
 			status = true	
 			break
 		end
@@ -85,14 +85,14 @@ function scene:enterScene( event )
 	    end
 	end
 
-	usuarioField = native.newTextField( 160, _Y - 60, 275, 50, onUsername )
+	usuarioField = native.newTextField( _X, _Y - 60, 275, 50, onUsername )
 	usuarioField.font = native.newFont( native.systemFont, 15 )
 	usuarioField.placeholder = "usuario@ejemplo.com"
 	usuarioField.inputType = "email"
 	usuarioField.align = "center"
 	sceneGroup:insert( usuarioField )
 
-	contrasenaField = native.newTextField( 160, _Y + 25, 275, 50, onPassword )
+	contrasenaField = native.newTextField( _X, _Y + 25, 275, 50, onPassword )
 	contrasenaField.font = native.newFont( native.systemFont, 15 )
 	contrasenaField.inputType = "default"
 	contrasenaField.isSecure = true
