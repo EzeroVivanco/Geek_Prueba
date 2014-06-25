@@ -20,18 +20,34 @@ local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton
 
 local status = false
 
+local function activeButton(event)
+	print( "activo el boton" )
+	sesionButton:setEnabled( true )
+end
+
 local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			native.setKeyboardFocus( nil )
-			composer.gotoScene( "principal" )
-			status = true	
-			break
+			--native.setKeyboardFocus( nil )
+			--composer.gotoScene( "principal" )
+			--status = true	
+			--break
+
 		end
+		local options = {
+		    isModal = true,
+		    effect = "fade",
+		    time = 400,
+		    params = {
+		        sampleVar = "my sample variable"
+		    	}
+			}
+			sesionButton:setEnabled( false )
+			composer.showOverlay( "popup", options )
 		if (status == false) then
-			composer.showOverlay( "popup" )
+			
 		end
 		db:close()
 	end
@@ -43,7 +59,7 @@ function scene:show( event )
 	composer.removeScene( "principal" )
 	
 	local sceneGroup = self.view
-	
+
 	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 15 )
 	usuarioText.x = _X
 	usuarioText.y = _Y - 150
@@ -58,17 +74,13 @@ function scene:show( event )
 
 	local function onUsername( event )
 	    if ( "began" == event.phase ) then
-	        -- This is the "keyboard appearing" event.
-	        -- In some cases you may want to adjust the interface while the keyboard is open.
 
 	    elseif ( "submitted" == event.phase ) then
-	        -- Automatically tab to password field if user clicks "Return" on virtual keyboard.
 	        native.setKeyboardFocus( contrasenaField )
 	    end
 	end
 
 	local function onPassword( event )
-	    -- Hide keyboard when the user clicks "Return" in this field
 	    if ( "submitted" == event.phase ) then
 	        native.setKeyboardFocus( nil )
 	    end
@@ -103,6 +115,10 @@ function scene:show( event )
 	}
 	sceneGroup:insert( sesionButton )
 end
+function scene:overlayEnded( event )
+   sesionButton:setEnabled( true )
+end
+scene:addEventListener( "overlayEnded" )
 
 scene:addEventListener( "show", scene )
 
