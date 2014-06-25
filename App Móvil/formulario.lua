@@ -26,10 +26,6 @@ function scene:show( event )
 	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 	db = sqlite3.open( path )  
 
-	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]]
-	print(tablesetup)
-	db:exec( tablesetup )
-
 	local registro = display.newText( "Registro", _X, _Y - 150, native.systemFont, 18 )
 	registro:setFillColor(0,0,0)
 	sceneGroup:insert( registro )
@@ -96,15 +92,21 @@ function scene:show( event )
 		if ( "ended" == evento.phase) then
 			if(campoUsuario.text == "" or campoPass.text == "" or campoPass2.text == "")then
 
-			elseif (campoPass.text ~= campoPass2.text) then
+			else
+				if (campoUsuario.text:match("[A-Za-z0-9%.%%%+%-]+@[A-Za-z0-9%.%%%+%-]+%.%w%w%w?%w?")) then
+					if (campoPass.text ~= campoPass2.text) then
 
-			else--if (campoUsuario ~= "" and campoPass ~= "" and campoPass2 ~= "" and campoPass == campoPass2) then 
-				db = sqlite3.open( path )
-				local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
-				db:exec(insercion)
-				db:close()
-				native.setKeyboardFocus( nil )
-				composer.gotoScene( "inicio")--, "flip", 500 )
+					else--if (campoUsuario ~= "" and campoPass ~= "" and campoPass2 ~= "" and campoPass == campoPass2) then 
+						db = sqlite3.open( path )
+						local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
+						db:exec(insercion)
+						db:close()
+						native.setKeyboardFocus( nil )
+						composer.gotoScene( "inicio")--, "flip", 500 )
+					end
+				else
+
+				end
 			end
 		end
 	end

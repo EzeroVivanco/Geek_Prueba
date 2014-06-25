@@ -47,7 +47,7 @@ local function handleButtonEvent( event )
 			sesionButton:setEnabled( false )
 			composer.showOverlay( "popup", options )
 		if (status == false) then
-			
+			composer.showOverlay( "popup" )
 		end
 		db:close()
 	end
