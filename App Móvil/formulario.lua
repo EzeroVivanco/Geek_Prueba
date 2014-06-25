@@ -5,11 +5,11 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code herelocal defaultField
-local composer = require( "composer" )
+local storyboard = require( "storyboard" )
 local widget = require( "widget")
 local sqlite3 = require "sqlite3"
 
-local scene = composer.newScene()
+local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
 local _Y = display.contentCenterY
@@ -18,8 +18,8 @@ local _H = display.contentHeight
 
 local campoUsuario, campoPass, campoPass2
 
-function scene:show( event )
-	composer.removeScene( "inicio" )
+function scene:enterScene( event )
+	storyboard.removeScene( "inicio" )
 
 	local sceneGroup = self.view
 
@@ -92,21 +92,15 @@ function scene:show( event )
 		if ( "ended" == evento.phase) then
 			if(campoUsuario.text == "" or campoPass.text == "" or campoPass2.text == "")then
 
-			else
-				if (campoUsuario.text:match("[A-Za-z0-9%.%%%+%-]+@[A-Za-z0-9%.%%%+%-]+%.%w%w%w?%w?")) then
-					if (campoPass.text ~= campoPass2.text) then
+			elseif (campoPass.text ~= campoPass2.text) then
 
-					else--if (campoUsuario ~= "" and campoPass ~= "" and campoPass2 ~= "" and campoPass == campoPass2) then 
-						db = sqlite3.open( path )
-						local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
-						db:exec(insercion)
-						db:close()
-						native.setKeyboardFocus( nil )
-						composer.gotoScene( "inicio")--, "flip", 500 )
-					end
-				else
-
-				end
+			else--if (campoUsuario ~= "" and campoPass ~= "" and campoPass2 ~= "" and campoPass == campoPass2) then 
+				db = sqlite3.open( path )
+				local insercion = [[INSERT INTO user VALUES (']]..campoUsuario.text..[[',']]..campoPass2.text..[[');]]
+				db:exec(insercion)
+				db:close()
+				native.setKeyboardFocus( nil )
+				storyboard.gotoScene( "inicio")--, "flip", 500 )
 			end
 		end
 	end
@@ -125,6 +119,6 @@ function scene:show( event )
 	sceneGroup:insert( botonAceptar )
 end
 
-scene:addEventListener( "show", scene )
+scene:addEventListener( "enterScene", scene )
 return scene
 
