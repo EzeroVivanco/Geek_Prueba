@@ -131,7 +131,7 @@ panel.background = display.newRect( 0, 0, panel.width, panel.height )
 panel.background:setFillColor( 28/255, 28/255, 28/255 )
 panel:insert( panel.background )
 
-panel.title = display.newText( "Texto del Menú", 0, 0, native.systemFontBold, 18 )
+panel.title = display.newText( "Texto del Menú", 0, 0 - 170, native.systemFontBold, 18 )
 panel.title:setFillColor( 1, 1, 1 )
 panel:insert( panel.title )
 
