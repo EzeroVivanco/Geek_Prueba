@@ -131,9 +131,20 @@ panel.background = display.newRect( 0, 0, panel.width, panel.height )
 panel.background:setFillColor( 28/255, 28/255, 28/255 )
 panel:insert( panel.background )
 
-panel.title = display.newText( "Texto del Menú", 0, 0 - 170, native.systemFontBold, 18 )
-panel.title:setFillColor( 1, 1, 1 )
-panel:insert( panel.title )
+panel.user = display.newText( "Perfil", 0, 0 - 170, native.systemFontBold, 18 )
+--panel.user = display.newText( "Perfil", 0 - 66, 0 - 170, native.systemFontBold, 18 )
+panel.user:setFillColor( 1, 1, 1 )
+panel:insert( panel.user )
+
+panel.news = display.newText( "Noticias", 0, 0 - 130, native.systemFontBold, 18 )
+--panel.news = display.newText( "Noticias", 0 - 54, 0 - 130, native.systemFontBold, 18 )
+panel.news:setFillColor( 1, 1, 1 )
+panel:insert( panel.news )
+
+panel.events = display.newText( "Eventos", 0, 0 - 90, native.systemFontBold, 18 )
+--panel.events = display.newText( "Eventos ", 0 - 50, 0 - 90, native.systemFontBold, 18 )
+panel.events:setFillColor( 1, 1, 1 )
+panel:insert( panel.events )
 
 function checkSwipeDirection()
     if bDoingTouch == true then

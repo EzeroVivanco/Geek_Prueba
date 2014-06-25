@@ -30,10 +30,10 @@ local function handleButtonEvent( event )
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			--native.setKeyboardFocus( nil )
-			--composer.gotoScene( "principal" )
-			--status = true	
-			--break
+			native.setKeyboardFocus( nil )
+			composer.gotoScene( "principal" )
+			status = true	
+			break
 
 		end
 		local options = {
@@ -45,9 +45,9 @@ local function handleButtonEvent( event )
 		    	}
 			}
 			sesionButton:setEnabled( false )
-			composer.showOverlay( "popup", options )
+			--composer.showOverlay( "popup", options )
 		if (status == false) then
-			composer.showOverlay( "popup" )
+			--composer.showOverlay( "popup" )
 		end
 		db:close()
 	end
