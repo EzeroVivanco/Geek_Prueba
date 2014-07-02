@@ -63,7 +63,12 @@ function scene:enterScene( event )
 	end
 end
 
-scene:addEventListener( "createScene", scene )
+function scene:exitScene( event )
+	storyboard.purgeOnSceneChange = true
+end
+
 scene:addEventListener( "enterScene", scene )
+scene:addEventListener("exitScene", scene )
+scene:addEventListener( "createScene", scene )
 
 return scene

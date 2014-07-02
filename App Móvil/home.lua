@@ -149,6 +149,7 @@ end
 
 
 function scene:exitScene( event )
+	storyboard.purgeOnSceneChange = true
 end
 
 scene:addEventListener("createScene", scene )

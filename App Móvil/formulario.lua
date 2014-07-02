@@ -120,6 +120,11 @@ function scene:enterScene( event )
 	sceneGroup:insert( botonAceptar )
 end
 
+function scene:exitScene( event )
+	storyboard.purgeOnSceneChange = true
+end
+
 scene:addEventListener( "enterScene", scene )
+scene:addEventListener("exitScene", scene )
 return scene
 
