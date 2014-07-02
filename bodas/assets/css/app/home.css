@@ -14,6 +14,7 @@ body {
     height: 100%;   
     background: #288D6D;
     color: white;
+    top
     }
     .font{
         font-size: 10px;
@@ -34,4 +35,51 @@ background: linear-gradient(to bottom,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 5
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21a55c', endColorstr='#21a55c',GradientType=0 ); /* IE6-9 */
 
         border-top: -40px;
+    }
+    /* menus listas */
+    .list-menu-left{
+        
+        display: block;
+        width: 50%;
+        margin-left: 25px;
+        float: left;
+        
+
+    }
+    .item{
+        display: inline;
+        text-align: center;
+        margin: auto;
+        position: relative;
+        float: left;
+        width: 16%;
+        height: 75px;
+        font-size: 13px;
+        color: white;
+        
+    }
+    .item:hover{
+        background: #0B6138;
+    }
+
+    .item-right{
+        display: inline;
+        text-align: center;
+        position: relative;
+        float: right;
+        width: 50%;
+        height: 75px;
+        font-size: 13px;
+        color: white;
+        
+    }
+    .item-right:hover{
+        background: #424242;
+    }
+
+    .list-menu-right{
+        display: block;
+        width: 15%;
+        float: right;
+        
     }
