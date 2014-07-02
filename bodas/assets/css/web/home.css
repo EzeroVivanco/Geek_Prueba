@@ -1,7 +1,5 @@
 /* -----------------  Estilos generales  ----------------- */
 body {
-    width: 80%;
-    margin: auto;
     padding-top: 30px;
 }
 #centrar{
@@ -18,18 +16,21 @@ body {
 {
     background: mediumturquoise;
 }
+.texto{
+    margin: 2px;
+}
 .fond
 {
     background: white ;
 }
 .top-bar{	
-    height: 70px;
+    height: 75px;
 }
 .imagen{
-    display: block;
-    margin: auto;
-    height: 25px;
-    text-align: center;
+    margin-top: 10px;
+}
+.imagen-right{
+    margin-top: 10px;
 }
 .imagen1
 {
@@ -39,6 +40,7 @@ body {
     padding: 5px;
     alignment-adjust: central;
 }
+
 .search-label{
     position: absolute;
     width: 200px;
