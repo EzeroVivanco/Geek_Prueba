@@ -9,6 +9,9 @@ body {
     text-align: left;
     font-family:Times New Roman 12px;
 }
+#error_1{
+    display: none;
+}
 .panel.callout {
     background: white;
 }

@@ -14,7 +14,7 @@ body {
     height: 100%;   
     background: #288D6D;
     color: white;
-    top
+    position: absolute;
     }
     .font{
         font-size: 10px;
@@ -83,3 +83,79 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21a55c', end
         float: right;
         
     }
+/*Pestañas tabs*/
+
+h1{
+    margin: 1em 0;
+    text-align: center;
+}
+#container{
+    top: 75px;
+    right: 100px;
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+}
+#container input{
+    height: 2.5em;
+    visibility: hidden;
+}
+#container label{
+    background: #f9f9f9;
+    border-radius: .25em .25em 0 0;
+    color: #888;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 1em;
+    height: 2.5em;
+    margin-right: .25em;
+    padding: 0 1.5em;
+    text-align: center;
+}
+#container input:hover + label{
+    background: #f1f1f1;
+    color: #444;
+    position: relative;
+    z-index: 6;
+}
+#content {
+    background: #f1f1f1;
+    border-radius: 0 .25em .25em .25em;
+    min-height: 20em;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+}
+#content div{
+    opacity: 0;
+    padding: 1.5em;
+    position: absolute;
+    z-index: -100;
+}
+#content-1 p{
+    clear: both;
+    margin-bottom: 1em;
+}
+#content-1 p.last {
+    margin-bottom: 0;
+}
+#content-2 p {
+    float: left;
+    width: 48.5%;
+}
+#content-2 p.column-right{
+    margin-left: 3%;
+}
+#content-2 p img{
+    display: block;
+    margin : 0 auto 1em auto;
+}
+#container input#tab-1:checked ~ #content #content-1,
+#container input#tab-2:checked ~ #content #content-2{
+    opacity: 1;
+    z-index: 1000;
+}
+
+
+

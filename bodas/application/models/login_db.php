@@ -11,14 +11,11 @@ class login_db extends CI_Model {
     }
 
     function no_existe_cuenta($sEmail, $sPass = '', $opc = 1) {
-        if (empty($sEmail) or empty($opc)) {
+        if (empty($sEmail) or empty($opc)){
             return true;
         }
-        // no se puede validar
-        if ($opc == 1) {
-            // armamos la consulta
-            $query = $this->db->query('SELECT email FROM usuarios WHERE username=?', array($sEmail));
-        } elseif ($opc == 2) {
+
+        if ($opc == 2) {
             // armamos la consulta
             $query = $this->db->query('SELECT email,password FROM usuarios WHERE email=? AND password=?', array($sEmail, $sPass));
         }
