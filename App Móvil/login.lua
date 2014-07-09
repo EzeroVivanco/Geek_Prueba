@@ -18,7 +18,7 @@ local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
 
-local appId = nil			-- Add the Facebook App ID string here
+local appId = "807125025972663"			-- Add the Facebook App ID string here
 local fbCommand = nil
 local GET_USER_INFO = "getInfo"
 
@@ -133,75 +133,36 @@ function scene:enterScene( event )
 	}
 	sceneGroup:insert( sesionButton )
 
-	local function facebookListener( event )
-		if "request" == event.type then		
+	local function listener( event )
 
-			if event.isError then
-				native.showAlert( "Request Error", "Error trying to get the current user", { "OK" } )
-				spinner.isVisible = false
-				return
-			end
+    print( "event.name", event.name )  --"fbconnect"
+    print( "event.type:", event.type ) --type is either "session", "request", or "dialog"
+    print( "isError: " .. tostring( event.isError ) )
+    print( "didComplete: " .. tostring( event.didComplete ) )
 
-			local response = json.decode( event.response )
+    --"session" events cover various login/logout events
+    --"request" events handle calls to various Graph API calls
+    --"dialog" events are standard popup boxes that can be displayed
 
-			if response then
-				composer.userData.firstName = response.first_name
-				composer.userData.lastName = response.last_name
-				composer.userData.id = response.id
-			end
-		
-			local function networkListener( event )
-				if event.isError then
-					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
-				else
-					print( "Profile picture downloaded successfully" )
-				end
-				
-				loginButton.isVisible = false
-				--spinner.isVisible = false
-				
-				-- Go to the main screen
-				composer.gotoScene( "principal", "crossFade" )
-				
-				-- Show the composer navBar group
-				--composer.navBarGroup.isVisible = true
-			end
-			
-			-- Download the profile picture
-			local path = system.pathForFile( composer.userData.firstName .. composer.userData.lastName .. composer.userData.id .. ".png", system.TemporaryDirectory )
-			local picDownloaded = io.open( path )
+    if ( "session" == event.type ) then
+        --options are: "login", "loginFailed", "loginCancelled", or "logout"
+        if ( "login" == event.phase ) then
+            storyboard.gotoScene( "home" )
+            --code for tasks following a successful login
+        end
 
-			if not picDownloaded then
-				--network.download( "http://graph.facebook.com/" .. composer.userData.id .. "/picture", "GET", networkListener, composer.userData.firstName .. composer.userData.lastName .. composer.userData.id .. ".png", system.TemporaryDirectory )
-			else
-				--loginButton.isVisible = true
-				--spinner.isVisible = false
-				
-				-- Go to the main screen
-				--composer.gotoScene( "mainScreen", "crossFade" )
-				
-				-- Show the composer navBar group
-				--composer.navBarGroup.isVisible = true
-			end
-		
-		-- After a successful login event, send the FB command
-		-- Note: If the app is already logged in, we will still get a "login" phase
-	    elseif "session" == event.type then
-	        -- event.phase is one of: "login", "loginFailed", "loginCancelled", "logout"
-				
-			if event.phase ~= "login" then
-				-- Exit if login error
-				return
-			end
-			
-			-- Request the current logged in user's info
-			if fbCommand == GET_USER_INFO then
-				facebook.request( "me" )
-			end
-	    end
-	
-		return true
-	end
+    elseif ( "request" == event.type ) then
+        print("facebook request")
+        if ( not event.isError ) then
+            local response = json.decode( event.response )
+            --process response data here
+        end
+
+    elseif ( "dialog" == event.type ) then
+        print( "dialog", event.response )
+        --handle dialog results here
+    end
+end
 
 	local function loginUser( event )
 		if appId then	
@@ -212,7 +173,7 @@ function scene:enterScene( event )
 			-- call the login method of the FB session object, passing in a handler
 			-- to be called upon successful login.
 			fbCommand = GET_USER_INFO
-			facebook.login( appId, facebookListener )
+			facebook.login( appId, listener )
 		end
 	end
 
