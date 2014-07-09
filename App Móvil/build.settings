@@ -6,14 +6,12 @@ settings ={
 		default = "portrait",
 		supported = { "portrait" }
 	},
-	
 	android ={
 		usesPermissions =
 		{
 			"android.permission.INTERNET",
 		},
 	},
-
 	plugins ={
 		-- key is the name passed to Lua's 'require()' This section is only required for builds > 2014.2165
 		["facebook"] =
@@ -23,7 +21,6 @@ settings ={
 			supportedPlatforms = { iphone = true, ["iphone-sim"] = true },
 		},
 	},
-
 	iphone ={
 		plist =
 		{
@@ -37,6 +34,7 @@ settings ={
 				{
 					CFBundleURLSchemes ={
 						"fb807125025972663",	-- replace XXXXXXXXX with your facebook appId
+						z
 					}
 				}
 			}
