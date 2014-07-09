@@ -5,6 +5,8 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
+local facebook = require( "facebook" )
+local json = require( "json" )
 local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 local sqlite3 = require "sqlite3"
@@ -15,6 +17,23 @@ local _X = display.contentCenterX
 local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
+
+local appId = nil			-- Add the Facebook App ID string here
+local fbCommand = nil
+local GET_USER_INFO = "getInfo"
+
+if not appId then	
+			-- Handle the response from showAlert dialog boxbox
+		--
+		local function onComplete( event )
+			if event.index == 1 then
+				system.openURL( "http://developers.facebook.com/docs/guides/canvas/" )
+			end
+		end
+
+		native.showAlert( "Error", "To develop for Facebook Connect, you need to get an API key and application secret. This is available from Facebook's website.",
+			{ "Learn More", "Cancel" }, onComplete )
+end
 
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, errorMesage, backgroundError, eventTimer
 
@@ -113,6 +132,105 @@ function scene:enterScene( event )
 		onEvent = handleButtonEvent
 	}
 	sceneGroup:insert( sesionButton )
+
+	local function facebookListener( event )
+		if "request" == event.type then		
+
+			if event.isError then
+				native.showAlert( "Request Error", "Error trying to get the current user", { "OK" } )
+				spinner.isVisible = false
+				return
+			end
+
+			local response = json.decode( event.response )
+
+			if response then
+				composer.userData.firstName = response.first_name
+				composer.userData.lastName = response.last_name
+				composer.userData.id = response.id
+			end
+		
+			local function networkListener( event )
+				if event.isError then
+					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
+				else
+					print( "Profile picture downloaded successfully" )
+				end
+				
+				loginButton.isVisible = false
+				--spinner.isVisible = false
+				
+				-- Go to the main screen
+				composer.gotoScene( "principal", "crossFade" )
+				
+				-- Show the composer navBar group
+				--composer.navBarGroup.isVisible = true
+			end
+			
+			-- Download the profile picture
+			local path = system.pathForFile( composer.userData.firstName .. composer.userData.lastName .. composer.userData.id .. ".png", system.TemporaryDirectory )
+			local picDownloaded = io.open( path )
+
+			if not picDownloaded then
+				--network.download( "http://graph.facebook.com/" .. composer.userData.id .. "/picture", "GET", networkListener, composer.userData.firstName .. composer.userData.lastName .. composer.userData.id .. ".png", system.TemporaryDirectory )
+			else
+				--loginButton.isVisible = true
+				--spinner.isVisible = false
+				
+				-- Go to the main screen
+				--composer.gotoScene( "mainScreen", "crossFade" )
+				
+				-- Show the composer navBar group
+				--composer.navBarGroup.isVisible = true
+			end
+		
+		-- After a successful login event, send the FB command
+		-- Note: If the app is already logged in, we will still get a "login" phase
+	    elseif "session" == event.type then
+	        -- event.phase is one of: "login", "loginFailed", "loginCancelled", "logout"
+				
+			if event.phase ~= "login" then
+				-- Exit if login error
+				return
+			end
+			
+			-- Request the current logged in user's info
+			if fbCommand == GET_USER_INFO then
+				facebook.request( "me" )
+			end
+	    end
+	
+		return true
+	end
+
+	local function loginUser( event )
+		if appId then	
+			-- only call login if the app ID is defined
+			--event.target.isVisible = false
+			--spinner.isVisible = true
+			--spinner:start()
+			-- call the login method of the FB session object, passing in a handler
+			-- to be called upon successful login.
+			fbCommand = GET_USER_INFO
+			facebook.login( appId, facebookListener )
+		end
+	end
+
+	-- Create a button to login the user
+	loginButton = widget.newButton
+	{
+		width = 370,
+		height = 70,
+		label = "Ingresa con Facebook",
+		labelAlign = "right",
+		fontSize = 30,
+		onRelease = loginUser,
+		labelColor = {default={255,255,255}, over={240,248,255}},
+		defaultFile= "design/fbButton.png"
+	}
+	loginButton.x = _X
+	loginButton.y = _Y + 200
+	sceneGroup:insert( loginButton )
 end
 
 function scene:exitScene( event )
