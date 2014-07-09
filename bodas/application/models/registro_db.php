@@ -20,7 +20,6 @@ class registro_db extends CI_Model {
     function no_existe_cuenta($sEmail) {
         // armamos la consulta
         $query = $this->db->query('SELECT email FROM usuarios WHERE email=?', array($sEmail));
-        echo $query->num_rows();
         if ($query->num_rows() == 0) {
             return true;
         } else {

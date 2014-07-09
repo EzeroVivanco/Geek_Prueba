@@ -22,15 +22,13 @@
                         'id' => 'btSubmit',
                         'value' => 'Iniciar sesión',
                         'class' => 'button expand',
-                        'onclick'   => 'prueba()'
+                        'onclick'   => 'ajaxlogin()'
                     );
-                    //imprimimos por php para tomar el nombre de las variables
-                    echo '<label>Correo Electronico<input type="email" name="username" id="username"></label>';
-                    echo '<label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>';
-                    //imrpimirmos el error si es que hay
-                    echo '<br/>', form_submit($btSubmit);
                     ?>
+                    <label>Correo Electronico<input type="email" name="username" id="username"></label>
+                    <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
                     <center><div data-alert class='alert-box alert round' id="error_1">El <b> Correo </b> y la<b> Contraseña </b>no coinciden</div></center>
+                    <?php echo '<br/>', form_submit($btSubmit);?>
                 </div>
             </div>
         </div>

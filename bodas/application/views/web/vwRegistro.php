@@ -15,22 +15,20 @@
         <div class="row" id="centrar">
             <div class="callout panel">
                 <?php
-                echo form_open('web/Registro/registro_', array('id' => 'formlogin'));
                 $btSubmit = array(
                     'name' => 'btSubmit',
                     'id' => 'btSubmit',
                     'value' => 'Registrarse',
                     'class' => 'button expand',
-                    'onSubmit' => 'return '
+                    'onSubmit' => 'return ',
+                    'onclick'   => 'ajaxjoin()'
                 );
-                echo '<label>Correo Electronico<input type="email" name="username" id="username"></label>';
-                echo '<label>Contraseña<input type="password" name="password" id="username" required pattern="[a-zA-Z-0-9]+"></label>';
-                echo '<label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>';
-                if (!empty($sMsjError))
-                    echo "<center><div data-alert class='alert-box alert round'>$sMsjError</div></center>";
-                echo '<br/>', form_submit($btSubmit);
-                echo form_close();
                 ?>
+                <label>Correo Electronico<input type="email" name="username" id="username"></label>
+                <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
+                <label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>
+                <center><div data-alert class='alert-box alert round' id="error_1">Correo electronico ya registrado</div></center>
+                <?php echo '<br/>', form_submit($btSubmit); ?>
                 <center><a onclick="location.href = '<?php echo base_url('web/Login') ?>'">Iniciar Sesion</a></center>
             </div>
         </div>
@@ -38,5 +36,6 @@
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/validacion_contrasena.js"></script>
     </body>
 </html>

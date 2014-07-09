@@ -24,30 +24,27 @@ class Registro extends CI_controller {
     }
 
     public function registro_() {
-        if ($this->input->post('username')) {
-            $sEmail = $this->input->post('username');
+        if($this->input->is_ajax_request()){
+            $sEmail = $this->input->post('email');
             $sPassword = $this->input->post('password');
             //hashteamos la contraseña
-            if (!empty($sPassword))
-                $sPass = md5($sPassword);
+            if (!empty($sPassword)){
+                    $sPass = md5($sPassword);
+                }
             if (!$this->registro_db->no_existe_cuenta($sEmail)) {
-                $this->_cargar_registro_vista('El correo <b>' . $sEmail . '</b> ya esta registrado');
-            } else {
+                $data=false;
+                $this->output->set_output(json_encode($data));
+            } 
+            else{
                 $this->registro_db->nueva_cuenta($sEmail, $sPass);
                 $this->_generar_sesion($sEmail);
-                $this->load->view('web/vwBienvenida');
+                $data=true;
+                $this->output->set_output(json_encode($data));
             }
-        } else {
-            $this->_cargar_registro_vista('Algo paso');
         }
-    }
-
-    function _cargar_registro_vista($sMsjError = '') {
-        if (!empty($sMsjError)) {
-            $datos['sMsjError'] = $sMsjError;
+        else{
+            $this->load->view('web/vwRegistro');
         }
-        // cargamos  la interfaz
-        $this->load->view('web/vwRegistro', $datos);
     }
 
     function _generar_sesion($sEmail = '[desconocido]', $SesLimite = 1) {
