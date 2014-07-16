@@ -147,7 +147,14 @@ function scene:enterScene( event )
     if ( "session" == event.type ) then
         --options are: "login", "loginFailed", "loginCancelled", or "logout"
         if ( "login" == event.phase ) then
-            storyboard.gotoScene( "home" )
+        	local options =
+			{
+			    params =
+			    {
+			        phase = event.phase
+			    }
+			}
+            storyboard.gotoScene( "home", options )
             --code for tasks following a successful login
         end
 

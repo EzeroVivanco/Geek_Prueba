@@ -45,7 +45,7 @@ function menu:new()
             horizontalScrollDisabled = true,
             verticalScrollDisabled = false,
             listener = scrollListener,
-            backgroundColor = { 28/255, 28/255, 28/255 }
+            backgroundColor = { 0/255, 0/255, 0/255 }
         }
         self:insert(slideMenu)
         
@@ -59,6 +59,7 @@ function menu:new()
         } ) 
         borderRight:setFillColor( 0, 0, 0 ) 
         self:insert(borderRight)
+
     end
 
     return self
