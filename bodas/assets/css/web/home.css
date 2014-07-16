@@ -3,14 +3,19 @@ body {
     padding-top: 30px;
 }
 #centrar{
-    margin: auto;
-    /*padding: 20px 500px 20px 500px;*/
-    width: 25%;
     text-align: left;
     font-family:Times New Roman 12px;
 }
 #error_1{
     display: none;
+}
+#boton_cerrar_modal{
+     margin: auto;
+     position: relative; 
+     left: 90%;
+}
+#logincarga{
+    margin: auto;
 }
 .panel.callout {
     background: white;

@@ -12,30 +12,30 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <div class="row" id="centrar">
-            <div class="callout panel">
-                <?php
-                $btSubmit = array(
-                    'name' => 'btSubmit',
-                    'id' => 'btSubmit',
-                    'value' => 'Registrarse',
-                    'class' => 'button expand',
-                    'onSubmit' => 'return ',
-                    'onclick'   => 'ajaxjoin()'
-                );
-                ?>
-                <label>Correo Electronico<input type="email" name="username" id="username"></label>
-                <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
-                <label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>
-                <center><div data-alert class='alert-box alert round' id="error_1">Correo electronico ya registrado</div></center>
-                <?php echo '<br/>', form_submit($btSubmit); ?>
-                <center><a onclick="location.href = '<?php echo base_url('web/Login') ?>'">Iniciar Sesion</a></center>
-            </div>
+        <div class="callout panel" id="centrar">
+            <?php
+            $btSubmit = array(
+                'name' => 'btSubmit',
+                'id' => 'btSubmit',
+                'value' => 'Registrarse',
+                'class' => 'button expand',
+                'onSubmit' => 'return ',
+                'onclick'   => 'ajaxjoin()'
+            );
+            ?>
+            <label>Correo Electronico<input type="email" name="username" id="username"></label>
+            <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
+            <label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>
+            <center><div data-alert class='alert-box alert round' id="error_1">Correo electronico ya registrado</div></center>
+            <?php echo '<br/>', form_submit($btSubmit); ?>
+            <center><a onclick="location.href = '<?php echo base_url('web/Login') ?>'">Iniciar Sesion</a></center>
         </div>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.reveal.js"></script>
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/validacion_contrasena.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/load-login.js"></script>
     </body>
 </html>

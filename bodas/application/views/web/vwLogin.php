@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" id="todo">
+<html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
         <title>Login</title>
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <div class="row" id="centrar">
+        <div id="centrar">
             <div class="callout panel">                
                 <div align="center">
                     <?php
@@ -35,6 +35,7 @@
         </script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.reveal.js"></script>
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/validacion_contrasena.js"></script>

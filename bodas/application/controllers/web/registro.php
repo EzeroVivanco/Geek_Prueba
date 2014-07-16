@@ -16,7 +16,7 @@ class Registro extends CI_controller {
     }
 
     public function index() {
-        $this->load->view('web/vwRegistro');
+       return $this->load->view('web/vwRegistro');
     }
 
     public function index2() {
