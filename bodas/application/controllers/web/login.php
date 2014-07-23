@@ -35,6 +35,12 @@ class Login extends CI_Controller {
             }
     }
 
+    public function logout(){
+        if($this->input->is_ajax_request()){
+            $this->session->unset_userdata('sesion_usuario');
+        }
+    }
+
     public function validar_form() {
         if($this->input->is_ajax_request()){
             //carga los datos a las variables de email y password
