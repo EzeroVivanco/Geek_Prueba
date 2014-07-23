@@ -4,7 +4,8 @@ function logout(){
     url: '/bodas/web/login/logout',
     dataType: "json",
     success: function(data){
-      document.location='http://localhost//bodas/';
     }
+
   });
+  document.location='http://localhost//bodas/';
 }    

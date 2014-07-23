@@ -31,7 +31,7 @@
             
             <ul class="list-menu-right">
                 <li class="item-right"><a href="#"><img src="<?php echo base_url() . IMG; ?>web/dash/config.png" class="imagen-right"><br />Ajustes</a></li>
-                <li class="item-right"><a href="#"><img src="<?php echo base_url() . IMG; ?>web/dash/salir.png" class="imagen-right"><br />Salir</a></li>
+                <li class="item-right"><a onclick="logout()"><img src="<?php echo base_url() . IMG; ?>web/dash/salir.png" class="imagen-right"><br />Salir</a></li>
                 
             </ul>
             
