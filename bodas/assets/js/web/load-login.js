@@ -13,3 +13,18 @@ function cerrar(){
     $(document).foundation();
 	$('#myModal').foundation('reveal', 'close');
 }
+function ajaxloadlogin(){
+    $.ajax({
+        type : "POST",
+        url :  "/bodas/web/login/index", 
+        success : function(data){
+            if(data==false){
+                document.location='http://localhost//bodas/web/login/sesion';
+            }else{
+                $("#logincarga").html(data);
+                $("#boton-login").hide();
+            }
+        } 
+    }); 
+    $(document).foundation();
+}
