@@ -22,14 +22,14 @@
             <label for="tab-2">Informacion</label>
             <div id="content">
                 <div id="content-1">
-                    <p class="left"><img src="http://ximg.es/160x120" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?</p>
+                    <p class="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?</p>
                 </div>
 
                 <div id="content-2">
-                    <p class="column-left"><img src="http://ximg.es/200x150" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?
                     </p>
 
-                    <p class="column-right"><img src="http://ximg.es/200x150" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Voluptamum sit reprehenderit iusto harum  minima. Assemenda, accusamus, perspiciatis inventore tempora quipariatur quismam? Deleniti, placeat ea nostrum officiil obcaecati temporibus quop. Ullam, in adipisci autem at fugit ab tempore enim raione nesciunt alias corporis vitae quo quod nostrim itaque vero iure?
                     </p>
                 </div>
             </div>

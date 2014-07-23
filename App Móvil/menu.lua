@@ -10,6 +10,7 @@ local widget = require( "widget" )
 
 --Variables
 menu = {}
+local imageUser
 
 ---------------------------------------------------------------------------------
 -- LISTENERS
@@ -17,8 +18,8 @@ menu = {}
 
 function menu:new()
     
-    local self = display.newGroup()
-
+    self = display.newGroup()
+    
     -- Creamos Menú
     function self:builScreen()
 
@@ -63,4 +64,17 @@ function menu:new()
     end
 
     return self
+end
+
+function menu:recursos(firstName, lastName, id)
+    -- self = display.newGroup()
+
+    imageUser.isVisible = true
+    imageUser = display.newImageRect( firstName .. lastName .. id .. ".png", system.TemporaryDirectory, 80, 80 )
+    imageUser.x = _X
+    imageUser.y = _Y - 150
+end
+
+function menu:hideImage(  )
+    imageUser.isVisible = false
 end

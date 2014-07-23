@@ -41,6 +41,7 @@ function showMenu(event)
             transition.to( homeScreen, { x = homeScreen.x + 400, time = 400, transition = easing.outExpo } )
             transition.to( menuScreen, { x = menuScreen.x + 400, time = 400, transition = easing.outExpo } )
             transition.to( mask, { alpha = .5, time = 400, transition = easing.outQuad } )
+            menuScreen = menu:recursos(firstName, lastName, id)
         end
 	end
 end
@@ -51,6 +52,7 @@ function hideMenu(event)
             transition.to( homeScreen, { x = homeScreen.x - 400, time = 400, transition = easing.outExpo } )
             transition.to( menuScreen, { x = menuScreen.x - 400, time = 400, transition = easing.outExpo } )
             transition.to( mask, { alpha = 0, time = 400, transition = easing.outQuad } )
+            menuScreen = menu:hideImage()
             timer.performWithDelay( 500, function()
                 visible_menu = true
             end, 1 )
@@ -77,15 +79,15 @@ function scene:createScene( event )
     --"dialog" events are standard popup boxes that can be displayed
 
     local function networkListener( event )
-				if event.isError then
-					native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
-				elseif (event.phase == "ended") then
-					native.showAlert( "Network Error", "Download successful", { "OK" } )
-					userPicture = display.newImageRect( firstName .. lastName .. id .. ".png", system.TemporaryDirectory, 80, 80 )
-					userPicture.x = _X
-					userPicture.y = _Y - 150
-					homeScreen:insert(userPicture)
-				end
+		if event.isError then
+			native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
+		elseif (event.phase == "ended") then
+			--native.showAlert( "Network Error", "Download successful", { "OK" } )
+			--userPicture = display.newImageRect( firstName .. lastName .. id .. ".png", system.TemporaryDirectory, 80, 80 )
+			--userPicture.x = _X
+			--userPicture.y = _Y - 150
+			--homeScreen:insert(userPicture)
+		end
 	end
 
     if ( "session" == event.type ) then
