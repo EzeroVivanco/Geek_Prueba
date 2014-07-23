@@ -6,7 +6,7 @@ function ajaxlogin(){
     data: "email="+$("#username").val()+"&password="+$("#password").val(),                      
     success: function(data){
         if(data==false){
-            $("#error_1").show("slow");
+            $("#error_1").show("fast");
         }else{
            document.location='http://localhost//bodas/admin/dashboard';
         }
@@ -22,10 +22,10 @@ function ajaxjoin(){
     data: "email="+$("#username").val()+"&password="+$("#password").val(),
     success: function(data){
         if(data==false){
-            $("#error_1").show("slow");
+            $("#error_1").show("fast");
         }
         else{
-          document.location='http://localhost//bodas/index.php/web/bienvenida/index';
+          document.location='http://localhost//bodas/web/bienvenida/index';
         }
     }
   });

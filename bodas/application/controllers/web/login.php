@@ -16,14 +16,23 @@ class Login extends CI_Controller {
     }
 
     public function index() {
-        //vefirica si ya hayna sesion abierta o un usuario logeado 
-        if ($this->session->userdata('sesion_usuario')) {
-            $this->load->view('admin/vwHeader');
-            //modificar para direccion correcta del header
-        } else {
+        //vefirica si ya hayna sesion abierta o un usuario logeado
+        if ($this->input->is_ajax_request()){
+            if ($this->session->userdata('sesion_usuario')) {
+                return false;
+                //modificar para direccion correcta del header
+            } else {
             //si no carga la vista del login
-            $this->load->view('web/vwLogin');
+                $this->load->view('web/vwLogin');
+            }
         }
+    }
+
+    public function sesion(){
+        if ($this->session->userdata('sesion_usuario')) {
+                $this->load->view('admin/vwPortal');
+                //modificar para direccion correcta del header
+            }
     }
 
     public function validar_form() {

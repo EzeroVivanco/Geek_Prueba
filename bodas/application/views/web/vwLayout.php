@@ -62,6 +62,7 @@
         <div id="myModal" class="reveal-modal tiny" data-reveal>
             <a class="close-reveal-modal" onclick="cerrar()" id="boton_cerrar_modal">&#215;</a>
             <div id="logincarga"></div>
+            <center><a onclick="ajaxloadlogin()"id="boton-login">Iniciar Sesion</a></center>
         </div>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>
