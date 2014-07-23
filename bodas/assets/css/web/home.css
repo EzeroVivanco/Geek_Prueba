@@ -1,18 +1,24 @@
 /* -----------------  Estilos generales  ----------------- */
 body {
+    /*    padding-top: 30px;*/
+    width: 80%;
+    margin: auto;
     padding-top: 30px;
+    font-size: 12px;
+    font-style: normal;
+    font-family: Times New Roman;
 }
 #centrar{
     text-align: left;
-    font-family:Times New Roman 12px;
+    font-family: Times New Roman 12px;
 }
 #error_1{
     display: none;
 }
 #boton_cerrar_modal{
-     margin: auto;
-     position: relative; 
-     left: 90%;
+    margin: auto;
+    position: relative; 
+    left: 90%;
 }
 #logincarga{
     margin-top: 0px;
@@ -71,4 +77,15 @@ body {
 }
 .panel-layout{
     width: 80%;
+}
+input::-webkit-input-placeholder {
+    color: black;
+    font-size: 16px;
+    font-style: normal;
+    font-family: Times New Roman; 
+}
+#borde
+{
+    border: solid 2px;
+    border-color: rgba(60,194,172,1);
 }

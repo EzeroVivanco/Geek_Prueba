@@ -25,7 +25,7 @@
         <div class="contain-to-grid fond">
             <div class="row small-centered columns">
                 <div class="small-2 large-4 columns" id="borde">
-                    <!-- <img src="<?php echo base_url() . IMG; ?>web/siguenos.png" width="150px" > -->
+                    <img src="<?php echo base_url() . IMG; ?>web/siguenos.png" width="150px" >
                     <a href ='https://www.facebook.com/pages/Geek-Bucket-Fabrica-de-software/165847196760102?fref=ts' ><img src="<?php echo base_url() . IMG; ?>web/facebook.png" width="20px"></a>
                     <a href = "https://twitter.com/" ><img src="<?php echo base_url() . IMG; ?>web/twiter.png" width="35px"></a>
                     <a href = "#" ><img src="<?php echo base_url() . IMG; ?>web/p.png" width="35px"></a>
@@ -45,8 +45,6 @@
         </div>
 
         <div class=" panel">
-
-
         </div>
 
         <div class="contain-to-grid fond">
