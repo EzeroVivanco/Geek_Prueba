@@ -1,0 +1,49 @@
+/* -----------------  Estilos generales  ----------------- */
+body {
+    padding-top: 30px;
+}
+#centrar{
+    margin: auto;
+    padding: 20px 500px 20px 500px;
+    width: 100%;
+    text-align: left;
+    font-family: : Times New Roman 12 px;
+}
+.panel.callout {
+    background: white;
+}
+.button
+{
+    background: mediumturquoise;
+}
+.fond
+{
+    background: white ;
+}
+.top-bar{	
+    height: 70px;
+}
+.imagen{
+    display: block;
+    margin: auto;
+    height: 25px;
+    text-align: center;
+}
+.imagen1
+{
+    display: block;
+    margin: auto;
+    height: 60px;
+    padding: 5px;
+    alignment-adjust: central;
+}
+.search-label{
+    position: absolute;
+    width: 200px;
+    display: block;
+    left: 80%;
+    top: 27%;
+}
+.panel-layout{
+    width: 80%;
+}
