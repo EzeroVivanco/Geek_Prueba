@@ -37,7 +37,7 @@ function carga(){
 
     contador_s = secNow;
     contador_m = (60-minNow);
-    contador_h = (23-hourNow);
+    contador_h = (24-hourNow);
     contador_d = dayRest;
     s = 0; //Inicio el segundo para comenzar a contar el tiempo
     m = document.getElementById("minutos");
