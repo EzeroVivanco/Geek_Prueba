@@ -40,8 +40,12 @@ local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, 
 local status = false
 
 local function ocultar( eventTimer )
-	errorMesage.text = ""
-	backgroundError:setFillColor( 255/255,255/255,255/255 )
+	if errorMesage.isVisible then
+		errorMesage.text = ""
+		errorMesage.isVisible = false
+		backgroundError:setFillColor( 255/255,255/255,255/255 )
+		backgroundError.isVisible = false
+	end
 end
 
 local function handleButtonEvent( event )
@@ -55,11 +59,9 @@ local function handleButtonEvent( event )
 			break
 		end
 		if status == false then
-			backgroundError = display.newRoundedRect( _X, _Y - 150, _W * 0.82, 30, 8 )
-			backgroundError:setFillColor( 255/255,68/255,68/255 )
-			errorMesage = display.newText("Usuario y/o Contraseña invalido",_X,_Y - 150,native.systemFont,18)
-			errorMesage:setFillColor( 255/255,255/255,255/255 )
-			timer.performWithDelay( 5000, ocultar )
+			errorMesage.isVisible = true
+			backgroundError.isVisible = true
+			timer.performWithDelay( 3000, ocultar )
 		end
 		db:close()
 	end
@@ -71,6 +73,13 @@ function scene:enterScene( event )
 	storyboard.removeScene( "principal" )
 	
 	local sceneGroup = self.view
+
+	backgroundError = display.newRoundedRect( _X, _Y - 250, _W * 0.82, 30, 8 )
+	backgroundError:setFillColor( 255/255,68/255,68/255 )
+	errorMesage = display.newText("Usuario y/o Contraseña invalido",_X,_Y - 250,native.systemFont,18)
+	errorMesage:setFillColor( 255/255,255/255,255/255 )
+	errorMesage.isVisible = false
+	backgroundError.isVisible = false
 
 	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 30 )
 	usuarioText.x = _X
@@ -154,6 +163,10 @@ function scene:enterScene( event )
 			        phase = event.phase
 			    }
 			}
+			if errorMesage.isVisible then
+				errorMesage.isVisible = false
+				backgroundError.isVisible = false
+            end
             storyboard.gotoScene( "home", options )
             --code for tasks following a successful login
         end
