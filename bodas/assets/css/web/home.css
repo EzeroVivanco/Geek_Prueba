@@ -1,45 +1,16 @@
-﻿/* -----------------  Estilos generales  ----------------- */
+/* -----------------  Estilos generales  ----------------- */
 body {
-    width: 80%;
-    margin: auto;
     padding-top: 30px;
-    font-size: 12px;
-    font-style: normal;
-    font-family: Times New Roman;
 }
 #centrar{
+    margin: auto;
+    /*padding: 20px 500px 20px 500px;*/
+    width: 25%;
     text-align: left;
-    font-family: Times New Roman 12px;
+    font-family:Times New Roman 12px;
 }
 #error_1{
     display: none;
-}
-#error_2{
-    display: none;
-}
-#error_3{
-    display: none;
-}
-#boton_cerrar_modal{
-    margin: auto;
-    position: relative; 
-    left: 90%;
-}
-#logincarga{
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-}
-#boton_cerrar_modal{
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-}
-#myModal{
-
 }
 .panel.callout {
     background: white;
@@ -82,15 +53,4 @@ body {
 }
 .panel-layout{
     width: 80%;
-}
-input::-webkit-input-placeholder {
-    color: black;
-    font-size: 16px;
-    font-style: normal;
-    font-family: Times New Roman; 
-}
-#borde
-{
-    border: solid 2px;
-    border-color: rgba(60,194,172,1);
 }
