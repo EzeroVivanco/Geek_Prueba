@@ -40,10 +40,12 @@ local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, 
 local status = false
 
 local function ocultar( eventTimer )
-	errorMesage.text = ""
-	errorMesage.isVisible = false
-	backgroundError:setFillColor( 255/255,255/255,255/255 )
-	backgroundError.isVisible = false
+	if erroMesage.isVisible then
+		errorMesage.text = ""
+		errorMesage.isVisible = false
+		backgroundError:setFillColor( 255/255,255/255,255/255 )
+		backgroundError.isVisible = false
+	end
 end
 
 local function handleButtonEvent( event )
@@ -156,8 +158,10 @@ function scene:enterScene( event )
 			        phase = event.phase
 			    }
 			}
-			errorMesage.isVisible = false
-			backgroundError.isVisible = false
+			if errorMesage.isVisible then
+				errorMesage.isVisible = false
+				backgroundError.isVisible = false
+            end
             storyboard.gotoScene( "home", options )
             --code for tasks following a successful login
         end
