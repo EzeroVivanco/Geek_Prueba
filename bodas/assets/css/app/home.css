@@ -1,0 +1,161 @@
+/* -----------------  Estilos generales  ----------------- */
+body {
+  padding-top: 30px;
+}.fixed {
+
+}
+
+.fixed {
+
+}
+/*Estilo del Dashboard left-bar*/
+.left-bar{
+    width: 10%;
+    height: 100%;   
+    background: #288D6D;
+    color: white;
+    position: absolute;
+    }
+    .font{
+        font-size: 10px;
+        color: white;
+        background: #288D6D;
+    }
+    span{
+        font-size: 30px;
+        color: white;
+        width: 10px;
+        background: rgb(33,165,92); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(33,165,92,1) 0%, rgba(25,109,20,1) 50%, rgba(29,107,17,1) 51%, rgba(33,165,92,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(33,165,92,1)), color-stop(50%,rgba(25,109,20,1)), color-stop(51%,rgba(29,107,17,1)), color-stop(100%,rgba(33,165,92,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(33,165,92,1) 0%,rgba(25,109,20,1) 50%,rgba(29,107,17,1) 51%,rgba(33,165,92,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21a55c', endColorstr='#21a55c',GradientType=0 ); /* IE6-9 */
+
+        border-top: -40px;
+    }
+    /* menus listas */
+    .list-menu-left{
+        
+        display: block;
+        width: 50%;
+        margin-left: 25px;
+        float: left;
+        
+
+    }
+    .item{
+        display: inline;
+        text-align: center;
+        margin: auto;
+        position: relative;
+        float: left;
+        width: 16%;
+        height: 75px;
+        font-size: 13px;
+        color: white;
+        
+    }
+    .item:hover{
+        background: #0B6138;
+    }
+
+    .item-right{
+        display: inline;
+        text-align: center;
+        position: relative;
+        float: right;
+        width: 50%;
+        height: 75px;
+        font-size: 13px;
+        color: white;
+        
+    }
+    .item-right:hover{
+        background: #424242;
+    }
+
+    .list-menu-right{
+        display: block;
+        width: 15%;
+        float: right;
+        
+    }
+/*Pestañas tabs*/
+
+h1{
+    margin: 1em 0;
+    text-align: center;
+}
+#container{
+    top: 75px;
+    right: 100px;
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+}
+#container input{
+    height: 2.5em;
+    visibility: hidden;
+}
+#container label{
+    background: #f9f9f9;
+    border-radius: .25em .25em 0 0;
+    color: #888;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 1em;
+    height: 2.5em;
+    margin-right: .25em;
+    padding: 0 1.5em;
+    text-align: center;
+}
+#container input:hover + label{
+    background: #f1f1f1;
+    color: #444;
+    position: relative;
+    z-index: 6;
+}
+#content {
+    background: #f1f1f1;
+    border-radius: 0 .25em .25em .25em;
+    min-height: 20em;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+}
+#content div{
+    opacity: 0;
+    padding: 1.5em;
+    position: absolute;
+    z-index: -100;
+}
+#content-1 p{
+    clear: both;
+    margin-bottom: 1em;
+}
+#content-1 p.last {
+    margin-bottom: 0;
+}
+#content-2 p {
+    float: left;
+    width: 48.5%;
+}
+#content-2 p.column-right{
+    margin-left: 3%;
+}
+#content-2 p img{
+    display: block;
+    margin : 0 auto 1em auto;
+}
+#container input#tab-1:checked ~ #content #content-1,
+#container input#tab-2:checked ~ #content #content-2{
+    opacity: 1;
+    z-index: 1000;
+}
+
+
+
