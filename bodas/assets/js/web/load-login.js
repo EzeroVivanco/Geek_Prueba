@@ -1,16 +1,15 @@
 function ajaxloadjoin(){
-    $('#myModal').foundation('reveal', 'open');
 	$.ajax({
         type : "POST",
         url :  "/bodas/web/registro/index", 
         success : function(data){
         	$("#logincarga").html(data);
+            $("#boton-login").show();
         } 
-    }); 
-    $(document).foundation();
+    });
+    $('#myModal').foundation('reveal', 'open');
 }
 function cerrar(){
-    $(document).foundation();
 	$('#myModal').foundation('reveal', 'close');
 }
 function ajaxloadlogin(){
@@ -25,6 +24,5 @@ function ajaxloadlogin(){
                 $("#boton-login").hide();
             }
         } 
-    }); 
-    $(document).foundation();
+    });
 }

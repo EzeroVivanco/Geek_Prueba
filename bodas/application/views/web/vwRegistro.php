@@ -25,8 +25,10 @@
             ?>
             <label>Correo Electronico<input type="email" name="username" id="username"></label>
             <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
-            <label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+"></label>
+            <label>Confirmar Contraseña<input type="password" id="repeatPass" required pattern="[a-zA-Z-0-9]+" data-equalto="password"></label>
             <center><div data-alert class='alert-box alert round' id="error_1">Correo electronico ya registrado</div></center>
+            <center><div data-alert class='alert-box alert round' id="error_2">el campo de contraseña o correo tiene espacios o estan vacios</div></center>
+            <center><div data-alert class='alert-box alert round' id="error_3">Las contraseñas deben coincidir</div></center>
             <?php echo '<br/>', form_submit($btSubmit); ?>
         </div>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -35,5 +37,8 @@
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/validacion_contrasena.js"></script>
+        <script src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.js"></script>
+        <script src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.abide.js"></script>
+        <script>$(document).foundation();</script>
     </body>
 </html>

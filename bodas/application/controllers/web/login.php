@@ -1,4 +1,10 @@
 <?php
+/**
+ * GeekBucket 2014
+ * Author: Jose Luis Arrioja Zamudio
+ * Define la adaptacion de los formatos para ingrear
+ *
+ */
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');

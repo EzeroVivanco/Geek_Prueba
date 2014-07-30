@@ -68,6 +68,7 @@
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/load-login.js"></script>
+        <script>$(document).foundation();</script>
     </div>
 </body>
 </html>

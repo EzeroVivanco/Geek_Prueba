@@ -14,6 +14,12 @@ body {
 #error_1{
     display: none;
 }
+#error_2{
+    display: none;
+}
+#error_3{
+    display: none;
+}
 #boton_cerrar_modal{
     margin: auto;
     position: relative; 

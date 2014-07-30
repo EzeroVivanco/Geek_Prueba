@@ -25,9 +25,16 @@
                         'onclick'   => 'ajaxlogin()'
                     );
                     ?>
-                    <label>Correo Electronico<input type="email" name="username" id="username"></label>
+                    
+                    <div class="email-field">
+                        <label>Correo Electronico
+                            <input type="email" required name="username" id="username">
+                            <small class="error">Se requiere un correo</small>
+                        </label>
+                    </div>
                     <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
                     <center><div data-alert class='alert-box alert round' id="error_1">El <b> Correo </b> y la<b> Contraseña </b>no coinciden</div></center>
+                    <center><div data-alert class='alert-box alert round' id="error_2">el campo de contraseña o correo tiene espacios o estan vacios</div></center>
                     <?php echo '<br/>', form_submit($btSubmit);?>
                 </div>
             </div>
@@ -39,5 +46,8 @@
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/validacion_contrasena.js"></script>
+         <script src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.js"></script>
+         <script src="<?php echo base_url() . FOUND; ?>js/foundation/foundation.abide.js"></script>
+        <script>$(document).foundation();</script>
     </body>
 </html>
