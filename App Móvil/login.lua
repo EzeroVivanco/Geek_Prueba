@@ -41,7 +41,9 @@ local status = false
 
 local function ocultar( eventTimer )
 	errorMesage.text = ""
+	errorMesage.isVisible = false
 	backgroundError:setFillColor( 255/255,255/255,255/255 )
+	backgroundError.isVisible = false
 end
 
 local function handleButtonEvent( event )
@@ -55,11 +57,11 @@ local function handleButtonEvent( event )
 			break
 		end
 		if status == false then
-			backgroundError = display.newRoundedRect( _X, _Y - 150, _W * 0.82, 30, 8 )
+			backgroundError = display.newRoundedRect( _X, _Y - 250, _W * 0.82, 30, 8 )
 			backgroundError:setFillColor( 255/255,68/255,68/255 )
-			errorMesage = display.newText("Usuario y/o Contraseña invalido",_X,_Y - 150,native.systemFont,18)
+			errorMesage = display.newText("Usuario y/o Contraseña invalido",_X,_Y - 250,native.systemFont,18)
 			errorMesage:setFillColor( 255/255,255/255,255/255 )
-			timer.performWithDelay( 5000, ocultar )
+			timer.performWithDelay( 3000, ocultar )
 		end
 		db:close()
 	end
@@ -154,6 +156,8 @@ function scene:enterScene( event )
 			        phase = event.phase
 			    }
 			}
+			errorMesage.isVisible = false
+			backgroundError.isVisible = false
             storyboard.gotoScene( "home", options )
             --code for tasks following a successful login
         end
