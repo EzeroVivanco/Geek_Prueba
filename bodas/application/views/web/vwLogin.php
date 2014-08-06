@@ -12,9 +12,8 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <div id="centrar">
-            <div class="callout panel">                
-                <div align="center">
+        <div class="callout panel">                
+            <div align="center">
                     <?php
                     //cargamos un form de datos
                     $btSubmit = array(
@@ -25,11 +24,9 @@
                         'onclick'   => 'ajaxlogin()'
                     );
                     ?>
-                    
                     <div class="email-field">
                         <label>Correo Electronico
                             <input type="email" required name="username" id="username">
-                            <small class="error">Se requiere un correo</small>
                         </label>
                     </div>
                     <label>Contraseña<input type="password" name="password" id="password" required pattern="[a-zA-Z-0-9]+"></label>
@@ -38,7 +35,6 @@
                     <?php echo '<br/>', form_submit($btSubmit);?>
                 </div>
             </div>
-        </div>
         </script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . FOUND; ?>js/foundation.min.js"></script>

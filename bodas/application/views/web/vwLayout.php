@@ -55,7 +55,6 @@
                     <a data-reveal-id="myModal" onclick="ajaxloadjoin()"><img src="<?php echo base_url() . IMG; ?>web/Registrate.png" width="220px"></a>
                 </div>
             </div>
-
         </div>
         <div id="myModal" class="reveal-modal tiny" data-reveal>
             <a class="close-reveal-modal" onclick="cerrar()" id="boton_cerrar_modal">&#215;</a>
@@ -68,7 +67,7 @@
         <!-- Funcionalidad JS de la pagina -->
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/home.js"></script>
         <script type="text/javascript" src="<?php echo base_url() . JS; ?>web/load-login.js"></script>
-        <script>$(document).foundation();</script>
+        <script>$(document).ready(function(){$(document).foundation();});</script>
     </div>
 </body>
 </html>

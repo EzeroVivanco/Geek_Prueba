@@ -2,14 +2,13 @@
 body {
     padding-top: 30px;
 }
-#centrar{
-    margin: auto;
-    /*padding: 20px 500px 20px 500px;*/
-    width: 25%;
-    text-align: left;
-    font-family:Times New Roman 12px;
-}
 #error_1{
+    display: none;
+}
+#error_2{
+    display: none;
+}
+#error_3{
     display: none;
 }
 .panel.callout {

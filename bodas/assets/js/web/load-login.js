@@ -18,7 +18,7 @@ function ajaxloadlogin(){
         url :  "/bodas/web/login/index", 
         success : function(data){
             if(data==false){
-                document.location='http://localhost//bodas/web/login/sesion';
+                document.location='http://localhost/bodas/web/login/sesion';
             }else{
                 $("#logincarga").html(data);
                 $("#boton-login").hide();

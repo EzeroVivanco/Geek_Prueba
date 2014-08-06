@@ -1,16 +1,5 @@
 function ajaxlogin(){
-  var p1=document.getElementById("#password").value;
-  var espacios = false;
-  var cont = 0;
-  while (!espacios && (cont < p1.length)) {
-    if (p1.charAt(cont) == " "){
-      espacios = true;
-      cont++;
-    }
-  }
-  if (espacios) {
-     $("#error_2").show("fast");
-   }else{
+
     $.ajax({
       type: "POST",
       url: '/bodas/web/login/validar_form',
@@ -20,11 +9,10 @@ function ajaxlogin(){
         if(data==false){
           $("#error_1").show("fast");
         }else{
-          document.location='http://localhost//bodas/admin/dashboard';
+          document.location='http://localhost/bodas/admin/dashboard';
         }
       }
     });
-  }
 }
 
 function ajaxjoin(){
@@ -56,7 +44,7 @@ function ajaxjoin(){
             $("#error_1").show("fast");
           }
           else{
-            document.location='http://localhost//bodas/web/bienvenida/index';
+            document.location='http://localhost/bodas/web/bienvenida/index';
           }
         }
       });
