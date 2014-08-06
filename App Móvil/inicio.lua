@@ -1,3 +1,11 @@
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+-- REQUIRE & VARIABLES
+---------------------------------------------------------------------------------
+
 local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 
@@ -8,6 +16,17 @@ local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
 
+---------------------------------------------------------------------------------
+-- FUNCTIONS
+---------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------
+-- LISTENERS
+---------------------------------------------------------------------------------
+
+--Evento del botón de Registro.
 local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local currentScore = 200
@@ -17,15 +36,21 @@ local function handleButtonEvent( event )
 	end
 end
 
+--Evento del botón de Inicio de Sesión.
 local function handleButtonEvent2( event )
 	if (event.phase == "ended") then
 		storyboard.gotoScene( "login")
 	end
 end
 
+---------------------------------------------------------------------------------
+-- OVERRIDING SCENES METHODS
+---------------------------------------------------------------------------------
+
 function scene:createScene( event )
 	local sceneGroup = self.view
-
+	
+	--Se crea el botón de Inicio de Sesión.
 	local botonInicio = widget.newButton
 	{
 		x = _X,
@@ -40,6 +65,7 @@ function scene:createScene( event )
 	}
 	sceneGroup:insert( botonInicio)
 	
+	--Se crea el botón de Registro.
 	local botonRegistro = widget.newButton
 	{
 		x = _X,

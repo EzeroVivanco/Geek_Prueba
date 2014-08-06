@@ -1,10 +1,11 @@
-----------------nt-------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
--- Your code here
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+-- REQUIRE & VARIABLES
+---------------------------------------------------------------------------------
+
 local facebook = require( "facebook" )
 local json = require( "json" )
 local storyboard = require( "storyboard" )
@@ -18,27 +19,33 @@ local _Y = display.contentCenterY
 local _W = display.contentWidth
 local _H = display.contentHeight
 
-local appId = "807125025972663"			-- Add the Facebook App ID string here
+local appId = "807125025972663"							-- Facebook App ID string
 local fbCommand = nil
 local GET_USER_INFO = "getInfo"
 
-if not appId then	
-			-- Handle the response from showAlert dialog boxbox
-		--
-		local function onComplete( event )
-			if event.index == 1 then
-				system.openURL( "http://developers.facebook.com/docs/guides/canvas/" )
-			end
-		end
-
-		native.showAlert( "Error", "To develop for Facebook Connect, you need to get an API key and application secret. This is available from Facebook's website.",
-			{ "Learn More", "Cancel" }, onComplete )
-end
-
 local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, errorMesage, backgroundError, eventTimer
-
 local status = false
 
+---------------------------------------------------------------------------------
+-- FUNCTIONS
+---------------------------------------------------------------------------------
+
+--Validación del ID de la aplicación.
+if not appId then
+	local function onComplete( event )
+		if event.index == 1 then
+			system.openURL( "http://developers.facebook.com/docs/guides/canvas/" )
+		end
+	end
+	native.showAlert( "Error", "To develop for Facebook Connect, you need to get an API key and application secret. This is available from Facebook's website.",
+		{ "Learn More", "Cancel" }, onComplete )
+end
+
+---------------------------------------------------------------------------------
+-- LISTENERS
+---------------------------------------------------------------------------------
+
+--Oculta el mensaje de error.
 local function ocultar( eventTimer )
 	if errorMesage.isVisible then
 		errorMesage.text = ""
@@ -48,6 +55,7 @@ local function ocultar( eventTimer )
 	end
 end
 
+--Obtiene y valida los datos del usuario ingresado desde la base de datos.
 local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
@@ -67,6 +75,10 @@ local function handleButtonEvent( event )
 	end
 end
 
+---------------------------------------------------------------------------------
+-- OVERRIDING SCENES METHODS
+---------------------------------------------------------------------------------
+
 function scene:enterScene( event )
 
 	storyboard.removeScene( "inicio" )
@@ -74,6 +86,7 @@ function scene:enterScene( event )
 	
 	local sceneGroup = self.view
 
+	--Creación del Objeto para el mensaje de error.
 	backgroundError = display.newRoundedRect( _X, _Y - 250, _W * 0.82, 30, 8 )
 	backgroundError:setFillColor( 255/255,68/255,68/255 )
 	errorMesage = display.newText("Usuario y/o Contraseña invalido",_X,_Y - 250,native.systemFont,18)
@@ -81,6 +94,7 @@ function scene:enterScene( event )
 	errorMesage.isVisible = false
 	backgroundError.isVisible = false
 
+	--Creación de Objetos.
 	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 30 )
 	usuarioText.x = _X
 	usuarioText.y = _Y - 150
@@ -93,6 +107,7 @@ function scene:enterScene( event )
 	contrasenaText:setFillColor( 0,0,0 )
 	sceneGroup:insert( contrasenaText )
 
+	--Evento para cambiar al campo de Password al presionar Enter.
 	local function onUsername( event )
 	    if ( "began" == event.phase ) then
 	    	errorMesage.text = ""
@@ -103,6 +118,7 @@ function scene:enterScene( event )
 	    end
 	end
 
+	--Evento para confirmar el Password al presionar Enter.
 	local function onPassword( event )
 	    if ( "began" == event.phase ) then
 	    	errorMesage.text = ""
@@ -144,14 +160,11 @@ function scene:enterScene( event )
 
 	local function listener( event )
 
+	--Conexión a Facebook.
     print( "event.name", event.name )  --"fbconnect"
     print( "event.type:", event.type ) --type is either "session", "request", or "dialog"
     print( "isError: " .. tostring( event.isError ) )
     print( "didComplete: " .. tostring( event.didComplete ) )
-
-    --"session" events cover various login/logout events
-    --"request" events handle calls to various Graph API calls
-    --"dialog" events are standard popup boxes that can be displayed
 
     if ( "session" == event.type ) then
         --options are: "login", "loginFailed", "loginCancelled", or "logout"
@@ -168,36 +181,29 @@ function scene:enterScene( event )
 				backgroundError.isVisible = false
             end
             storyboard.gotoScene( "home", options )
-            --code for tasks following a successful login
         end
 
-    elseif ( "request" == event.type ) then
-        print("facebook request")
-        if ( not event.isError ) then
-            local response = json.decode( event.response )
-            --process response data here
-        end
+    	elseif ( "request" == event.type ) then
+        	print("facebook request")
+        	if ( not event.isError ) then
+            	local response = json.decode( event.response )
+            	--process response data here
+        	end
 
-    elseif ( "dialog" == event.type ) then
-        print( "dialog", event.response )
-        --handle dialog results here
-    end
-end
+    	elseif ( "dialog" == event.type ) then
+        	print( "dialog", event.response )
+        	--handle dialog results here
+    	end
+	end
 
 	local function loginUser( event )
-		if appId then	
-			-- only call login if the app ID is defined
-			--event.target.isVisible = false
-			--spinner.isVisible = true
-			--spinner:start()
-			-- call the login method of the FB session object, passing in a handler
-			-- to be called upon successful login.
+		if appId then
 			fbCommand = GET_USER_INFO
 			facebook.login( appId, listener )
 		end
 	end
 
-	-- Create a button to login the user
+	-- Creación del botón de Log In a Facebook.
 	loginButton = widget.newButton
 	{
 		width = 370,
