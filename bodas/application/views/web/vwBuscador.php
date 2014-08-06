@@ -13,8 +13,9 @@
     </head>
     <body>
         <div class="text-center" id="centrar">
+            <!-- Api de google buscador -->
             <script>
-                (function() {
+                (function() {//parametro del script de la api de google
                     var cx = '007105476985655273527:kfjjxtmiojy';
                     var gcse = document.createElement('script');
                     gcse.type = 'text/javascript';
@@ -25,7 +26,7 @@
                     s.parentNode.insertBefore(gcse, s);
                 })();
             </script>
-            <gcse:search></gcse:search>
+            <gcse:search><!-- caja de contenido de busqueda --></gcse:search>
 
         </div>
     </div>
