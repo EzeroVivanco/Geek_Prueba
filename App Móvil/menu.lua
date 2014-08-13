@@ -1,8 +1,4 @@
 ---------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------
 -- REQUIRE & VARIABLES
 ---------------------------------------------------------------------------------
 
@@ -15,7 +11,7 @@ menu = {}
 local appId = "807125025972663"
 
 ---------------------------------------------------------------------------------
--- LISTENERS
+-- OYENTES
 ---------------------------------------------------------------------------------
 
 function menu:new(phase)    
@@ -60,15 +56,15 @@ function menu:new(phase)
         self:insert(borderRight)
 
         local function listener( event )
-            print( "event.name", event.name )  --"fbconnect"
-            print( "event.type:", event.type ) --type is either "session", "request", or "dialog"
+            print( "event.name", event.name )  
+            print( "event.type:", event.type ) 
             print( "isError: " .. tostring( event.isError ) )
             print( "didComplete: " .. tostring( event.didComplete ) )
 
             --Descarga la foto de perfil del usuario.
             local function networkListener( event )
                 if event.isError then
-                    native.showAlert( "Network Error", "Download of profile picture failed, please check your network connection", { "OK" } )
+                    native.showAlert( "Error de Red", "Descarga de imagen de perfil fallida, por favor revisa tu conexion a la red", { "OK" } )
                 elseif (event.phase == "ended") then
                     local imgUser = display.newImageRect( firstName..lastName..id..".png", system.TemporaryDirectory, 80, 80 )
                     imgUser.x = _X
@@ -79,27 +75,25 @@ function menu:new(phase)
 
             --Verifica si existe una sesión.
             if ( "session" == event.type ) then
-                --options are: "login", "loginFailed", "loginCancelled", or "logout"
+                --Las opciones son: "login", "loginFailed", "loginCancelled", or "logout"
                 if ( "login" == event.phase ) then
-                    --code for tasks following a successful login
+                    --Código para tareas después de un inicio de sesión satisfactorio
                 end
             elseif ( "request" == event.type ) then
                 if ( not event.isError ) then
                     local response = json.decode( event.response )
-                    usuarioText = display.newText( response.name, 0, 0, native.systemFont, 30 )
-                    usuarioText.x = _X
-                    usuarioText.y = _Y 
-                    usuarioText:setFillColor( 255/255,255/255,255/255 )
-                    self:insert( usuarioText )
+                    userText = display.newText( response.name, 0, 0, native.systemFont, 30 )
+                    userText.x = _X
+                    userText.y = _Y 
+                    userText:setFillColor( 255/255,255/255,255/255 )
+                    self:insert( userText )
                     firstName = response.first_name
                     lastName = response.last_name
                     id = response.id
                     network.download( "http://graph.facebook.com/" .. id .. "/picture", "GET", networkListener, firstName .. lastName .. id .. ".png", system.TemporaryDirectory )
-                        --process response data here
                 end
             elseif ( "dialog" == event.type ) then
                 print( "dialog", event.response )
-                --handle dialog results here
             end
         end
         facebook.login( appId, listener )
