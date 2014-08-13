@@ -8,7 +8,7 @@ class registro_db extends CI_Model {
     public function __construct() {
         parent::__construct();
     }
-
+    //Crea una nueva cuenta
     function nueva_cuenta($sEmail, $sPass = '') {
         $datos = array(
             'email' => $sEmail,
