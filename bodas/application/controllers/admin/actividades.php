@@ -3,12 +3,11 @@
 /**
  * GeekBucket 2014
  * Author: Alberto Vera Espitia
- * Define el comportamiento del Dashboard en la app
  *
  */
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
-
+}
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
 
 Class Actividades extends CI_Controller {
@@ -18,6 +17,7 @@ Class Actividades extends CI_Controller {
     }
 
     function index() {
+
         $this->load->view('admin/vwActividades');
     }
 

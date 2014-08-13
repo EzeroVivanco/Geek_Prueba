@@ -6,9 +6,9 @@
  * Define el comportamiento del Dashboard en la app
  *
  */
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
-
+}
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
 
 Class Bienvenida extends CI_Controller {
@@ -20,4 +20,5 @@ Class Bienvenida extends CI_Controller {
     function index() {
         $this->load->view('web/vwBienvenida');
     }
+
 }

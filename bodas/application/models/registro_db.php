@@ -1,7 +1,8 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 class registro_db extends CI_Model {
 
@@ -27,12 +28,11 @@ class registro_db extends CI_Model {
         }
         return $query;
     }
+
     //Insercion de pareja
-    function insertar_pareja($contenido)
-    {
-        $this->db->update('usuarios',$contenido);
+    function insertar_pareja($contenido) {
+        $this->db->update('usuarios', $contenido);
         return $this->db->insert_id();
-        
     }
 
 }

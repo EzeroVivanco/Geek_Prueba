@@ -1,8 +1,8 @@
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
-
+}
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
 
 class Registro extends CI_controller {
@@ -17,7 +17,7 @@ class Registro extends CI_controller {
 
     public function index() {
         //redirecciona la vista del registro
-       return $this->load->view('web/vwRegistro');
+        return $this->load->view('web/vwRegistro');
     }
 
     public function index2() {
@@ -27,29 +27,27 @@ class Registro extends CI_controller {
 
     public function registro_() {
         //condicion de funcion ajax
-        if($this->input->is_ajax_request()){
+        if ($this->input->is_ajax_request()) {
             $sEmail = $this->input->post('email');
             $sPassword = $this->input->post('password');
             //hashteamos la contraseña
-            if (!empty($sPassword)){
-                    $sPass = md5($sPassword);
-                }
-                //pregunta si existe la cuenta de correo en la base de datos
+            if (!empty($sPassword)) {
+                $sPass = md5($sPassword);
+            }
+            //pregunta si existe la cuenta de correo en la base de datos
             if (!$this->registro_db->no_existe_cuenta($sEmail)) {
-                $data=false;
+                $data = false;
                 //regresa una respuesta de logeo fallido
                 $this->output->set_output(json_encode($data));
-            } 
-            else{
+            } else {
                 //de si existir generara una variable de sesion con el nombre sesion_usuario con los datos de logeo
                 $this->registro_db->nueva_cuenta($sEmail, $sPass);
                 $this->_generar_sesion($sEmail);
-                $data=true;
+                $data = true;
                 //regresa una respuesta de logeo exitoso
                 $this->output->set_output(json_encode($data));
             }
-        }
-        else{
+        } else {
             $this->load->view('web/vwRegistro');
         }
     }
@@ -75,7 +73,6 @@ class Registro extends CI_controller {
 
     //Creamos pareja nueva
     function nueva_pareja() {
-
         if (!empty($_POST['nombre']) && !empty($_POST['nombre_pareja'])) {
             $contenido = array(
                 'nombre' => $_POST['nombre'],

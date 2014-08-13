@@ -1,8 +1,8 @@
-
 <?php
 
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 
 class login_db extends CI_Model {
 
@@ -11,7 +11,7 @@ class login_db extends CI_Model {
     }
 
     function no_existe_cuenta($sEmail, $sPass = '', $opc = 1) {
-        if (empty($sEmail) or empty($opc)){
+        if (empty($sEmail) or empty($opc)) {
             return true;
         }
 
@@ -25,4 +25,5 @@ class login_db extends CI_Model {
             return false;
         }
     }
+
 }
