@@ -68,6 +68,10 @@ local function handleButtonEvent( event )
 			        phase = false
 			    }
 			}
+			if errorMesage.isVisible then
+				errorMesage.isVisible = false
+				backgroundError.isVisible = false
+            end
 			storyboard.gotoScene( "code.home" ,options)
 			status = true
 		end
