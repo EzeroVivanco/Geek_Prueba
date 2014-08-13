@@ -1,5 +1,9 @@
 <?php
-
+/**
+* GeekBucket 2014
+* Autor: josé Luis Arrioja Zamudio
+* Crea nuevos usuarios.
+**/
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 

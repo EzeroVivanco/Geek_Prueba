@@ -1,6 +1,10 @@
 
 <?php
-
+/**
+* Geekbucket 2014
+* Autor: josé Luis Arrioja Zamudio
+* Verifica un usuarios registrado existente
+**/
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
