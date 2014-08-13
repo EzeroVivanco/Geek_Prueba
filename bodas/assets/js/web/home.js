@@ -23,7 +23,7 @@ function carga() {
     var secNow = date.getSeconds();
     //Fecha de la boda
     var dayBoda = 28;
-    var monthBoda = 7;
+    var monthBoda = 9;
     var yearBoda = 2014;
     //dias restantes
     var dayRest;
