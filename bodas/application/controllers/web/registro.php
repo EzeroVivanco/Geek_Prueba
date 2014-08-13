@@ -1,6 +1,16 @@
 <?php
 
+<<<<<<< HEAD
 if (!defined('BASEPATH')) {
+=======
+/**
+* GeekBucket 2014
+* Autor: José Luis Arrioja Zamudio
+* Controllador para los metodos del registro
+**/
+
+if (!defined('BASEPATH'))
+>>>>>>> 42302bffbfd83a2a4ee1664500197976ffb03d1a
     exit('No direct script access allowed');
 }
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");

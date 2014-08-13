@@ -2,7 +2,12 @@
 
 /**
  * GeekBucket 2014
+<<<<<<< HEAD
  * Author: Alberto Vera Espitia
+=======
+ * Author: Shary Chuc Ku
+ * Controllador para llamar la vista desde el portal
+>>>>>>> 42302bffbfd83a2a4ee1664500197976ffb03d1a
  *
  */
 if (!defined('BASEPATH')) {

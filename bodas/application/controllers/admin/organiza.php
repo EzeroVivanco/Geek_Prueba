@@ -2,8 +2,8 @@
 
 /**
  * GeekBucket 2014
- * Author: Alberto Vera Espitia
- * Define el comportamiento del Dashboard en la app
+ * Author: Shary Chuc Ku
+ * Controllador para llamar la vista desde el portal
  *
  */
 if (!defined('BASEPATH')) {

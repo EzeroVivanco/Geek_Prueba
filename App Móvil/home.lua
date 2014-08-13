@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
--- REQUIRE & VARIABLES
+-- LIBRERIAS Y VARIABLES
 ---------------------------------------------------------------------------------
 local facebook = require( "facebook" )
 local json = require( "json" )
@@ -12,7 +12,6 @@ local widget = require( "widget" )
 local scene = storyboard.newScene()
 
 local appId = "807125025972663"
-local usuarioText, response, userPicture, firstName, lastName, id
 
 -- Escenas
 require("options")
@@ -29,10 +28,10 @@ local visible_menu = true
 
 
 -- Objetos
-local mask,opt
+local mask
 
 ---------------------------------------------------------------------------------
--- LISTENERS
+-- OYENTES
 ---------------------------------------------------------------------------------
 
 --Evento para mostrar el menú lateral.

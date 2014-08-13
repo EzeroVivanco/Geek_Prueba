@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
--- REQUIRE & VARIABLES
+-- LIBRERIAS Y VARIABLES
 ---------------------------------------------------------------------------------
 
 local facebook = require( "facebook" )
@@ -23,11 +23,11 @@ local appId = "807125025972663"							-- Facebook App ID string
 local fbCommand = nil
 local GET_USER_INFO = "getInfo"
 
-local usuarioText, contrasenaText, usuarioField, contrasenaField, sesionButton, errorMesage, backgroundError, eventTimer
+local userText, passText, userField, passField, sessionButton, errorMessage, backgroundError, eventTimer
 local status = false
 
 ---------------------------------------------------------------------------------
--- FUNCTIONS
+-- FUNCIONES
 ---------------------------------------------------------------------------------
 
 --Validación del ID de la aplicación.
@@ -42,14 +42,14 @@ if not appId then
 end
 
 ---------------------------------------------------------------------------------
--- LISTENERS
+-- OYENTES
 ---------------------------------------------------------------------------------
 
 --Oculta el mensaje de error.
 local function ocultar( eventTimer )
-	if errorMesage.isVisible then
-		errorMesage.text = ""
-		errorMesage.isVisible = false
+	if errorMessage.isVisible then
+		errorMessage.text = ""
+		errorMessage.isVisible = false
 		backgroundError:setFillColor( 255/255,255/255,255/255 )
 		backgroundError.isVisible = false
 	end
@@ -81,8 +81,7 @@ end
 
 function scene:enterScene( event )
 
-	storyboard.removeScene( "inicio" )
-	storyboard.removeScene( "principal" )
+	storyboard.removeScene( "welcome" )
 	
 	local sceneGroup = self.view
 
@@ -95,17 +94,17 @@ function scene:enterScene( event )
 	backgroundError.isVisible = false
 
 	--Creación de Objetos.
-	usuarioText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 30 )
-	usuarioText.x = _X
-	usuarioText.y = _Y - 150
-	usuarioText:setFillColor( 0,0,0 )
-	sceneGroup:insert( usuarioText )
+	userText = display.newText( "Correo Electrónico", 0, 0, native.systemFont, 30 )
+	userText.x = _X
+	userText.y = _Y - 150
+	userText:setFillColor( 0,0,0 )
+	sceneGroup:insert( userText )
 
-	contrasenaText = display.newText( "Contraseña", 0, 0, native.systemFont, 30 )
-	contrasenaText.x = _X
-	contrasenaText.y = _Y - 65
-	contrasenaText:setFillColor( 0,0,0 )
-	sceneGroup:insert( contrasenaText )
+	passText = display.newText( "Contraseña", 0, 0, native.systemFont, 30 )
+	passText.x = _X
+	passText.y = _Y - 65
+	passText:setFillColor( 0,0,0 )
+	sceneGroup:insert( passText )
 
 	--Evento para cambiar al campo de Password al presionar Enter.
 	local function onUsername( event )
@@ -129,21 +128,21 @@ function scene:enterScene( event )
 	    end
 	end
 
-	usuarioField = native.newTextField( _X, _Y - 110, 325, 50, onUsername )
-	usuarioField.font = native.newFont( native.systemFont, 15 )
-	usuarioField.placeholder = "usuario@ejemplo.com"
-	usuarioField.inputType = "email"
-	usuarioField.align = "center"
-	sceneGroup:insert( usuarioField )
+	userField = native.newTextField( _X, _Y - 110, 325, 50, onUsername )
+	userField.font = native.newFont( native.systemFont, 15 )
+	userField.placeholder = "usuario@ejemplo.com"
+	userField.inputType = "email"
+	userField.align = "center"
+	sceneGroup:insert( userField )
 
-	contrasenaField = native.newTextField( _X, _Y - 25, 325, 50, onPassword )
-	contrasenaField.font = native.newFont( native.systemFont, 15 )
-	contrasenaField.inputType = "default"
-	contrasenaField.isSecure = true
-	contrasenaField.align = "center"
-	sceneGroup:insert( contrasenaField )
+	passField = native.newTextField( _X, _Y - 25, 325, 50, onPassword )
+	passField.font = native.newFont( native.systemFont, 15 )
+	passField.inputType = "default"
+	passField.isSecure = true
+	passField.align = "center"
+	sceneGroup:insert( passField )
 
-	sesionButton = widget.newButton{
+	sessionButton = widget.newButton{
 		x = _X,
 		y = _Y + 80,
 		width = 300,
@@ -156,18 +155,18 @@ function scene:enterScene( event )
 		defaultFile = "design/borderbutton.png",
 		onEvent = handleButtonEvent
 	}
-	sceneGroup:insert( sesionButton )
+	sceneGroup:insert( sessionButton )
 
 	local function listener( event )
 
 	--Conexión a Facebook.
-    print( "event.name", event.name )  --"fbconnect"
-    print( "event.type:", event.type ) --type is either "session", "request", or "dialog"
+    print( "event.name", event.name )  
+    print( "event.type:", event.type ) 
     print( "isError: " .. tostring( event.isError ) )
     print( "didComplete: " .. tostring( event.didComplete ) )
 
     if ( "session" == event.type ) then
-        --options are: "login", "loginFailed", "loginCancelled", or "logout"
+        --Las opciones son: "login", "loginFailed", "loginCancelled", or "logout"
         if ( "login" == event.phase ) then
         	local options =
 			{
@@ -187,12 +186,10 @@ function scene:enterScene( event )
         	print("facebook request")
         	if ( not event.isError ) then
             	local response = json.decode( event.response )
-            	--process response data here
         	end
 
     	elseif ( "dialog" == event.type ) then
         	print( "dialog", event.response )
-        	--handle dialog results here
     	end
 	end
 

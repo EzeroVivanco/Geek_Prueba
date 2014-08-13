@@ -1,6 +1,15 @@
 <?php
+<<<<<<< HEAD
 
 if (!defined('BASEPATH')) {
+=======
+/**
+* GeekBucket 2014
+* Autor: josé Luis Arrioja Zamudio
+* Crea nuevos usuarios.
+**/
+if (!defined('BASEPATH'))
+>>>>>>> 42302bffbfd83a2a4ee1664500197976ffb03d1a
     exit('No direct script access allowed');
 }
 
@@ -9,7 +18,7 @@ class registro_db extends CI_Model {
     public function __construct() {
         parent::__construct();
     }
-
+    //Crea una nueva cuenta
     function nueva_cuenta($sEmail, $sPass = '') {
         $datos = array(
             'email' => $sEmail,

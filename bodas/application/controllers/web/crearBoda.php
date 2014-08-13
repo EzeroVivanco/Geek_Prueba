@@ -2,8 +2,8 @@
 
 /**
  * GeekBucket 2014
- * Author: Alberto Vera Espitia
- * Define el comportamiento del Dashboard en la app
+ * Author: Ramón Can Tepal
+ * Llama a la vista para crear boda
  *
  */
 if (!defined('BASEPATH')) {
