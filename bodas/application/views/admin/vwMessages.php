@@ -1,14 +1,13 @@
 <!doctype html>
 <!--
     GeekBucket 2014
-    Autor: Ramón Can Tepal.
-    Vista de las actividades.
+    Autor: Ramón Can Tepal
+    Vista de los mensajes
 -->
-
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>actividades</title>
+        <title>messages</title>
         <!-- Ejemplo font de google -->
         <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
         <!-- Estilos -->

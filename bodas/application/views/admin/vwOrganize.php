@@ -2,12 +2,12 @@
 <!--
     GeekBucket 2014
     Autor: Ramón Can Tepal
-    Vista de los mensajes
+    Vista de la opcion organiza
 -->
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>mensajes</title>
+        <title>organize</title>
         <!-- Ejemplo font de google -->
         <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
         <!-- Estilos -->

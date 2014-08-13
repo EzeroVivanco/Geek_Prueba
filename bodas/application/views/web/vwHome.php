@@ -1,9 +1,8 @@
-
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>TITULO AQUI</title>
+        <title>home</title>
         <!-- Ejemplo font de google -->
         <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
         <!-- Estilos -->

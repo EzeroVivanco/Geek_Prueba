@@ -1,13 +1,13 @@
 <!doctype html>
 <!--
     GeekBucket 2014
-    Autor: Shary Chuk Ku
+    Autor: Shary Chuc Ku
     Ventana para el buscador
 -->
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>search</title>
         <!-- Ejemplo font de google -->
         <link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
         <!-- Estilos -->

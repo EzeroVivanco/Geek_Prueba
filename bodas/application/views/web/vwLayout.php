@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
     GeekBucket 2014
-    Autor: Shary Chuk Ku
+    Autor: Shary Chuc Ku
     Ventana principal del Website
 -->
 <html class="no-js" lang="en">

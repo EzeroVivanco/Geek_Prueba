@@ -2,25 +2,24 @@
 
 /**
  * GeekBucket 2014
- * Author: Ramón Can Tepal
- * Controllador principal para el portal usuarios
- *
+ * Author: Shary Chuc Ku
+ * Controllador para llamar la vista desde el portal
  */
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 /* Establecer configuración regional al español */
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
-/* habre la clase del controlador dashboard */
+/* habre la clase del controlador actividades */
 
-Class Dashboard extends CI_Controller {
+Class Activities extends CI_Controller {
 
     public function __construct() {/* un constructor en la clase que extiende el constructor padre */
         parent::__construct();
     }
 
     function index() {/* la funcion index es la predeterminada al ingresar al controlador sin especificar que funcion */
-        $this->load->view('admin/vwPortal'); /* manda a visuzalizar la vista vwPortal */
+        $this->load->view('admin/vwActivities'); /* manda a visuzalizar la vista vwActivities */
     }
 
 }
