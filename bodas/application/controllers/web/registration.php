@@ -27,12 +27,12 @@ class Registration extends CI_controller {
     /* inicia la funcion index2 */
 
     public function index2() {
-        $this->load->view('web/vwCrearBoda'); /* manda a vizualizar la vista vwCrearBoda */
+        $this->load->view('web/vwWedding'); /* manda a vizualizar la vista vwWedding */
     }
 
     /* inicia la funcion registro_ */
 
-    public function registro_() {
+    public function register() {
         if ($this->input->is_ajax_request()) {/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
             /* carga los datos a las variables de email y password */
             $sEmail = $this->input->post('email'); /* carga el post email en la variable $sEmail */
@@ -40,11 +40,11 @@ class Registration extends CI_controller {
             if (!empty($sPassword)) {/* verifica si la variable $sPassword esta vacia */
                 $sPass = md5($sPassword); /* asigna a la variable $sPass el hashing MD5 de la variable $sPassword */
             }
-            if (!$this->RegistrationDb->no_existe_cuenta($sEmail)) {/* llamados a la funcion de no_existe_cuenta para saber si esta el correo en la base de datos */
+            if (!$this->RegistrationDb->dont_exist_mail($sEmail)) {/* llamados a la funcion de no_existe_cuenta para saber si esta el correo en la base de datos */
                 $data = false;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor falso atraves de ajax */
             } else {
-                $this->RegistrationDb->nueva_cuenta($sEmail, $sPass); /* llama a la funcion nueva cuenta en el modelo de registro para insertar los datos en la base de datos */
+                $this->RegistrationDb->new_account($sEmail, $sPass); /* llama a la funcion nueva cuenta en el modelo de registro para insertar los datos en la base de datos */
                 $this->_generar_sesion($sEmail); /* llama a la funcion _generar_sesion para generar la variable de sesion */
                 $data = true;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor verdadero atraves de ajax */
@@ -56,37 +56,37 @@ class Registration extends CI_controller {
 
     /* inicia la funcion generar_sesion */
 
-    function _generar_sesion($sEmail = '[desconocido]', $SesLimite = 1) {
+    function create_sesion($sEmail = '[unknown]', $SesLimit = 1) {
         $arrSesion = array(/* tomamos los parametros de la funcion como el correo y el tiempo de sesion */
             'is_logged' => true,
             'email' => $sEmail,
-            'seslimite' => time() + ($SesLimite * 60)// limite en minutos
+            'seslimit' => time() + ($SesLimit * 60)// limite en minutos
         );
-        $this->session->set_userdata('sesion_usuario', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
+        $this->session->set_userdata('sesion_user', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
     }
 
     /* inicia la funcion de error */
 
-    function _cargar_error($sMsjError = '') {
+    function load_error($sMsjError = '') {
         if (!empty($sMsjError)) {/* verifica que el parametro de $sMsjError no este vacio */
-            $datos['sMsjError'] = $sMsjError; /* carga el string del error en una array de $datos */
+            $data['sMsjError'] = $sMsjError; /* carga el string del error en una array de $datos */
         }
-        $this->load->view('web/vwCrearBoda', $datos); /* manda a visualizar la vista vwCrearBoda, con el parametro de $datos */
+        $this->load->view('web/vwWedding', $data); /* manda a visualizar la vista vwWedding, con el parametro de $datos */
     }
 
     /* inicia la funcion nueva_pareja */
 
-    function nueva_pareja() {
-        if (!empty($_POST['nombre']) && !empty($_POST['nombre_pareja'])) {/* verifica si el post de nombre y de nombre_pareja estan vacios */
+    function new_couple() {
+        if (!empty($_POST['name']) && !empty($_POST['name_couple'])) {/* verifica si el post de nombre y de nombre_pareja estan vacios */
 
-            $contenido = array(
-                'nombre' => $_POST['nombre'],
-                'nombre_pareja' => $_POST['nombre_pareja']
+            $content = array(
+                'name' => $_POST['name'],
+                'name_couple' => $_POST['name_couple']
             ); /* en el array $contenido almacena los post de nombre y nombre_pareja */
-            $this->RegistrationDb->insertar_pareja($contenido); /* se llama a la funcion insertar_pareja para ingresar en la base de datos los nombre de la parejas */
+            $this->RegistrationDb->insert_couple($content); /* se llama a la funcion insertar_pareja para ingresar en la base de datos los nombre de la parejas */
             redirect(base_url() . 'admin/dashboard/'); /* redirecciona a la vista dashboard */
         } else {
-            $this->_cargar_error('Celda (s) vacia (s)'); /* llama a la funcion _cargar_error para marcar en la vista el error */
+            $this->load_error('Celda (s) vacia (s)'); /* llama a la funcion _cargar_error para marcar en la vista el error */
         }
     }
 

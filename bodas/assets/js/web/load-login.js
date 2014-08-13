@@ -1,15 +1,19 @@
 function ajaxloadjoin() {
     $.ajax({
         type: "POST",
-        url: "/bodas/web/registro/index",
+        url: "/bodas/web/registration/index",
         success: function(data) {
-            $("#logincarga").html(data);
-            $("#boton-login").show();
+            if (data == false) {
+                document.location = 'http://localhost/bodas/web/login/sesion';
+            } else {
+                $("#loginload").html(data);
+                $("#button-login").hide();
+            }
         }
     });
     $('#myModal').foundation('reveal', 'open');
 }
-function cerrar() {
+function close() {
     $('#myModal').foundation('reveal', 'close');
 }
 function ajaxloadlogin() {
@@ -17,12 +21,8 @@ function ajaxloadlogin() {
         type: "POST",
         url: "/bodas/web/login/index",
         success: function(data) {
-            if (data == false) {
-                document.location = 'http://localhost/bodas/web/login/sesion';
-            } else {
-                $("#logincarga").html(data);
-                $("#boton-login").hide();
-            }
+            $("#loginload").html(data);
+            $("#button-login").show();
         }
     });
 }

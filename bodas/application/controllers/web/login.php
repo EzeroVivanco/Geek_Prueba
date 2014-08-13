@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 
     public function index() {/* la funcion index es la predeterminada al ingresar al controlador sin especificar que funcion */
         if ($this->input->is_ajax_request()) {/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
-            if ($this->session->userdata('sesion_usuario')) {/* verifica si hay una variable de sesion llamada sesion_usuario */
+            if ($this->session->userdata('sesion_user')) {/* verifica si hay una variable de sesion llamada sesion_usuario */
                 return false; /* retorna la condicion de la funcion a la funcion ajax */
             } else {
                 $this->load->view('web/vwLogin'); /* manda a vizualizar la vista vwLogin */
@@ -33,7 +33,7 @@ class Login extends CI_Controller {
     /* inicia funcion sesion */
 
     public function sesion() {
-        if ($this->session->userdata('sesion_usuario')) {/* verifica si hay una variable de sesion llamada sesion_usuario */
+        if ($this->session->userdata('sesion_user')) {/* verifica si hay una variable de sesion llamada sesion_usuario */
             $this->load->view('admin/vwPortal'); /* manda a vizualizar la vista vwPortal */
         }
     }
@@ -42,13 +42,13 @@ class Login extends CI_Controller {
 
     public function logout() {
         if ($this->input->is_ajax_request()) {/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
-            $this->session->unset_userdata('sesion_usuario'); /* manda a destruir a variable de sesion llamada sesion_usuario */
+            $this->session->unset_userdata('sesion_user'); /* manda a destruir a variable de sesion llamada sesion_usuario */
         }
     }
 
     /* inicia funcion validar_form  */
 
-    public function validar_form() {
+    public function validate_form() {
 
         if ($this->input->is_ajax_request()) {/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
             /* carga los datos a las variables de email y password */
@@ -57,12 +57,12 @@ class Login extends CI_Controller {
             if (!empty($sPassword)) {/* verifica si la variable $sPassword esta vacia */
                 $sPass = md5($sPassword); /* asigna a la variable $sPass el hashing MD5 de la variable $sPassword */
             }
-            $SesLimite = 1; //limite de tiempo para la sesion
-            if ($this->LoginDb->no_existe_cuenta($sEmail, $sPass, 2)) {/* llamados a la funcion de  no_existe_cuenta para saber si esta el correo en la base de datos */
+            $SesLimit = 1; //limite de tiempo para la sesion
+            if ($this->LoginDb->dont_exist_mail($sEmail, $sPass, 2)) {/* llamados a la funcion de  no_existe_cuenta para saber si esta el correo en la base de datos */
                 $data = false;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor falso atraves de ajax */
             } else {
-                $this->_generar_sesion($sEmail, $SesLimite); /* llamamos a la funcion _generar_sesion() */
+                $this->create_sesion($sEmail, $SesLimit); /* llamamos a la funcion _generar_sesion() */
                 $data = true;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor verdadero atraves de ajax */
             }
@@ -73,13 +73,13 @@ class Login extends CI_Controller {
 
     /* inicia la funcion generar_sesion */
 
-    function _generar_sesion($sEmail = '[desconocido]', $SesLimite = 1) {
+    function create_sesion($sEmail = '[unknown]', $SesLimit = 1) {
         $arrSesion = array(/* tomamos los parametros de la funcion como el correo y el tiempo de sesion */
             'is_logged' => true,
             'email' => $sEmail,
-            'seslimite' => time() + ($SesLimite * 60)// limite en minutos
+            'seslimit' => time() + ($SesLimit * 60)// limite en minutos
         );
-        $this->session->set_userdata('sesion_usuario', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
+        $this->session->set_userdata('sesion_user', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
     }
 
 }

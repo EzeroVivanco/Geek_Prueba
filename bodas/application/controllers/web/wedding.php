@@ -25,8 +25,8 @@ Class Wedding extends CI_Controller {
 
     /* Iniciando funcion informacion */
 
-    public function informacion() {
-        $this->load->view('web/vwInformacion'); /* manda a visualizar la vista vwInformacion */
+    public function information() {
+        $this->load->view('web/vwInformation'); /* manda a visualizar la vista vwInformacion */
     }
 
 }

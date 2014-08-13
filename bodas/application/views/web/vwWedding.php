@@ -17,14 +17,14 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>web/home.css" />
     </head>
     <body>
-        <form action="<?php echo base_url() ?>web/registro/nueva_pareja" method="post">
+        <form action="<?php echo base_url() ?>web/registration/new_couple" method="post">
             <div id="centrar" class="large-4 columns">
                 <div class="callout panel">
                     <label>Tu nombre
-                        <input type="text" name="nombre"/>
+                        <input type="text" name="name"/>
                     </label>
                     <label>Tu pareja
-                        <input type="text" name="nombre_pareja"/>
+                        <input type="text" name="name_couple"/>
                     </label>
                     <br>
                     <?php
@@ -35,7 +35,7 @@
                     <input type="submit" value="Añadir" class="button expand"/>
                     </form>
                     <br>
-                    <a onclick='location.href = "<?php echo base_url('web/CrearBoda/informacion'); ?>"' class="button expand">Capturar mas información</a>
+                    <a onclick='location.href = "<?php echo base_url('web/wedding/information'); ?>"' class="button expand">Capturar mas información</a>
                 </div>
             </div>
             <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
