@@ -1,27 +1,25 @@
 ---------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------
--- REQUIRE & VARIABLES
+-- REQUERIMIENTOS Y VARIABLES
 ---------------------------------------------------------------------------------
 
 local storyboard = require "storyboard"
 local sqlite3 = require "sqlite3"
+--Abre la base de datos BD.db.
+--Si la base de datos no existe, la crea.
 local path = system.pathForFile("BD.db", system.DocumentsDirectory)
 db = sqlite3.open( path )
 
 ---------------------------------------------------------------------------------
--- SETTINGS
+-- CONFIGURACIONES 
 ---------------------------------------------------------------------------------
 
 display.setStatusBar( display.HiddenStatusBar )
 
 ---------------------------------------------------------------------------------
--- DATABASE
+-- BASE DE DATOS
 ---------------------------------------------------------------------------------
 
---Creación de la base de datos.
+--Creación de la tabla.
 local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]] 
 db:exec( tablesetup )
 db:close( )
@@ -33,7 +31,7 @@ local options =
 }
 
 ---------------------------------------------------------------------------------
--- OVERRIDING SCENES METHODS
+-- METODOS DE ESCENA
 ---------------------------------------------------------------------------------
 
-storyboard.gotoScene("inicio",options)
+storyboard.gotoScene("code.welcome",options)

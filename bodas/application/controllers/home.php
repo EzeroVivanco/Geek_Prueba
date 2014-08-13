@@ -1,12 +1,14 @@
 <?php
+
 /**
  * GeekBucket 2014
  * Author: Alberto Vera Espitia
  * Define el comportamiento de home en la web publica
  *
  */
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 /* Establecer configuración regional al español*/
 setlocale(LC_ALL,"es_ES@euro","es_ES","esp");
 /* habre la clase del controlador bienvenida */
@@ -20,3 +22,4 @@ class Home extends CI_Controller {
         $this->load->view('web/vwLayout');/* manda a visuzalizar la vista vwLayout */
     }
 }
+

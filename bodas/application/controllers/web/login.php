@@ -1,13 +1,14 @@
 <?php
+
 /**
  * GeekBucket 2014
  * Author: Jose Luis Arrioja Zamudio
  * Define la adaptacion de los formatos para ingrear
  *
  */
-
-if (!defined('BASEPATH'))
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
+}
 /* Establecer configuración regional al español*/
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
 /* habre la clase del controlador login */
@@ -17,6 +18,7 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->model('login_db');/* cargando el archivo del modelo */
     }
+
 
     public function index() {/* la funcion index es la predeterminada al ingresar al controlador sin especificar que funcion */
         if ($this->input->is_ajax_request()){/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
@@ -30,17 +32,19 @@ class Login extends CI_Controller {
     /* inicia funcion sesion */
     public function sesion(){
         if ($this->session->userdata('sesion_usuario')) {/* verifica si hay una variable de sesion llamada sesion_usuario */
-                $this->load->view('admin/vwPortal');/* manda a vizualizar la vista vwPortal */
-            }
+            $this->load->view('admin/vwPortal');/* manda a vizualizar la vista vwPortal */
+        }
     }
     /* inicia funcion logout */
     public function logout(){
         if($this->input->is_ajax_request()){/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
             $this->session->unset_userdata('sesion_usuario');/* manda a destruir a variable de sesion llamada sesion_usuario */
+
         }
     }
     /* inicia funcion validar_form  */
     public function validar_form() {
+
         if($this->input->is_ajax_request()){/* condiciona si la llamada de la funcion es atraves de una funcion ajax */
             /* carga los datos a las variables de email y password */
             $sEmail = $this->input->post('email');/* carga el post email en la variable $sEmail */
@@ -57,10 +61,14 @@ class Login extends CI_Controller {
                 $data=true;
                 $this->output->set_output(json_encode($data));/* se regresa el valor verdadero atraves de ajax */
             }
+        } else {
+            $this->load->view('web/vwLogin');
         }
+
         else{
-        $this->load->view('web/vwLogin');/* manda a vizualizar la vista vwLogin */
-      }
+            $this->load->view('web/vwLogin');/* manda a vizualizar la vista vwLogin */
+        }
+
     }
 
     /* inicia la funcion generar_sesion */
@@ -69,7 +77,7 @@ class Login extends CI_Controller {
             'is_logged' => true,
             'email' => $sEmail,
             'seslimite' => time() + ($SesLimite * 60)// limite en minutos
-        );
+            );
         $this->session->set_userdata('sesion_usuario', $arrSesion);/* crea la variable de sesion con los datos del array $arrSesion */
     }
 

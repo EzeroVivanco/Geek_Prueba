@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
--- REQUERIMIENTOS Y VARIABLES
+-- LIBRERIAS Y VARIABLES
 ---------------------------------------------------------------------------------
 local facebook = require( "facebook" )
 local json = require( "json" )
@@ -14,7 +14,8 @@ local scene = storyboard.newScene()
 local appId = "807125025972663"
 
 -- Escenas
-require("code.menu")
+require("options")
+require("menu")
 local menuScreen
 local homeScreen = display.newGroup()
 

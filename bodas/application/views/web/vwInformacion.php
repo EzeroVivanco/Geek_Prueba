@@ -1,4 +1,9 @@
 <!doctype html>
+<!--
+    GeekBucket 2014
+    Autor: Shary Chuk Ku
+    Ventana de la informacion del usuarios
+-->
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">

@@ -1,4 +1,9 @@
 <!doctype html>
+<!--
+    GeekBucket 2014
+    Autor: Ramón Can Tepal
+    Vista de los mensajes
+-->
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
@@ -12,7 +17,6 @@
     </head>
     <body>
         <?php $this->load->view('admin/vwHeader'); ?>
-
 
         <?php $this->load->view('admin/vwHeader'); ?>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

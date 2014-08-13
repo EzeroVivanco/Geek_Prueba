@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
--- REQUERIMIENTOS Y VARIABLES
+-- LIBRERIAS Y VARIABLES
 ---------------------------------------------------------------------------------
 
 local facebook = require( "facebook" )
@@ -62,7 +62,7 @@ local function handleButtonEvent( event )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
 			native.setKeyboardFocus( nil )
-			storyboard.gotoScene( "code.home" )
+			storyboard.gotoScene( "home" )
 			status = true	
 			break
 		end
@@ -81,7 +81,7 @@ end
 
 function scene:enterScene( event )
 
-	storyboard.removeScene( "code.welcome" )
+	storyboard.removeScene( "welcome" )
 	
 	local sceneGroup = self.view
 
@@ -179,7 +179,7 @@ function scene:enterScene( event )
 				errorMesage.isVisible = false
 				backgroundError.isVisible = false
             end
-            storyboard.gotoScene( "code.home", options )
+            storyboard.gotoScene( "home", options )
         end
 
     	elseif ( "request" == event.type ) then

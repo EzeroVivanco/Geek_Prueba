@@ -1,5 +1,4 @@
 $(function() {
-
     // Menus
     $(".goTo").click(function() {
         window.location = $(this).attr("ref");
@@ -13,7 +12,6 @@ $(function() {
 
 //Esta funcion de javascript hara que en el cronometro surgan cambios de la fecha actual a la fecha de la boda.
 function carga() {
-
     //Obtener fecha actual
     var fecha = new Date();
     var dayNow = fecha.getDate();

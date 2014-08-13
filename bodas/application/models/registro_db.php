@@ -1,7 +1,15 @@
 <?php
 
+/**
+* GeekBucket 2014
+* Autor: josé Luis Arrioja Zamudio
+* Crea nuevos usuarios.
+**/
 if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+{
+   exit('No direct script access allowed');
+}
+
 /* habre la clase del modelo registro_db */
 class registro_db extends CI_Model {
 
@@ -13,7 +21,7 @@ class registro_db extends CI_Model {
         $datos = array(
             'email' => $sEmail,
             'password' => $sPass
-        );/* almacena los parematros del email y el password */
+            );/* almacena los parematros del email y el password */
         $this->db->insert('usuarios', $datos);/* con la funcion de insert de codeigneiter se insertan los datos del array */
     }
     /*inicia la funcion no_existe_cuenta*/
@@ -28,12 +36,13 @@ class registro_db extends CI_Model {
         }
         return $query;
     }
+
     /*inica la funcion insertar_pareja */
     function insertar_pareja($contenido)
     {
         $this->db->update('usuarios',$contenido);/* con la funcion update de codeigneiter se actuliza la tabla con los datos de las parejas */
         return $this->db->insert_id(); /*regresa el id de la insercion */
-        
+
     }
 
 }
