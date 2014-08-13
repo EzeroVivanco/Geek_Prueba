@@ -3,7 +3,7 @@
 ---------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------
--- REQUIRE & VARIABLES
+-- REQUERIMIENTOS & VARIABLES
 ---------------------------------------------------------------------------------
 
 local storyboard = require( "storyboard" )
@@ -78,8 +78,8 @@ end
 function scene:enterScene( event )
 	local phase = event.phase
 	if "did" == phase then
-		composer.removeScene( "registration" )
-		composer.removeScene( "login" )
+		composer.removeScene( "code.registration" )
+		composer.removeScene( "code.login" )
 	end
 end
 
