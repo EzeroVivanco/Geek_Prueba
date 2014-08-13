@@ -19,7 +19,7 @@ class RegistrationDb extends CI_Model {
 
     /* inicia la funcion nueva_cuenta */
 
-    function new_account($sEmail, $sPass = '') {
+    function newAccount($sEmail, $sPass = '') {
         $data = array(
             'email' => $sEmail,
             'password' => $sPass
@@ -29,7 +29,7 @@ class RegistrationDb extends CI_Model {
 
     /* inicia la funcion no_existe_cuenta */
 
-    function dont_exist_mail($sEmail) {
+    function dontExistMail($sEmail) {
         // armamos la consulta
         $query = $this->db->query('SELECT email FROM usuarios WHERE email=?', array($sEmail)); /* se almacena la sentencia del query en la variable $query */
         /* la consulta traducida es "seleccionar los datos email de la tabla usuarios donde email sea igual al parametro" */
@@ -43,7 +43,7 @@ class RegistrationDb extends CI_Model {
 
     /* inica la funcion insertar_pareja */
 
-    function insert_couple($content) {
+    function insertCouple($content) {
         $this->db->update('usuarios', $content); /* con la funcion update de codeigneiter se actuliza la tabla con los datos de las parejas */
         return $this->db->insert_id(); /* regresa el id de la insercion */
     }

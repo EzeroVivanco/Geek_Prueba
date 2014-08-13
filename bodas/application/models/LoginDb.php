@@ -18,7 +18,7 @@ class LoginDb extends CI_Model {
 
     /* inicia la funcion no_existe_cuenta */
 
-    function dont_exist_mail($sEmail, $sPass = '', $opc = 1) {
+    function dontExistMail($sEmail, $sPass = '', $opc = 1) {
 
         if (empty($sEmail) or empty($opc)) {/* verifica si los parametros estan vacios */
             return true; /* regresa un valor verdadero si alguno de los 2 parametros estan vacios */

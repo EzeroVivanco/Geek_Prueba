@@ -40,12 +40,12 @@ class Registration extends CI_controller {
             if (!empty($sPassword)) {/* verifica si la variable $sPassword esta vacia */
                 $sPass = md5($sPassword); /* asigna a la variable $sPass el hashing MD5 de la variable $sPassword */
             }
-            if (!$this->RegistrationDb->dont_exist_mail($sEmail)) {/* llamados a la funcion de no_existe_cuenta para saber si esta el correo en la base de datos */
+            if (!$this->RegistrationDb->dontExisMail($sEmail)) {/* llamados a la funcion de no_existe_cuenta para saber si esta el correo en la base de datos */
                 $data = false;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor falso atraves de ajax */
             } else {
-                $this->RegistrationDb->new_account($sEmail, $sPass); /* llama a la funcion nueva cuenta en el modelo de registro para insertar los datos en la base de datos */
-                $this->_generar_sesion($sEmail); /* llama a la funcion _generar_sesion para generar la variable de sesion */
+                $this->RegistrationDb->newAccount($sEmail, $sPass); /* llama a la funcion nueva cuenta en el modelo de registro para insertar los datos en la base de datos */
+                $this->createSesion($sEmail); /* llama a la funcion _generar_sesion para generar la variable de sesion */
                 $data = true;
                 $this->output->set_output(json_encode($data)); /* se regresa el valor verdadero atraves de ajax */
             }
@@ -56,37 +56,37 @@ class Registration extends CI_controller {
 
     /* inicia la funcion generar_sesion */
 
-    function create_sesion($sEmail = '[unknown]', $SesLimit = 1) {
+    function createSesion($sEmail = '[unknown]', $sesLimit = 1) {
         $arrSesion = array(/* tomamos los parametros de la funcion como el correo y el tiempo de sesion */
-            'is_logged' => true,
+            'isLogged' => true,
             'email' => $sEmail,
-            'seslimit' => time() + ($SesLimit * 60)// limite en minutos
+            'sesLimit' => time() + ($sesLimit * 60)// limite en minutos
         );
-        $this->session->set_userdata('sesion_user', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
+        $this->session->set_userdata('sesionUser', $arrSesion); /* crea la variable de sesion con los datos del array $arrSesion */
     }
 
     /* inicia la funcion de error */
 
-    function load_error($sMsjError = '') {
-        if (!empty($sMsjError)) {/* verifica que el parametro de $sMsjError no este vacio */
-            $data['sMsjError'] = $sMsjError; /* carga el string del error en una array de $datos */
+    function loadError($smsjError = '') {
+        if (!empty($smsjError)) {/* verifica que el parametro de $sMsjError no este vacio */
+            $data['smsjError'] = $smsjError; /* carga el string del error en una array de $datos */
         }
         $this->load->view('web/vwWedding', $data); /* manda a visualizar la vista vwWedding, con el parametro de $datos */
     }
 
     /* inicia la funcion nueva_pareja */
 
-    function new_couple() {
+    function newCouple() {
         if (!empty($_POST['name']) && !empty($_POST['name_couple'])) {/* verifica si el post de nombre y de nombre_pareja estan vacios */
 
             $content = array(
                 'name' => $_POST['name'],
                 'name_couple' => $_POST['name_couple']
             ); /* en el array $contenido almacena los post de nombre y nombre_pareja */
-            $this->RegistrationDb->insert_couple($content); /* se llama a la funcion insertar_pareja para ingresar en la base de datos los nombre de la parejas */
+            $this->RegistrationDb->insertCouple($content); /* se llama a la funcion insertar_pareja para ingresar en la base de datos los nombre de la parejas */
             redirect(base_url() . 'admin/dashboard/'); /* redirecciona a la vista dashboard */
         } else {
-            $this->load_error('Celda (s) vacia (s)'); /* llama a la funcion _cargar_error para marcar en la vista el error */
+            $this->loadError('Celda (s) vacia (s)'); /* llama a la funcion _cargar_error para marcar en la vista el error */
         }
     }
 
