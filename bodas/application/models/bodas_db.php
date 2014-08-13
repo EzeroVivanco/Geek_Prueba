@@ -1,21 +1,4 @@
-<<<<<<< HEAD
-<?php
 
-if (!defined('BASEPATH')) {
-    exit('No direct script access allowed');
-}
-
-Class bodas_db extends CI_MODEL {
-
-    public function __construct() {
-        parent::__construct();
-    }
-
-    /**
-     * Obtiene todos los registros activos del catalogo
-     */
-    public function get($id) {
-=======
 <?php 
 /**
 * GeekBucket 2014
