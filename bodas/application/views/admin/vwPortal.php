@@ -1,4 +1,9 @@
 <!doctype html>
+<!-- 
+    GeekBucket 2014
+    Autor: Ramón Can Tepal
+    Vista principal para el administrador
+-->
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">

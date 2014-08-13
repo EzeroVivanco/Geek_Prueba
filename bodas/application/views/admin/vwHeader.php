@@ -1,3 +1,8 @@
+<!--
+    GeekBucket 2014
+    Autor: Ramón Can Tepal.
+    Contenido de la cabezera del documento del Administrador
+-->
 <!--Cabecera de la vista vwPortal, aqui se cargan las imagenes que contiene cada pestaña del menu.-->
 <div class="fixed">
     <nav class="top-bar" data-topbar>
@@ -29,7 +34,7 @@
         <center>
             <br/>
             <br/>
-            <br />
+            <br/>
             <p>Cuenta Regresiva</p>
             <span id="dias">00</span> <span id="horas">00</span> <span id="minutos">00</span><br />
             <span class="font">Dias</span> <span class="font">Horas</span> <span class="font">Minutos</span>
