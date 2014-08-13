@@ -13,14 +13,14 @@ $(function() {
 //Esta funcion de javascript hara que en el cronometro surgan cambios de la fecha actual a la fecha de la boda.
 function carga() {
     //Obtener fecha actual
-    var fecha = new Date();
-    var dayNow = fecha.getDate();
-    var monthNow = fecha.getMonth() + 1;
-    var yearNow = fecha.getFullYear();
+    var date = new Date();
+    var dayNow = date.getDate();
+    var monthNow = date.getMonth() + 1;
+    var yearNow = date.getFullYear();
     //obtener la hora actual
-    var hourNow = fecha.getHours();
-    var minNow = fecha.getMinutes();
-    var secNow = fecha.getSeconds();
+    var hourNow = date.getHours();
+    var minNow = date.getMinutes();
+    var secNow = date.getSeconds();
     //Fecha de la boda
     var dayBoda = 28;
     var monthBoda = 7;
@@ -37,50 +37,50 @@ function carga() {
     }
 
 
-    contador_s = secNow;
-    contador_m = (60 - minNow);
-    contador_h = (24 - hourNow);
-    contador_d = dayRest;
-    s = 0; //Se inicia el segundo para comenzar a contar el tiempo.
-    m = document.getElementById("minutos");
-    h = document.getElementById("horas");
-    d = document.getElementById("dias");
-    d.innerHTML = dayRest;
-    m.innerHTML = (contador_m);
-    h.innerHTML = (contador_h);
+    countSeconds = secNow;
+    countMinute = (60 - minNow);
+    countHour = (24 - hourNow);
+    countDay = dayRest;
+    seconds = 0; //Se inicia el segundo para comenzar a contar el tiempo.
+    minute = document.getElementById("minutes");
+    hour = document.getElementById("hours");
+    day = document.getElementById("days");
+    day.innerHTML = dayRest;
+    minute.innerHTML = (countMinute);
+    hour.innerHTML = (countHour);
     window.setInterval(
             function()
             {
-                if (contador_s == 60) {
-                    contador_s = 0;
-                    contador_m--;
-                    if (contador_m == 0) {
-                        contador_m = 59;
-                        contador_h--;
-                        if (contador_h == 0) {
-                            contador_h = 23;
-                            contador_d--;
-                            d.innerHTML = contador_d;
+                if (countSeconds == 60) {
+                    countSeconds = 0;
+                    countMinute--;
+                    if (countMinute == 0) {
+                        countMinute = 59;
+                        countHour--;
+                        if (countHour == 0) {
+                            countHour = 23;
+                            countDay--;
+                            day.innerHTML = countDay;
                         }
-                        m.innerHTML = "0" + contador_m;
-                        if (contador_h <= 9) {
-                            h.innerHTML = "0" + contador_h;
+                        minute.innerHTML = "0" + countMinute;
+                        if (countHour <= 9) {
+                            hour.innerHTML = "0" + countHour;
                         } else {
-                            h.innerHTML = contador_h;
+                            hour.innerHTML = countHour;
                         }
 
                     } else {
-                        if (contador_m <= 9) {
-                            m.innerHTML = "0" + contador_m;
+                        if (countMinute <= 9) {
+                            minute.innerHTML = "0" + countMinute;
                         } else {
-                            m.innerHTML = contador_m;
+                            minute.innerHTML = countMinute;
                         }
                     }
-                    if (contador_m == 59) {
-                        m.innerHTML = contador_m;
+                    if (countMinute == 59) {
+                        minute.innerHTML = countMinute;
                     }
                 }
-                contador_s++;
+                countSeconds++;
             }
     , 1000);
 }

@@ -22,7 +22,7 @@
             $btSubmit = array(
                 'name' => 'btSubmit',
                 'id' => 'btSubmit',
-                'value' => 'Registrarse',
+                'value' => 'Register',
                 'class' => 'button expand',
                 'onSubmit' => 'return ',
                 'onclick'   => 'ajaxjoin()'
