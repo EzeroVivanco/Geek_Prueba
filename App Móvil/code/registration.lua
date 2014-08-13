@@ -9,7 +9,7 @@
 local storyboard = require( "storyboard" )
 local widget = require( "widget")
 local sqlite3 = require "sqlite3"
-
+local dbMethods = require( "code.ConnectionDB" )
 local scene = storyboard.newScene()
 
 local _X = display.contentCenterX
@@ -57,13 +57,13 @@ end
 
 function scene:enterScene( event )
 
-	storyboard.removeScene( "welcome" )
+	storyboard.removeScene( "code.welcome" )
 	
 	local sceneGroup = self.view
 	
 	--Abre la conexión a base de datos.
-	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
-	db = sqlite3.open( path )
+	--local path = system.pathForFile("BD.db", system.DocumentsDirectory)
+	--db = sqlite3.open( path )
 	
 	--Creación de Objetos.
 	local register = display.newText( "Registro", _X, _Y - 200, native.systemFont, 35 )
@@ -107,12 +107,14 @@ function scene:enterScene( event )
 			elseif (fieldPass.text ~= fieldPass2.text) then
 
 			else
-				db = sqlite3.open( path )
-				local insertion = [[INSERT INTO user VALUES (']]..fieldUser.text..[[',']]..fieldPass2.text..[[');]]
-				db:exec(insertion)
-				db:close()
+				--db = sqlite3.open( path )
+				dbMethods.InsertUser(fieldUser.text,fieldPass2.text)
+				--local insertion = [[INSERT INTO user VALUES (']]..fieldUser.text..[[',']]..fieldPass2.text..[[');]]
+				--db:exec(insertion)
+				--db:close()
+				dbMethods.CloseDB()
 				native.setKeyboardFocus( nil )
-				storyboard.gotoScene( "welcome")
+				storyboard.gotoScene( "code.welcome")
 			end
 		end
 	end
