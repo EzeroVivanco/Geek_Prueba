@@ -14,7 +14,7 @@ display.setStatusBar( display.HiddenStatusBar )
 ---------------------------------------------------------------------------------
 -- BASE DE DATOS
 ---------------------------------------------------------------------------------
-
+dbMethods.CreateConection()
 dbMethods.CreateTable()
 dbMethods.CloseDB()
 

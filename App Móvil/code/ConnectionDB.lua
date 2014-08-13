@@ -6,8 +6,7 @@ local sqlite3 = require "sqlite3"
 --Abre la base de datos BD.db.
 --Si la base de datos no existe, la crea.
 local user, password, found = false
-local path = system.pathForFile("BD.db", system.DocumentsDirectory)
-db = sqlite3.open( path )
+
 
 local functions = {}
 ---------------------------------------------------------------------------------
@@ -18,6 +17,12 @@ local functions = {}
 functions.CreateTable = function ()
 	local tablesetup = [[CREATE TABLE IF NOT EXISTS user (email, password);]] 
 	db:exec( tablesetup )
+end
+
+--Abre conexion a base de datos
+functions.CreateConection = function ()
+	local path = system.pathForFile("BD.db", system.DocumentsDirectory)
+	db = sqlite3.open( path )
 end
 
 --Inserción de registros en la base de datos.

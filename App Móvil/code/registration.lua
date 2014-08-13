@@ -107,14 +107,12 @@ function scene:enterScene( event )
 			elseif (fieldPass.text ~= fieldPass2.text) then
 
 			else
-				--db = sqlite3.open( path )
+				dbMethods.CreateConection()
 				dbMethods.InsertUser(fieldUser.text,fieldPass2.text)
-				--local insertion = [[INSERT INTO user VALUES (']]..fieldUser.text..[[',']]..fieldPass2.text..[[');]]
-				--db:exec(insertion)
-				--db:close()
 				dbMethods.CloseDB()
 				native.setKeyboardFocus( nil )
-				storyboard.gotoScene( "code.welcome")
+				storyboard.gotoScene("code.welcome")
+				print( "inserte" )
 			end
 		end
 	end

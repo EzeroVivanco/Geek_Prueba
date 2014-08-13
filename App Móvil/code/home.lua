@@ -14,8 +14,7 @@ local scene = storyboard.newScene()
 local appId = "807125025972663"
 
 -- Escenas
-require("options")
-require("menu")
+require("code.menu")
 local menuScreen
 local homeScreen = display.newGroup()
 

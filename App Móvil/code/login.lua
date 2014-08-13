@@ -11,6 +11,7 @@ local json = require( "json" )
 local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 local sqlite3 = require "sqlite3"
+local dbMethods = require( "code.ConnectionDB")
 
 local scene = storyboard.newScene()
 
@@ -58,20 +59,24 @@ end
 --Obtiene y valida los datos del usuario ingresado desde la base de datos.
 local function handleButtonEvent( event )
 	if (event.phase == "ended") then
-		local path = system.pathForFile( "BD.db", system.DocumentsDirectory )
-		local db = sqlite3.open( path ) 
-		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
-			native.setKeyboardFocus( nil )
-			storyboard.gotoScene( "code.home" )
-			status = true	
-			break
+		dbMethods.CreateConection()
+		if(dbMethods.SearchUser(userField.text,passField.text)) then
+			local options =
+			{
+			    params =
+			    {
+			        phase = false
+			    }
+			}
+			storyboard.gotoScene( "code.home" ,options)
+			status = true
 		end
 		if status == false then
 			errorMesage.isVisible = true
 			backgroundError.isVisible = true
 			timer.performWithDelay( 3000, ocultar )
 		end
-		db:close()
+		dbMethods.CloseDB()
 	end
 end
 
