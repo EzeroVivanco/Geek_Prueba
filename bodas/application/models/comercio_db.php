@@ -8,6 +8,7 @@ Class comercio_db extends CI_MODEL
  
     /**
      * Obtiene todos los registros activos del catalogo
+     * ejemplo de modelo
      */
     public function get($id){
         $this->db->from('comercio');
