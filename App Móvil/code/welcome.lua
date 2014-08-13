@@ -25,15 +25,15 @@ local function handleButtonEvent( event )
 	if (event.phase == "ended") then
 		local currentScore = 200
 		local options = { level="Level 1", score=currentScore }
-		local results = storyboard.loadScene( "registration", true, options )
-		storyboard.gotoScene( "registration")
+		local results = storyboard.loadScene( "code.registration", true, options )
+		storyboard.gotoScene( "code.registration")
 	end
 end
 
 --Evento del botón de Inicio de Sesión.
 local function handleButtonEvent2( event )
 	if (event.phase == "ended") then
-		storyboard.gotoScene( "login")
+		storyboard.gotoScene( "code.login")
 	end
 end
 
@@ -78,8 +78,8 @@ end
 function scene:enterScene( event )
 	local phase = event.phase
 	if "did" == phase then
-		composer.removeScene( "registration" )
-		composer.removeScene( "login" )
+		composer.removeScene( "code.registration" )
+		composer.removeScene( "code.login" )
 	end
 end
 

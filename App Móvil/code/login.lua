@@ -62,7 +62,7 @@ local function handleButtonEvent( event )
 		local db = sqlite3.open( path ) 
 		for row in db:nrows("SELECT * FROM user WHERE email='"..usuarioField.text.."'".." and password='"..contrasenaField.text.."'") do
 			native.setKeyboardFocus( nil )
-			storyboard.gotoScene( "home" )
+			storyboard.gotoScene( "code.home" )
 			status = true	
 			break
 		end
@@ -81,7 +81,7 @@ end
 
 function scene:enterScene( event )
 
-	storyboard.removeScene( "welcome" )
+	storyboard.removeScene( "code.welcome" )
 	
 	local sceneGroup = self.view
 
@@ -179,7 +179,7 @@ function scene:enterScene( event )
 				errorMesage.isVisible = false
 				backgroundError.isVisible = false
             end
-            storyboard.gotoScene( "home", options )
+            storyboard.gotoScene( "code.home", options )
         end
 
     	elseif ( "request" == event.type ) then
