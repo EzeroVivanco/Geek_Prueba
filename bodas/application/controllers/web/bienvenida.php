@@ -2,8 +2,8 @@
 
 /**
  * GeekBucket 2014
- * Author: Alberto Vera Espitia
- * Define el comportamiento del Dashboard en la app
+ * Author: Ramón Can Tepal
+ * Controlador para la vista de bienvenida del website
  *
  */
 if (!defined('BASEPATH'))

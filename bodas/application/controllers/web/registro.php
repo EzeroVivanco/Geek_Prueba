@@ -1,5 +1,11 @@
 <?php
 
+/**
+* GeekBucket 2014
+* Autor: José Luis Arrioja Zamudio
+* Controllador para los metodos del registro
+**/
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
