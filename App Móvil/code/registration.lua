@@ -57,7 +57,7 @@ end
 
 function scene:enterScene( event )
 
-	storyboard.removeScene( "code.welcome" )
+	storyboard.removeScene( "welcome" )
 	
 	local sceneGroup = self.view
 	
@@ -112,7 +112,7 @@ function scene:enterScene( event )
 				db:exec(insertion)
 				db:close()
 				native.setKeyboardFocus( nil )
-				storyboard.gotoScene( "code.welcome")
+				storyboard.gotoScene( "welcome")
 			end
 		end
 	end

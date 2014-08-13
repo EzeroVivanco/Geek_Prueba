@@ -32,4 +32,4 @@ local options =
 -- METODOS DE ESCENA
 ---------------------------------------------------------------------------------
 
-storyboard.gotoScene("welcome",options)
+storyboard.gotoScene("code.welcome",options)
