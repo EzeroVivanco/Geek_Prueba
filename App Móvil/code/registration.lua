@@ -29,7 +29,7 @@ local function onUsername( event )
         -- Evento de aparicion del teclado.
     elseif ( "submitted" == event.phase ) then
         -- Automaticamente tabula al campo de contraseña si el usuario presiona "Return" en el teclado virtual.
-        native.setKeyboardFocus( campoPass )
+        native.setKeyboardFocus( fieldPass )
     end
 end
 
@@ -39,7 +39,7 @@ local function onPassword ( event )
         -- Evento de aparicion del teclado.
     elseif ( "submitted" == event.phase ) then
         -- Automaticamente tabula al campo de contraseña si el usuario presiona "Return" en el teclado virtual.
-        native.setKeyboardFocus( campoPass2 )
+        native.setKeyboardFocus( fieldPass2 )
     end
 end
 
